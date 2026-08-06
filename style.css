@@ -1,130 +1,141 @@
-/* Top Header Bar */
-.top-header {
+/* Overall Page Background - Rich Tactical Steel/Navy Tone */
+body {
+    background: linear-gradient(135deg, #1a2130 0%, #0d1117 100%) !important;
+    color: #e6edf3 !important;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    background: #111;
-    border-bottom: 1px solid rgba(255,204,0,0.2);
-    position: sticky;
-    top: 0;
-    z-index: 900;
+    min-height: 100vh;
 }
 
-#menuBtn {
-    background: none;
-    border: none;
-    color: #ffcc00;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.header-title {
-    color: #ffcc00;
-    font-weight: bold;
-    letter-spacing: 1px;
-    font-size: 14px;
-}
-
-/* Slide-Out Side Drawer */
-.drawer {
-    position: fixed;
-    top: 0;
-    left: -280px;
-    width: 280px;
-    height: 100%;
-    background: #141414;
-    border-right: 1px solid rgba(255,204,0,0.3);
-    z-index: 1000;
-    transition: left 0.3s ease-in-out;
+/* Left-Side Alliance Flag / Banner Navigation */
+.alliance-banner {
+    width: 260px;
+    background: linear-gradient(to bottom, #1f293d, #0f141d);
+    border-right: 3px solid #ffcc00;
     display: flex;
     flex-direction: column;
-    box-shadow: 5px 0px 15px rgba(0,0,0,0.8);
-}
-
-.drawer.open {
-    left: 0;
-}
-
-.drawer-header {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    border-bottom: 1px solid rgba(255,204,0,0.2);
-    color: #ffcc00;
+    padding: 20px 10px;
+    position: fixed;
+    height: 100vh;
+    box-shadow: 4px 0px 15px rgba(0,0,0,0.6);
+    z-index: 100;
+    box-sizing: border-box;
 }
 
-#closeBtn {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.drawer-links {
-    flex: 1;
-    overflow-y: auto;
-    padding: 10px 0;
-}
-
-.drawer-links a, .drawer-dropdown-toggle {
-    display: block;
-    padding: 12px 20px;
-    color: #ddd;
-    text-decoration: none;
-    font-size: 15px;
-    background: none;
-    border: none;
+/* Alliance Shield / Logo Emblem Styling */
+.alliance-shield {
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(255,204,0,0.3);
+    padding-bottom: 15px;
     width: 100%;
-    text-align: left;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
 }
 
-.drawer-links a:hover, .drawer-dropdown-toggle:hover {
+.alliance-shield h2 {
+    color: #ffcc00;
+    font-size: 22px;
+    margin: 5px 0 0 0;
+    letter-spacing: 2px;
+    text-shadow: 0px 0px 8px rgba(255,204,0,0.4);
+}
+
+.alliance-shield span {
+    color: #8b949e;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Navigation Links inside the Left Banner */
+.banner-nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+    flex: 1;
+}
+
+.banner-nav a, .banner-dropdown-btn {
+    color: #c9d1d9;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid transparent;
+    transition: 0.2s;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.banner-nav a:hover, .banner-dropdown-btn:hover {
     background: rgba(255, 204, 0, 0.1);
     color: #ffcc00;
+    border-left-color: #ffcc00;
 }
 
-.drawer-dropdown-content {
+/* Submenu dropdown inside the left banner */
+.banner-dropdown-content {
     display: none;
-    background: #1a1a1a;
     padding-left: 15px;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 5px;
 }
 
-.drawer-dropdown-content.show {
-    display: block;
+.banner-dropdown-content.show {
+    display: flex;
 }
 
-.drawer-footer {
-    padding: 15px 20px;
-    border-top: 1px solid rgba(255,204,0,0.2);
-    text-align: center;
+/* Main Content Area Shifted Right to make room for the Left Banner */
+.main-content-wrapper {
+    margin-left: 260px;
+    flex: 1;
+    padding: 30px;
+    box-sizing: border-box;
 }
 
-/* Backdrop Overlay */
-.overlay-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
+/* Cards with Brighter Contrast & Gold Borders */
+.card {
+    background: rgba(22, 27, 34, 0.85);
+    border: 1px solid rgba(255, 204, 0, 0.3);
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.card h3, .card h2 {
+    color: #ffcc00;
+    margin-top: 0;
+}
+
+/* Language Box & Clock Footer inside Banner */
+.banner-footer {
     width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-    z-index: 999;
-    display: none;
-}
-
-.overlay-backdrop.active {
-    display: block;
+    margin-top: auto;
+    text-align: center;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255,204,0,0.3);
 }
 
 #languageSelector {
-    background: #1a1a1a;
+    background: #0d1117;
     color: #fff;
     border: 1px solid rgba(255,204,0,0.4);
-    padding: 4px 8px;
+    padding: 6px;
     border-radius: 4px;
+    width: 100%;
     cursor: pointer;
+    margin-bottom: 10px;
+}
+
+#liveTime {
+    color: #8b949e;
+    font-size: 11px;
 }
