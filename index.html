@@ -3,45 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alliance Hub | GGE Alliance</title>
-    <link rel="stylesheet" href="style.css">
+    <title>GGE Server 199 - Alliance Command Hub</title>
+    <style>
+        :root {
+            --bg-color: #121418;
+            --panel-bg: #1a1d24;
+            --accent-color: #d97706;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: #374151;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--panel-bg);
+            border-bottom: 2px solid var(--accent-color);
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin: 0.5rem 0 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        ul {
+            padding-left: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 3rem;
+        }
+    </style>
 </head>
 <body>
-    <div class="overlay"></div>
+
+    <header>
+        <h1>GGE ALLIANCE COMMAND</h1>
+        <p>Server 199 Tactical Operations & Strategy Hub</p>
+    </header>
+
     <div class="container">
-        
-        <!-- Master Navigation Menu -->
-        <nav class="nav-menu">
-            <a href="index.html" id="navHome">Home / War Room</a>
-            <a href="roster.html" id="navRoster">Alliance Roster</a>
-            <a href="heroes.html" id="navHeroes">Hero Roster</a>
-            
-            <div class="dropdown">
-                <a href="events.html" class="dropbtn" id="navEvents">Alliance Events ▼</a>
-                <div class="dropdown-content">
-                    <a href="cage-fight.html" id="cageFight">Cage Fight</a>
-                    <a href="terminal-siege.html" id="terminalSiege">Terminal Siege</a>
-                </div>
-            </div>
+        <!-- Section 1: Command Structure -->
+        div class="card">
+            <h2>Command Hierarchy</h2>
+            <ul>
+                <li><strong>R5:</strong> Alliance Leader / Supreme Command</li>
+                <li><strong>R4:</strong> Operations & Strategic Officers</li>
+                <li><strong>R3 - R1:</strong> Frontline Members & Recruits</li>
+            </ul>
+        </div>
 
-            <a href="rules.html" id="navRules">Alliance Laws</a>
-            <a href="links.html" id="navLinks">Intel & Links</a>
+        <!-- Section 2: Deployment & Ratios -->
+        <div class="card">
+            <h2>Deployment Protocols</h2>
+            <ul>
+                <li>Maintain optimized troop ratios for frontline engagement.</li>
+                <li>Coordinate hero loadouts according to defense/offense schedules.</li>
+                <li>Verify rally targets prior to execution windows.</li>
+            </ul>
+        </div>
 
-            <div id="languageSelectorContainer"></div>
-        </nav>
-
-        <main>
-            <section class="card">
-                <h2 id="homeTitle">Server 199 • GGE Alliance Command Center</h2>
-                <p id="homeDesc">Select a section above to view leadership rosters, strategic event breakdowns, and alliance guidelines.</p>
-            </section>
-        </main>
-
-        <footer>
-            <p id="footer">&copy; 2026 GGE Alliance. All rights reserved on the battlefield.</p>
-        </footer>
+        <!-- Section 3: Operations Log -->
+        <div class="card">
+            <h2>Active Operations</h2>
+            <ul>
+                <li>Server 199 territorial control tracking.</li>
+                <li>Alliance event coordination and scheduling.</li>
+                <li>Resource distribution protocols.</li>
+            </ul>
+        </div>
     </div>
 
-    <script src="translations.js"></script>
+    <footer>
+        <p>&copy; 2026 GGE Server 199. All tactical rights reserved.</p>
+    </footer>
+
 </body>
 </html>
