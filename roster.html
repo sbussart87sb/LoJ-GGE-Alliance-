@@ -3,160 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alliance Roster | GGE Alliance</title>
-    <link rel="stylesheet" href="style.css">
+    <title>GGE Server 199 - Alliance Roster</title>
+    <style>
+        :root {
+            --bg-color: #121418;
+            --panel-bg: #1a1d24;
+            --accent-color: #d97706;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: #374151;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--panel-bg);
+            border-bottom: 2px solid var(--accent-color);
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin: 0.5rem 0 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .nav-bar {
+            text-align: center;
+            padding: 1rem;
+            background-color: rgba(26, 29, 36, 0.7);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-bar a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+        }
+
+        .nav-bar a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .card {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 3rem;
+        }
+    </style>
 </head>
 <body>
-    <div class="overlay"></div>
-    <div class="container">
-        
-        <!-- Top Bar -->
-        <div class="top-bar"></div>
 
-        <header>
-            <h1 id="rosterTitle">Alliance Roster</h1>
-            <p class="subtitle" id="rosterSubtitle">Server 199 • GGE Leadership & Command Structure</p>
-        </header>
+    <header>
+        <h1>GGE ALLIANCE ROSTER</h1>
+        <p>Server 199 Member & Leadership Directory</p>
+    </header>
 
-        <main>
-            <!-- R5 LEADERSHIP -->
-            <section class="card">
-                <h2>👑 R5 Leadership</h2>
-                <ul style="list-style-type: none; padding: 0; margin-top: 15px; line-height: 2.2;">
-                    <li style="background: rgba(255, 204, 0, 0.1); margin-bottom: 8px; padding: 8px 15px; border-left: 3px solid #ffcc00;">Gökbörü</li>
-                </ul>
-            </section>
-
-            <!-- R4 OFFICERS -->
-            <section class="card">
-                <h2>⭐ R4 Officers</h2>
-                <ul style="list-style-type: none; padding: 0; margin-top: 15px; line-height: 2.2;">
-                    <li style="background: rgba(255, 255, 255, 0.05); margin-bottom: 8px; padding: 8px 15px; border-left: 3px solid #ffcc00;">Darth Hater</li>
-                    <li style="background: rgba(255, 255, 255, 0.05); margin-bottom: 8px; padding: 8px 15px; border-left: 3px solid #ffcc00;">Ozge</li>
-                    <li style="background: rgba(255, 255, 255, 0.05); margin-bottom: 8px; padding: 8px 15px; border-left: 3px solid #ffcc00;">jaco</li>
-                </ul>
-            </section>
-
-            <!-- R3 MEMBERS -->
-            <section class="card">
-                <h2>🛡️ R3 Members</h2>
-                <ul style="list-style-type: none; padding: 0; margin-top: 15px; line-height: 2.2;">
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">kingkit</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Spazz</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Corgi</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">AppleCrumble</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Killua</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">HandOfGod87RIP</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">ZARD</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">ATLAS</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">AslanBey</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Ron_A</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">WTP</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">MORI</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">LAURA</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">DANILOSKY</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">KarmaRose</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">懋如雨止</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">CELES</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Nicko</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">OBEN</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Father</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">BOZKURT_33</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">CriliiTopher</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Pablo2026</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">FIRLAMA</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">HAKAN</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Eclipse</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Revelations</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Sith.Jk8</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">ZenZey</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">ScorpX</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Veri</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Yachiru Unohana</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Brad Pitt</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Scarlatti</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">loli</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">CoJ</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Queenbaby1cheta</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Smaugg</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">steffi</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">eselu</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Reis</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Okan</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">PumpkinPile</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Muhammad Bilal</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Jaserin</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Night Fury</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">elChapo</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">FénixDePlata</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Solomon</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Poison</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Franzua</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Jess</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Teddy Bear</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Valki</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Vodka</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Steppenwolf</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Vapking_Bzh 高気王</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">bluedream</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Ratchet</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">S4M43L</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Bumblebee</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">ELKC2025</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Monster</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">조상아</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Amr</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Buzzy</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Türk</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">F B I</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Gautlieri</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Ardamanya61</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Mr_JhonNeci</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">KingDangeranger</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Xo_smiling</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">DebatinAtom</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Wolverine</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Blitz195</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Whisky</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">cypriot93</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">JOHNWICK003</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">khadeja</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Sherif</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Ahmet</li>
-                </ul>
-            </section>
-
-            <!-- R2 MEMBERS -->
-            <section class="card">
-                <h2>⚔️ R2 Members</h2>
-                <ul style="list-style-type: none; padding: 0; margin-top: 15px; line-height: 2.2;">
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">PaintedBrute 01</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Viuva Negra37</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">yanivjun</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">JewelRider</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Aisha</li>
-                </ul>
-            </section>
-
-            <!-- R1 MEMBERS -->
-            <section class="card">
-                <h2>🛡️ R1 Members</h2>
-                <ul style="list-style-type: none; padding: 0; margin-top: 15px; line-height: 2.2;">
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Palestinian</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">HöRuS</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Kayra</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">Osterhase</li>
-                    <li style="background: rgba(255, 255, 255, 0.03); margin-bottom: 6px; padding: 6px 12px;">LunarVex</li>
-                </ul>
-            </section>
-        </main>
-
-        <footer>
-            <p id="footer">&copy; 2026 GGE Alliance. All rights reserved on the battlefield.</p>
-        </footer>
+    <div class="nav-bar">
+        <a href="index.html">Command Hub</a>
+        <a href="roster.html">Roster</a>
     </div>
 
-    <!-- Centralized Translation, Navigation & Clock Script -->
-    <script src="translations.js"></script>
+    <div class="container">
+        <!-- Leadership Section -->
+        <div class="card">
+            <h2>Command Leadership (R5 & R4)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Officer Name</th>
+                        <th>Role / Specialization</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>R5</strong></td>
+                        <td>[Supreme Leader Name]</td>
+                        <td>Alliance Direction & Diplomacy</td>
+                    </tr>
+                    <tr>
+                        <td><strong>R4</strong></td>
+                        <td>Seth</td>
+                        <td>Strategic Operations & Tactical Coordination</td>
+                    </tr>
+                    <tr>
+                        <td><strong>R4</strong></td>
+                        <td>[Officer Name]</td>
+                        <td>Recruitment & Deployment</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Members Section -->
+        <div class="card">
+            <h2>Active Roster (R3 - R1)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Member Name</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>R3</td>
+                        <td>[Member Name]</td>
+                        <td>Active Frontline</td>
+                    </tr>
+                    <tr>
+                        <td>R2</td>
+                        <td>[Member Name]</td>
+                        <td>Active Support</td>
+                    </tr>
+                    <tr>
+                        <td>R1</td>
+                        <td>[Recruit Name]</td>
+                        <td>Under Evaluation</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 GGE Server 199. All tactical rights reserved.</p>
+    </footer>
+
 </body>
 </html>
