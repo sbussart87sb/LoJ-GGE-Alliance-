@@ -3,45 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminal Siege Strategy | GGE Alliance</title>
+    <title>Alliance Hub | GGE Alliance</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="overlay"></div>
     <div class="container">
         
-        <!-- Top Bar -->
+        <!-- Top Bar / Navigation Injector -->
         <div class="top-bar"></div>
 
-        <header>
-            <h1 id="siegeTitle">Terminal Siege Strategy</h1>
-            <p class="subtitle" id="siegeSubtitle">Server 199 • Coordinated Defense & Scoring</p>
-        </header>
+        <!-- Master Navigation Menu with Dropdown -->
+        <nav class="nav-menu" style="margin: 20px 0; text-align: center;">
+            <a href="index.html" id="navHome" style="margin: 0 10px; color: #fff; text-decoration: none;">Home / War Room</a>
+            <a href="roster.html" id="navRoster" style="margin: 0 10px; color: #fff; text-decoration: none;">Alliance Roster</a>
+            <a href="heroes.html" id="navHeroes" style="margin: 0 10px; color: #fff; text-decoration: none;">Hero Roster</a>
+            
+            <!-- Events Dropdown Menu -->
+            <div class="dropdown" style="display:inline-block; position:relative; margin: 0 10px;">
+                <a href="events.html" class="dropbtn" id="navEvents" style="color: #fff; text-decoration: none;">Alliance Events ▼</a>
+                <div class="dropdown-content" style="display:none; position:absolute; left: 50%; transform: translateX(-50%); background:#1a1a1a; min-width:180px; box-shadow:0px 8px 16px rgba(0,0,0,0.5); z-index:1; text-align: left; border: 1px solid rgba(255,204,0,0.3);">
+                    <a href="cage-fight.html" style="padding:10px 15px; display:block; color:#fff; text-decoration:none;">Cage Fight</a>
+                    <a href="terminal-siege.html" style="padding:10px 15px; display:block; color:#fff; text-decoration:none;">Terminal Siege</a>
+                </div>
+            </div>
+
+            <a href="rules.html" id="navRules" style="margin: 0 10px; color: #fff; text-decoration: none;">Alliance Laws</a>
+            <a href="links.html" id="navLinks" style="margin: 0 10px; color: #fff; text-decoration: none;">Intel & Links</a>
+        </nav>
+
+        <!-- Dropdown Hover and Global Styling -->
+        <style>
+            .dropdown:hover .dropdown-content { display: block !important; }
+            .dropdown-content a:hover { background: rgba(255, 204, 0, 0.2); color: #ffcc00; }
+            .nav-menu a:hover { color: #ffcc00; }
+        </style>
 
         <main>
-            <!-- Event Overview -->
             <section class="card">
-                <h2>🚨 Event Overview: Terminal Siege</h2>
-                <p>Terminal Siege is a cooperative wave-defense event where waves of enemies attack alliance member bases. Success relies heavily on collective alliance alignment rather than isolated individual defense.</p>
-            </section>
-
-            <!-- Critical Rule: Turn Off Prison Self-Defense -->
-            <section class="card" style="border-left: 3px solid #ffcc00;">
-                <h2>⚠️ Crucial Rule: Turn Off Prison Self-Defense</h2>
-                <p style="margin-top: 10px; line-height: 2.2;">
-                    You <strong>must turn off self-defense on your own prison</strong> for this event. 
-                    Working as a unified group allows the alliance to pool forces and strategy effectively. 
-                    Trying to fight solo or keeping individual defense systems active fragments your potential points—coordinating and working as a group unlocks significantly higher score rewards for everyone.
-                </p>
-            </section>
-
-            <!-- Tactical Execution -->
-            <section class="card">
-                <h2>🛡️ Tactical Execution & Tips</h2>
-                <ul style="margin-top: 15px; line-height: 2.2;">
-                    <li><strong>Group Rallying:</strong> Coordinate reinforcement deployments with alliance members to secure vulnerable perimeters.</li>
-                    <li><strong>Maximize Point Yields:</strong> Share defensive burdens so that high-damage and high-scoring waves are handled collectively, multiplying total alliance output.</li>
-                </ul>
+                <h2>Server 199 • GGE Alliance Command Center</h2>
+                <p>Select a section above to view leadership rosters, strategic event breakdowns, and alliance guidelines.</p>
             </section>
         </main>
 
@@ -50,6 +51,7 @@
         </footer>
     </div>
 
+    <!-- Centralized Translation, Navigation & Language Script -->
     <script src="translations.js"></script>
 </body>
 </html>
