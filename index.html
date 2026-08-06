@@ -3,34 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GGE Alliance | Land of Jail</title>
+    <title>Alliance Hub | GGE Alliance</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="overlay"></div>
     <div class="container">
         
-        <!-- Top Bar: Populated automatically by translations.js -->
-        <div class="top-bar"></div>
+        <!-- Master Navigation Menu -->
+        <nav class="nav-menu">
+            <a href="index.html" id="navHome">Home / War Room</a>
+            <a href="roster.html" id="navRoster">Alliance Roster</a>
+            <a href="heroes.html" id="navHeroes">Hero Roster</a>
+            
+            <div class="dropdown">
+                <a href="events.html" class="dropbtn" id="navEvents">Alliance Events ▼</a>
+                <div class="dropdown-content">
+                    <a href="cage-fight.html" id="cageFight">Cage Fight</a>
+                    <a href="terminal-siege.html" id="terminalSiege">Terminal Siege</a>
+                </div>
+            </div>
 
-        <header>
-            <h1 id="homeTitle">GGE ALLIANCE</h1>
-            <p class="subtitle" id="homeSubtitle">Server 199 • Land of Jail</p>
-        </header>
+            <a href="rules.html" id="navRules">Alliance Laws</a>
+            <a href="links.html" id="navLinks">Intel & Links</a>
+
+            <div id="languageSelectorContainer"></div>
+        </nav>
 
         <main>
             <section class="card">
-                <h2 id="warRoomTitle">The War Room</h2>
-                <p id="warRoomText">Welcome, warrior. Blood, steel, and strategy govern these lands. We ride together, we conquer together, and we hold the line against all foes.</p>
-            </section>
-
-            <section class="card">
-                <h2 id="directivesTitle">Alliance Directives</h2>
-                <ul>
-                    <li><strong id="dir1Title">Active Deployment:</strong> <span id="dir1Text">Keep shields up and troops ready for mobilization.</span></li>
-                    <li><strong id="dir2Title">Coordination:</strong> <span id="dir2Text">Check in regularly with R4 leadership for rally targets and defense assignments.</span></li>
-                    <li><strong id="dir3Title">Strength & Honor:</strong> <span id="dir3Text">Share resources, grow your might, and protect the alliance.</span></li>
-                </ul>
+                <h2 id="homeTitle">Server 199 • GGE Alliance Command Center</h2>
+                <p id="homeDesc">Select a section above to view leadership rosters, strategic event breakdowns, and alliance guidelines.</p>
             </section>
         </main>
 
@@ -39,7 +42,6 @@
         </footer>
     </div>
 
-    <!-- Centralized Translation, Navigation & Clock Script -->
     <script src="translations.js"></script>
 </body>
 </html>
