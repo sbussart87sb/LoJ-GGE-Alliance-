@@ -3,200 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GGE Server 199 - Alliance Roster</title>
-    <style>
-        :root {
-            --bg-color: #121418;
-            --panel-bg: #1a1d24;
-            --accent-color: #d97706;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --border-color: #374151;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--panel-bg);
-            border-bottom: 2px solid var(--accent-color);
-            padding: 1.5rem 2rem;
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            color: var(--accent-color);
-            font-size: 1.8rem;
-            letter-spacing: 1px;
-        }
-
-        header p {
-            margin: 0.5rem 0 0;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .nav-bar {
-            text-align: center;
-            padding: 1rem;
-            background-color: rgba(26, 29, 36, 0.7);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .nav-bar a {
-            color: var(--accent-color);
-            text-decoration: none;
-            margin: 0 1rem;
-            font-weight: bold;
-        }
-
-        .nav-bar a:hover {
-            text-decoration: underline;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-
-        .card {
-            background-color: var(--panel-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .card h2 {
-            margin-top: 0;
-            font-size: 1.2rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
-            color: var(--accent-color);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-
-        th, td {
-            padding: 0.75rem;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        th {
-            color: var(--accent-color);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        td {
-            color: var(--text-main);
-            font-size: 0.95rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            border-top: 1px solid var(--border-color);
-            margin-top: 3rem;
-        }
-    </style>
+    <title>Alliance Roster | GGE Alliance</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Left-Side Alliance Flag Banner Injection Point -->
+    <div id="leftBannerContainer"></div>
 
-    <header>
-        <h1>GGE ALLIANCE ROSTER</h1>
-        <p>Server 199 Member & Leadership Directory</p>
-    </header>
+    <!-- Main Content Wrapper -->
+    <div class="main-content-wrapper">
+        <header style="margin-bottom: 25px;">
+            <h1 style="color: #ffcc00; letter-spacing: 1px;">Alliance Roster</h1>
+            <p style="color: #8b949e;">Server 199 • GGE Leadership & Command Structure</p>
+        </header>
 
-    <div class="nav-bar">
-        <a href="index.html">Command Hub</a>
-        <a href="roster.html">Roster</a>
+        <main>
+            <section class="card">
+                <h2>👑 R5 Leadership</h2>
+                <p>Gökbörü</p>
+            </section>
+            
+            <section class="card">
+                <h2>★ R4 Officers</h2>
+                <p>Darth Hater</p>
+                <p>Osge</p>
+                <p>jaco</p>
+            </section>
+        </main>
+
+        <footer style="text-align: center; margin-top: 40px; padding: 20px; color: #8b949e; font-size: 12px; border-top: 1px solid rgba(255,204,0,0.1);">
+            <p>&copy; 2026 GGE Alliance • Server 199. All rights reserved on the battlefield.</p>
+        </footer>
     </div>
 
-    <div class="container">
-        <!-- Leadership Section -->
-        <div class="card">
-            <h2>Command Leadership (R5 & R4)</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Officer Name</th>
-                        <th>Role / Specialization</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>R5</strong></td>
-                        <td>[Supreme Leader Name]</td>
-                        <td>Alliance Direction & Diplomacy</td>
-                    </tr>
-                    <tr>
-                        <td><strong>R4</strong></td>
-                        <td>Seth</td>
-                        <td>Strategic Operations & Tactical Coordination</td>
-                    </tr>
-                    <tr>
-                        <td><strong>R4</strong></td>
-                        <td>[Officer Name]</td>
-                        <td>Recruitment & Deployment</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Members Section -->
-        <div class="card">
-            <h2>Active Roster (R3 - R1)</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Member Name</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>R3</td>
-                        <td>[Member Name]</td>
-                        <td>Active Frontline</td>
-                    </tr>
-                    <tr>
-                        <td>R2</td>
-                        <td>[Member Name]</td>
-                        <td>Active Support</td>
-                    </tr>
-                    <tr>
-                        <td>R1</td>
-                        <td>[Recruit Name]</td>
-                        <td>Under Evaluation</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 GGE Server 199. All tactical rights reserved.</p>
-    </footer>
-
+    <script src="translations.js"></script>
 </body>
 </html>
