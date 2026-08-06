@@ -1,86 +1,130 @@
-body {
-    background-color: #0c0a09;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(20, 10, 5, 0.9)), 
-                      radial-gradient(circle at center, #2c1810 0%, #0c0a09 100%);
-    color: #d1d5db;
-    font-family: 'Cinzel', 'Georgia', serif, sans-serif;
-    margin: 0;
-    padding: 20px;
+/* Top Header Bar */
+.top-header {
     display: flex;
-    justify-content: center;
-    min-height: 100vh;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #111;
+    border-bottom: 1px solid rgba(255,204,0,0.2);
+    position: sticky;
+    top: 0;
+    z-index: 900;
 }
 
-.container {
-    max-width: 700px;
+#menuBtn {
+    background: none;
+    border: none;
+    color: #ffcc00;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.header-title {
+    color: #ffcc00;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+
+/* Slide-Out Side Drawer */
+.drawer {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100%;
+    background: #141414;
+    border-right: 1px solid rgba(255,204,0,0.3);
+    z-index: 1000;
+    transition: left 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 5px 0px 15px rgba(0,0,0,0.8);
+}
+
+.drawer.open {
+    left: 0;
+}
+
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid rgba(255,204,0,0.2);
+    color: #ffcc00;
+}
+
+#closeBtn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.drawer-links {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px 0;
+}
+
+.drawer-links a, .drawer-dropdown-toggle {
+    display: block;
+    padding: 12px 20px;
+    color: #ddd;
+    text-decoration: none;
+    font-size: 15px;
+    background: none;
+    border: none;
     width: 100%;
-    z-index: 1;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
 }
 
-header {
+.drawer-links a:hover, .drawer-dropdown-toggle:hover {
+    background: rgba(255, 204, 0, 0.1);
+    color: #ffcc00;
+}
+
+.drawer-dropdown-content {
+    display: none;
+    background: #1a1a1a;
+    padding-left: 15px;
+}
+
+.drawer-dropdown-content.show {
+    display: block;
+}
+
+.drawer-footer {
+    padding: 15px 20px;
+    border-top: 1px solid rgba(255,204,0,0.2);
     text-align: center;
-    margin-bottom: 30px;
-    border-bottom: 2px solid #7f1d1d;
-    padding-bottom: 20px;
 }
 
-h1 {
-    color: #ef4444;
-    font-size: 2.5rem;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+/* Backdrop Overlay */
+.overlay-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 999;
+    display: none;
 }
 
-.subtitle {
-    color: #9ca3af;
-    font-size: 1.1rem;
-    margin-top: 5px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+.overlay-backdrop.active {
+    display: block;
 }
 
-.card {
-    background: rgba(24, 20, 18, 0.85);
-    border: 1px solid #451a03;
-    border-left: 4px solid #b91c1c;
-    padding: 20px 25px;
-    margin-bottom: 20px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+#languageSelector {
+    background: #1a1a1a;
+    color: #fff;
+    border: 1px solid rgba(255,204,0,0.4);
+    padding: 4px 8px;
     border-radius: 4px;
-}
-
-h2 {
-    color: #fca5a5;
-    margin-top: 0;
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-bottom: 1px solid #3f3f46;
-    padding-bottom: 8px;
-}
-
-p, li {
-    line-height: 1.6;
-    color: #d1d5db;
-}
-
-ul {
-    padding-left: 20px;
-}
-
-li {
-    margin-bottom: 10px;
-}
-
-footer {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 0.85rem;
-    color: #6b7280;
-    border-top: 1px solid #27272a;
-    padding-top: 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    cursor: pointer;
 }
