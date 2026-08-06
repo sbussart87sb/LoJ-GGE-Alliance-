@@ -1,73 +1,93 @@
-// Centralized Translation Script for GGE Server 199
+// Universal Auto-Translation Script for GGE Server 199
 const translations = {
     en: {
-        // Navigation Bar items
-        navWarRoom: "War Room",
-        navRoster: "Roster",
-        navHero: "Hero",
-        navEvents: "Events",
-        navCage: "Cage Fight",
-        navTerminal: "Terminal Siege",
-        navRules: "Rules",
-        navLinks: "Links",
-        
-        // Footer text
-        footerText: "2026 GGE Alliance • Server 199. All rights reserved on the battlefield."
+        "War Room": "War Room",
+        "Roster": "Roster",
+        "Hero": "Hero",
+        "Events": "Events",
+        "Cage Fight": "Cage Fight",
+        "Terminal Siege": "Terminal Siege",
+        "Rules": "Rules",
+        "Links": "Links",
+        "GGE Server 199 - Alliance Command": "GGE Server 199 - Alliance Command",
+        "Welcome to the official command center.": "Welcome to the official command center."
+    },
+    pl: {
+        "War Room": "Pokój Wojny",
+        "Roster": "Kader",
+        "Hero": "Bohater",
+        "Events": "Wydarzenia",
+        "Cage Fight": "Käfigkampf",
+        "Terminal Siege": "Terminal Siege",
+        "Rules": "Zasady",
+        "Links": "Linki",
+        "GGE Server 199 - Alliance Command": "Sojusz GGE Server 199",
+        "Welcome to the official command center.": "Witamy w oficjalnym centrum dowodzenia."
     },
     de: {
-        // Navigation Bar items
-        navWarRoom: "Kriegsraum",
-        navRoster: "Kader",
-        navHero: "Held",
-        navEvents: "Ereignisse",
-        navCage: "Käfigkampf",
-        navTerminal: "Terminal-Belagerung",
-        navRules: "Regeln",
-        navLinks: "Links",
-        
-        // Footer text
-        footerText: "2026 GGE Allianz • Server 199. Alle Rechte auf dem Schlachtfeld vorbehalten."
+        "War Room": "Kriegsraum",
+        "Roster": "Kader",
+        "Hero": "Held",
+        "Events": "Ereignisse",
+        "Cage Fight": "Käfigkampf",
+        "Terminal Siege": "Terminal-Belagerung",
+        "Rules": "Regeln",
+        "Links": "Links",
+        "GGE Server 199 - Alliance Command": "GGE Server 199 - Allianz-Befehl",
+        "Welcome to the official command center.": "Willkommen im offiziellen Kommandozentrum."
     },
     ar: {
-        // Navigation Bar items
-        navWarRoom: "غرفة الحرب",
-        navRoster: "القائمة",
-        navHero: "البطل",
-        navEvents: "الأحداث",
-        navCage: "قتال القفص",
-        navTerminal: "حصار المحطة",
-        navRules: "القواعد",
-        navLinks: "الروابط",
-        
-        // Footer text
-        footerText: "2026 تحالف GGE • الخادم 199. جميع الحقوق محفوظة في ساحة المعركة."
+        "War Room": "غرفة الحرب",
+        "Roster": "القائمة",
+        "Hero": "البطل",
+        "Events": "الأحداث",
+        "Cage Fight": "قتال القفص",
+        "Terminal Siege": "حصار المحطة",
+        "Rules": "القواعد",
+        "Links": "الروابط",
+        "GGE Server 199 - Alliance Command": "تحالف GGE الخادم 199",
+        "Welcome to the official command center.": "مرحبًا بك في مركز القيادة الرسمي."
+    },
+    el: {
+        "War Room": "Δωμάτιο Πολέμου",
+        "Roster": "Κατάλογος",
+        "Hero": "Ήρωας",
+        "Events": "Εκδηλώσεις",
+        "Cage Fight": "Καβγάς Κλουβιού",
+        "Terminal Siege": "Πολιορκία Τερματικού",
+        "Rules": "Κανόνες",
+        "Links": "Σύνδεσμοι",
+        "GGE Server 199 - Alliance Command": "Συμμαχία GGE Server 199",
+        "Welcome to the official command center.": "Καλώς ορίσατε στο επίσημο κέντρο διοίκησης."
     }
 };
 
-// Function to handle language switching across pages
-function changeLanguage(lang) {
-    localStorage.setItem('selectedLanguage', lang);
-    
-    // Translate standard navigation elements if they have matching keys
+function translatePage(lang) {
     const langData = translations[lang];
     if (!langData) return;
 
-    for (const key in langData) {
-        const element = document.getElementById(key);
-        if (element) {
-            element.innerText = langData[key];
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+    let node;
+    while (node = walker.nextNode()) {
+        let text = node.nodeValue.trim();
+        if (langData[text]) {
+            node.nodeValue = node.nodeValue.replace(text, langData[text]);
         }
     }
 }
 
-// Auto-run on page load to keep the selected language active when clicking links
+function changeLanguage(lang) {
+    localStorage.setItem('selectedLanguage', lang);
+    location.reload();
+}
+
 window.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('selectedLanguage') || 'en';
-    changeLanguage(savedLang);
-    
-    // Set dropdown value if you have a language selector dropdown
     const selector = document.getElementById('languageSelect');
     if (selector) {
         selector.value = savedLang;
+    }
+    if (savedLang !== 'en') {
+        translatePage(savedLang);
     }
 });
