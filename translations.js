@@ -1,5 +1,82 @@
-// Centralized Translations and Language Management Script for GGE Alliance (Server 199)
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Automatically Inject the Master Navigation Bar
+    const navContainer = document.getElementById("navigationContainer");
+    if (navContainer) {
+        navContainer.innerHTML = `
+            <nav class="nav-menu" style="margin: 20px auto; text-align: center; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 20px; padding: 10px;">
+                <a href="index.html" id="navHome" style="color: #fff; text-decoration: none; padding: 5px 10px;">Home / War Room</a>
+                <a href="roster.html" id="navRoster" style="color: #fff; text-decoration: none; padding: 5px 10px;">Alliance Roster</a>
+                <a href="heroes.html" id="navHeroes" style="color: #fff; text-decoration: none; padding: 5px 10px;">Hero Roster</a>
+                
+                <!-- Events Dropdown Menu -->
+                <div class="dropdown" style="display:inline-block; position:relative; padding: 5px 0;">
+                    <a href="events.html" class="dropbtn" id="navEvents" style="color: #fff; text-decoration: none; padding: 5px 10px;">Alliance Events ▼</a>
+                    <div class="dropdown-content" style="display:none; position:absolute; left: 50%; transform: translateX(-50%); top: 100%; background:#1a1a1a; min-width:180px; box-shadow:0px 8px 16px rgba(0,0,0,0.8); z-index:99; text-align: left; border: 1px solid rgba(255,204,0,0.3); border-radius: 4px;">
+                        <a href="cage-fight.html" id="cageFight" style="padding:10px 15px; display:block; color:#fff; text-decoration:none;">Cage Fight</a>
+                        <a href="terminal-siege.html" id="terminalSiege" style="padding:10px 15px; display:block; color:#fff; text-decoration:none;">Terminal Siege</a>
+                    </div>
+                </div>
 
+                <a href="rules.html" id="navRules" style="color: #fff; text-decoration: none; padding: 5px 10px;">Alliance Laws</a>
+                <a href="links.html" id="navLinks" style="color: #fff; text-decoration: none; padding: 5px 10px;">Intel & Links</a>
+
+                <!-- Language Selector Container -->
+                <div id="languageSelectorContainer" style="display: inline-block; margin-left: 10px;"></div>
+            </nav>
+
+            <style>
+                .dropdown:hover .dropdown-content { display: block !important; }
+                .dropdown-content a:hover { background: rgba(255, 204, 0, 0.2); color: #ffcc00 !important; }
+                .nav-menu > a:hover { color: #ffcc00 !important; }
+            </style>
+        `;
+    }
+
+    // 2. Build Language Selector Dropdown
+    const langContainer = document.getElementById("languageSelectorContainer");
+    if (langContainer) {
+        const select = document.createElement("select");
+        select.id = "languageSelector";
+        select.style.background = "#1a1a1a";
+        select.style.color = "#fff";
+        select.style.border = "1px solid rgba(255,204,0,0.4)";
+        select.style.padding = "4px 8px";
+        select.style.borderRadius = "4px";
+        select.style.cursor = "pointer";
+
+        const languages = {
+            en: "English",
+            tr: "Türkçe",
+            es: "Español",
+            fr: "Français",
+            de: "Deutsch",
+            it: "Italiano",
+            ko: "한국어",
+            la: "Latina"
+        };
+
+        for (const [code, name] of Object.entries(languages)) {
+            const option = document.createElement("option");
+            option.value = code;
+            option.textContent = name;
+            select.appendChild(option);
+        }
+
+        const savedLang = localStorage.getItem("gg_lang") || "en";
+        select.value = savedLang;
+        setLanguage(savedLang);
+
+        select.addEventListener("change", (e) => {
+            const chosenLang = e.target.value;
+            localStorage.setItem("gg_lang", chosenLang);
+            setLanguage(chosenLang);
+        });
+
+        langContainer.appendChild(select);
+    }
+});
+
+// Translation Dictionary Mapping
 const translations = {
     en: {
         navHome: "Home / War Room",
@@ -83,52 +160,6 @@ const translations = {
     }
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-    // Build Language Selector Dropdown Dynamically
-    const container = document.getElementById("languageSelectorContainer");
-    if (container) {
-        const select = document.createElement("select");
-        select.id = "languageSelector";
-        select.style.background = "#1a1a1a";
-        select.style.color = "#fff";
-        select.style.border = "1px solid rgba(255,204,0,0.4)";
-        select.style.padding = "4px 8px";
-        select.style.borderRadius = "4px";
-        select.style.cursor = "pointer";
-
-        const languages = {
-            en: "English",
-            tr: "Türkçe",
-            es: "Español",
-            fr: "Français",
-            de: "Deutsch",
-            it: "Italiano",
-            ko: "한국어",
-            la: "Latina"
-        };
-
-        for (const [code, name] of Object.entries(languages)) {
-            const option = document.createElement("option");
-            option.value = code;
-            option.textContent = name;
-            select.appendChild(option);
-        }
-
-        // Check LocalStorage or default to English
-        const savedLang = localStorage.getItem("gg_lang") || "en";
-        select.value = savedLang;
-        setLanguage(savedLang);
-
-        select.addEventListener("change", (e) => {
-            const chosenLang = e.target.value;
-            localStorage.setItem("gg_lang", chosenLang);
-            setLanguage(chosenLang);
-        });
-
-        container.appendChild(select);
-    }
-});
-
 function setLanguage(lang) {
     const translationTable = translations[lang];
     if (!translationTable) return;
@@ -139,7 +170,6 @@ function setLanguage(lang) {
             if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
                 element.placeholder = text;
             } else {
-                // Preserve trailing icons if present like ▼
                 if (element.innerHTML.includes("▼") && !text.includes("▼")) {
                     element.innerHTML = text + " ▼";
                 } else {
