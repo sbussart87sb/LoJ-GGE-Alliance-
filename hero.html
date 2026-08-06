@@ -3,109 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hero Roster & Meta | GGE Alliance</title>
+    <title>Hero Roster | GGE Alliance</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="overlay"></div>
-    <div class="container">
-        
-        <!-- Top Bar: Populated automatically by translations.js -->
-        <div class="top-bar"></div>
+    <!-- Left-Side Alliance Flag Banner Injection Point -->
+    <div id="leftBannerContainer"></div>
 
-        <header>
-            <h1 id="heroesTitle">Hero Command Roster</h1>
-            <p class="subtitle" id="heroesSubtitle">Server 199 • Land of Jail Hero Database (Seasons 6 to 1)</p>
+    <!-- Main Content Wrapper -->
+    <div class="main-content-wrapper">
+        <header style="margin-bottom: 30px;">
+            <h1 style="color: #ffcc00; letter-spacing: 1px; font-size: 28px;">Hero Command Roster</h1>
+            <p style="color: #8b949e; font-size: 14px; margin-top: 5px;">Server 199 • Land of Jail Comprehensive Hero Database (Seasons 6 to 1)</p>
         </header>
 
         <main>
-            <!-- Quick Navigation / Category Jump -->
-            <section class="card">
-                <h2>Operational Categories</h2>
-                <div class="member-grid">
-                    <span><a href="#shooters" style="color:#ffcc00; text-decoration:none;">Shooters (DPS)</a></span>
-                    <span><a href="#bombers" style="color:#ffcc00; text-decoration:none;">Bombers (Ranged/AoE)</a></span>
-                    <span><a href="#shields" style="color:#ffcc00; text-decoration:none;">Shields (Tank/Frontline)</a></span>
-                    <span><a href="#cage-meta" style="color:#ffcc00; text-decoration:none;">Cage Fights Meta</a></span>
+            <!-- Operational Filter Categories -->
+            <section class="card" style="background-color: #161b22; border: 1px solid rgba(255,204,0,0.2); border-radius: 8px; padding: 20px; margin-bottom: 25px;">
+                <h2 style="color: #ffcc00; font-size: 18px; border-bottom: 1px solid rgba(255,204,0,0.2); padding-bottom: 10px; margin-bottom: 15px;">Operational Categories</h2>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <span style="background: rgba(255,204,0,0.1); color: #ffcc00; padding: 6px 12px; border-radius: 4px; font-size: 13px; border: 1px solid rgba(255,204,0,0.3);">Shooters (DPS)</span>
+                    <span style="background: rgba(255,204,0,0.1); color: #ffcc00; padding: 6px 12px; border-radius: 4px; font-size: 13px; border: 1px solid rgba(255,204,0,0.3);">Bombers (Ranged/AoE)</span>
+                    <span style="background: rgba(255,204,0,0.1); color: #ffcc00; padding: 6px 12px; border-radius: 4px; font-size: 13px; border: 1px solid rgba(255,204,0,0.3);">Shields (Tank/Frontline)</span>
+                    <span style="background: rgba(255,204,0,0.1); color: #ffcc00; padding: 6px 12px; border-radius: 4px; font-size: 13px; border: 1px solid rgba(255,204,0,0.3);">Cage Fights Meta</span>
                 </div>
             </section>
 
-            <!-- SHOOTERS SECTION -->
-            <section id="shooters" class="card">
-                <h2>🎯 Shooter Heroes (Seasons 6 - 1)</h2>
+            <!-- Shooter Heroes Database -->
+            <section class="card" style="background-color: #161b22; border: 1px solid rgba(255,204,0,0.2); border-radius: 8px; padding: 20px; margin-bottom: 25px;">
+                <h2 style="color: #ffcc00; font-size: 18px; border-bottom: 1px solid rgba(255,204,0,0.2); padding-bottom: 15px; margin-bottom: 20px;">🎯 Shooter Heroes (DPS Focus)</h2>
                 
-                <div class="hero-entry" style="margin-bottom: 20px; border-bottom: 1px solid #222; padding-bottom: 15px;">
-                    <h3>Season 6 Hero Name <span style="font-size: 0.8rem; color: #ffcc00; float: right;">Rarity: UR</span></h3>
-                    <p><strong>Pros:</strong> Insane single-target burst damage, high critical strike scaling in later seasons.</p>
-                    <p><strong>Cons:</strong> Extremely fragile if caught out of position, high investment needed.</p>
-                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px;">
+                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
+                        <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SEASON 6</span>
+                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Hero Name</h3>
+                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Insane single-target burst damage, high critical strike scaling.</p>
+                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Extremely fragile if out of position, high investment.</p>
+                    </div>
 
-                <div class="hero-entry" style="margin-bottom: 20px; border-bottom: 1px solid #222; padding-bottom: 15px;">
-                    <h3>Season 3 Hero Name <span style="font-size: 0.8rem; color: #ffcc00; float: right;">Rarity: SSR</span></h3>
-                    <p><strong>Pros:</strong> Reliable sustained damage, great synergy with attack-buffing supports.</p>
-                    <p><strong>Cons:</strong> Falls off slightly against heavy armor meta teams in Season 5/6.</p>
-                </div>
+                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
+                        <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SEASON 3</span>
+                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Hero Name</h3>
+                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Reliable sustained damage, great synergy with attack supports.</p>
+                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Falls off slightly against heavy armor meta teams.</p>
+                    </div>
 
-                <div class="hero-entry">
-                    <h3>Season 1 Hero Name <span style="font-size: 0.8rem; color: #ffcc00; float: right;">Rarity: SSR / SR</span></h3>
-                    <p><strong>Pros:</strong> Easy to upgrade early game, solid baseline attack speeds.</p>
-                    <p><strong>Cons:</strong> Outclassed by newer seasonal stat scaling.</p>
+                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
+                        <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SEASON 1</span>
+                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Hero Name</h3>
+                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Easy to upgrade early game, solid baseline attack speeds.</p>
+                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Lacks specialized skill scaling for endgame PvP.</p>
+                    </div>
                 </div>
             </section>
 
-            <!-- BOMBERS SECTION -->
-            <section id="bombers" class="card">
-                <h2>💣 Bomber Heroes (Seasons 6 - 1)</h2>
+            <!-- Bombers Database -->
+            <section class="card" style="background-color: #161b22; border: 1px solid rgba(255,204,0,0.2); border-radius: 8px; padding: 20px; margin-bottom: 25px;">
+                <h2 style="color: #ffcc00; font-size: 18px; border-bottom: 1px solid rgba(255,204,0,0.2); padding-bottom: 15px; margin-bottom: 20px;">💣 Bomber Heroes (Ranged / AoE)</h2>
                 
-                <div class="hero-entry" style="margin-bottom: 20px; border-bottom: 1px solid #222; padding-bottom: 15px;">
-                    <h3>Season 5 Hero Name <span style="font-size: 0.8rem; color: #ffcc00; float: right;">Rarity: UR</span></h3>
-                    <p><strong>Pros:</strong> Devastating area-of-effect (AoE) damage, excellent for crowd control and clearing groups.</p>
-                    <p><strong>Cons:</strong> Long skill cooldowns, vulnerable during reload windows.</p>
-                </div>
-
-                <div class="hero-entry">
-                    <h3>Season 2 Hero Name <span style="font-size: 0.8rem; color: #ffcc00; float: right;">Rarity: SSR</span></h3>
-                    <p><strong>Pros:</strong> Great structure demolition and reliable splash damage.</p>
-                    <p><strong>Cons:</strong> Lower health pool makes them prime targets for enemy snipers.</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px;">
+                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
+                        <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SEASON 5</span>
+                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Hero Name</h3>
+                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Devastating area-of-effect crowd control and group wipe potential.</p>
+                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Long skill cooldown windows leave openings.</p>
+                    </div>
                 </div>
             </section>
 
-            <!-- SHIELDS / DEFENDERS SECTION -->
-            <section id="shields" class="card">
-                <h2>🛡️ Shield & Defender Heroes (Seasons 6 - 1)</h2>
+            <!-- Shields Database -->
+            <section class="card" style="background-color: #161b22; border: 1px solid rgba(255,204,0,0.2); border-radius: 8px; padding: 20px;">
+                <h2 style="color: #ffcc00; font-size: 18px; border-bottom: 1px solid rgba(255,204,0,0.2); padding-bottom: 15px; margin-bottom: 20px;">🛡️ Shield Heroes (Tank / Frontline)</h2>
                 
-                <div class="hero-entry" style="margin-bottom: 20px; border-bottom: 1px solid #222; padding-bottom: 15px;">
-                    <h3>Season 6 Tank Name <span style="font-size: 0.8rem; color: #ffcc00; float: right;">Rarity: UR</span></h3>
-                    <p><strong>Pros:</strong> Massive damage absorption, provides team-wide defense buffs, incredible survivability.</p>
-                    <p><strong>Cons:</strong> Very low personal offensive output; relies entirely on backline DPS.</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px;">
+                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
+                        <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SEASON 4</span>
+                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Hero Name</h3>
+                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Unmatched damage absorption and frontline stability.</p>
+                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Lower offensive output during prolonged skirmishes.</p>
+                    </div>
                 </div>
-
-                <div class="hero-entry">
-                    <h3>Season 1 Defender Name <span style="font-size: 0.8rem; color: #ffcc00; float: right;">Rarity: SSR</span></h3>
-                    <p><strong>Pros:</strong> Solid frontline anchor for early-to-mid game progression.</p>
-                    <p><strong>Cons:</strong> Piercing damage from Season 4+ heroes tears through their baseline defenses.</p>
-                </div>
-            </section>
-
-            <!-- CAGE FIGHTS META SECTION -->
-            <section id="cage-meta" class="card" style="border-left-color: #ff3333;">
-                <h2 style="color: #ff3333;">⚔️ Cage Fights Meta & Best Selections</h2>
-                <p>Cage Fights demand isolation tactics, self-sustain, and high burst potential rather than traditional army scaling. Below are the top recommendations for dominating the cage:</p>
-                
-                <ul style="margin-top: 15px; line-height: 1.8;">
-                    <li><strong>Top Tier Pick (High Self-Sustain & Stun):</strong> Choose heroes who feature built-in lifesteal or crowd-control locks. <em>Reason:</em> In a 1v1 enclosed cage environment, healing through damage or locking down the opponent's active skill prevents them from executing their burst combo.</li>
-                    <li><strong>Alternative Counter Pick (Pure Burst):</strong> High-tier Season 6 Shooters. <em>Reason:</em> If you can eliminate the opponent before they spin up their defensive cycles, raw execution speed wins the match instantly.</li>
-                    <li><strong>Avoid:</strong> Pure defensive shield heroes with low attack scaling. <em>Reason:</em> Cage fights have time limits or shrinkage mechanics where passive tanking usually results in a timeout loss.</li>
-                </ul>
             </section>
         </main>
 
-        <footer>
-            <p id="footer">&copy; 2026 GGE Alliance. All rights reserved on the battlefield.</p>
+        <footer style="text-align: center; margin-top: 40px; padding: 20px; color: #8b949e; font-size: 12px; border-top: 1px solid rgba(255,204,0,0.1);">
+            <p>&copy; 2026 GGE Alliance • Server 199. All rights reserved on the battlefield.</p>
         </footer>
     </div>
 
-    <!-- Centralized Translation, Navigation & Clock Script -->
     <script src="translations.js"></script>
 </body>
 </html>
