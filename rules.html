@@ -3,117 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rules | GGE Alliance</title>
+    <title>Alliance Laws | GGE Alliance</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="overlay"></div>
     <div class="container">
         
-        <div class="top-bar">
-            <nav class="taskbar">
-                <a href="index.html" id="nav-home">Home</a>
-                <a href="roster.html" id="nav-roster">Roster</a>
-                <a href="events.html" id="nav-events">Events</a>
-                <a href="rules.html" class="active" id="nav-rules">Rules</a>
-            </nav>
-            <div class="language-bar">
-                <label for="lang-select">🌐</label>
-                <select id="lang-select" onchange="changeLanguage(this.value)">
-                    <option value="en">English</option>
-                    <option value="es">Español</option>
-                    <option value="fr">Français</option>
-                    <option value="de">Deutsch</option>
-                </select>
-            </div>
-        </div>
+        <!-- Top Bar: Populated automatically by translations.js -->
+        <div class="top-bar"></div>
 
         <header>
-            <h1 id="rules-title">Alliance Laws</h1>
-            <p class="subtitle" id="rules-subtitle">Server 199 • Code of Conduct</p>
+            <h1 id="rulesTitle">Alliance Laws</h1>
+            <p class="subtitle" id="rulesSubtitle">Server 199 • Code of Conduct</p>
         </header>
 
         <main>
             <section class="card">
-                <h2 id="code-title">The Code of the Land</h2>
-                <ul>
-                    <li><strong id="rule-1-title">Resource Protection:</strong> <span id="rule-1-text">Do not hit alliance members or friendly farm tiles. Keep internal peace strong.</span></li>
-                    <li><strong id="rule-2-title">Active Participation:</strong> <span id="rule-2-text">Contribute to alliance events, rally defenses, and maintain active troop deployment.</span></li>
-                    <li><strong id="rule-3-title">Respect & Loyalty:</strong> <span id="rule-3-text">Follow R4 and R5 directions during wartime and territorial conflicts. We stand as one unit.</span></li>
+                <h2>The Code of the Land</h2>
+                <ul style="margin-top: 15px; line-height: 2.2;">
+                    <li><strong>Resource Protection:</strong> Do not hit alliance members or friendly farm tiles. Keep internal peace strong.</li>
+                    <li><strong>Active Participation:</strong> Contribute to alliance events, rally defenses, and maintain active troop deployment.</li>
+                    <li><strong>Respect & Loyalty:</strong> Follow R4 and R5 directions during wartime and territorial conflicts. We stand as one unit.</li>
                 </ul>
             </section>
         </main>
 
         <footer>
-            <p id="footer-text">&copy; 2026 GGE Alliance. All rights reserved on the battlefield.</p>
+            <p id="footer">&copy; 2026 GGE Alliance. All rights reserved on the battlefield.</p>
         </footer>
     </div>
 
-    <script>
-        const translations = {
-            en: {
-                navHome: "Home", navRoster: "Roster", navEvents: "Events", navRules: "Rules",
-                rulesTitle: "Alliance Laws", rulesSubtitle: "Server 199 • Code of Conduct",
-                codeTitle: "The Code of the Land",
-                rule1Title: "Resource Protection:", rule1Text: "Do not hit alliance members or friendly farm tiles. Keep internal peace strong.",
-                rule2Title: "Active Participation:", rule2Text: "Contribute to alliance events, rally defenses, and maintain active troop deployment.",
-                rule3Title: "Respect & Loyalty:", rule3Text: "Follow R4 and R5 directions during wartime and territorial conflicts. We stand as one unit.",
-                footer: "© 2026 GGE Alliance. All rights reserved on the battlefield."
-            },
-            es: {
-                navHome: "Inicio", navRoster: "Miembros", navEvents: "Eventos", navRules: "Reglas",
-                rulesTitle: "Leyes de la Alianza", rulesSubtitle: "Servidor 199 • Código de Conducta",
-                codeTitle: "El Código de la Tierra",
-                rule1Title: "Protección de Recursos:", rule1Text: "No ataques a miembros de la alianza ni a granjas aliadas.",
-                rule2Title: "Participación Activa:", rule2Text: "Contribuye a los eventos de la alianza y defensa de tropas.",
-                rule3Title: "Respeto y Lealtad:", rule3Text: "Sigue las indicaciones de R4 y R5 durante conflictos territoriales.",
-                footer: "© 2026 Alianza GGE. Todos los derechos reservados en el campo de batalla."
-            },
-            fr: {
-                navHome: "Accueil", navRoster: "Membres", navEvents: "Événements", navRules: "Règles",
-                rulesTitle: "Lois de l'Alliance", rulesSubtitle: "Serveur 199 • Code de Conduite",
-                codeTitle: "Le Code du Territoire",
-                rule1Title: "Protection des Ressources :", rule1Text: "Ne frappez pas les membres de l'alliance ou les fermes amies.",
-                rule2Title: "Participation Active :", rule2Text: "Contribuez aux événements de l'alliance et à la défense.",
-                rule3Title: "Respect et Loyauté :", rule3Text: "Suivez les instructions des officiers R4 et R5.",
-                footer: "© 2026 Alliance GGE. Tous droits réservés sur le champ de bataille."
-            },
-            de: {
-                navHome: "Startseite", navRoster: "Mitglieder", navEvents: "Events", navRules: "Regeln",
-                rulesTitle: "Allianz-Gesetze", rulesSubtitle: "Server 199 • Verhaltenskodex",
-                codeTitle: "Der Kodex des Landes",
-                rule1Title: "Ressourcenschutz:", rule1Text: "Greife keine Allianzmitglieder oder befreundete Farmen an.",
-                rule2Title: "Aktive Teilnahme:", rule2Text: "Trage zu Allianz-Events und zur Verteidigung bei.",
-                rule3Title: "Respekt & Loyalität:", rule3Text: "Befolge die Anweisungen von R4 und R5.",
-                footer: "© 2026 GGE Allianz. Alle Rechte auf dem Schlachtfeld vorbehalten."
-            }
-        };
-
-        function changeLanguage(lang) {
-            localStorage.setItem('preferredLang', lang);
-            document.getElementById('nav-home').innerText = translations[lang].navHome;
-            document.getElementById('nav-roster').innerText = translations[lang].navRoster;
-            document.getElementById('nav-events').innerText = translations[lang].navEvents;
-            document.getElementById('nav-rules').innerText = translations[lang].navRules;
-            document.getElementById('rules-title').innerText = translations[lang].rulesTitle;
-            document.getElementById('rules-subtitle').innerText = translations[lang].rulesSubtitle;
-            document.getElementById('code-title').innerText = translations[lang].codeTitle;
-            document.getElementById('rule-1-title').innerText = translations[lang].rule1Title;
-            document.getElementById('rule-1-text').innerText = translations[lang].rule1Text;
-            document.getElementById('rule-2-title').innerText = translations[lang].rule2Title;
-            document.getElementById('rule-2-text').innerText = translations[lang].rule2Text;
-            document.getElementById('rule-3-title').innerText = translations[lang].rule3Title;
-            document.getElementById('rule-3-text').innerText = translations[lang].rule3Text;
-            document.getElementById('footer-text').innerText = translations[lang].footer;
-        }
-
-        window.onload = function() {
-            const savedLang = localStorage.getItem('preferredLang');
-            if (savedLang && translations[savedLang]) {
-                document.getElementById('lang-select').value = savedLang;
-                changeLanguage(savedLang);
-            }
-        };
-    </script>
+    <!-- Centralized Translation, Navigation & Clock Script -->
+    <script src="translations.js"></script>
 </body>
 </html>
