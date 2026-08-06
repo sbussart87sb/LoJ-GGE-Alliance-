@@ -6,48 +6,68 @@ const translations = {
         events: "Events",
         cageFight: "Cage Fight Strategy",
         terminalSiege: "Terminal Siege Strategy",
-        allianceLaws: "Alliance Laws",
+        alliancelaws: "Alliance Laws",
         intelLinks: "Intel & Links"
     },
-    de: { // Swapped to Magyar (Hungarian)
+    de: { // German (Deutsch)
+        warRoom: "Kriegsraum",
+        allianceRoster: "Allianz-Mitglieder",
+        heroRoster: "Helden-Liste",
+        events: "Ereignisse",
+        cageFight: "Käfigkampf-Strategie",
+        terminalSiege: "Terminal-Belagerungs-Strategie",
+        alliancelaws: "Allianzgesetze",
+        intelLinks: "Informationen & Links"
+    },
+    ar: { // Arabic (العربية)
+        warRoom: "غرفة الحرب",
+        allianceRoster: "قائمة التحالف",
+        heroRoster: "قائمة الأبطال",
+        events: "الفعاليات",
+        cageFight: "استراتيجية قتال القفص",
+        terminalSiege: "استراتيجية حصار المحطة",
+        alliancelaws: "قوانين التحالف",
+        intelLinks: "معلومات وروابط"
+    },
+    hu: {
         warRoom: "Harciszoba",
         allianceRoster: "Szövetségi Névsor",
         heroRoster: "Hősök Névsor",
         events: "Események",
         cageFight: "Cage Fight Stratégia",
         terminalSiege: "Terminal Siege Stratégia",
-        allianceLaws: "Szövetségi Törvények",
-        intelLinks: "Hírszerzés és Linkek"
+        alliancelaws: "Szövetségi Törvények",
+        intelLinks: "Infók és Linkek"
     },
     pl: {
-        warRoom: "Sala Operacyjna",
-        allianceRoster: "Lista Sojuszu",
+        warRoom: "Pokój Wojny",
+        allianceRoster: "Skład Sojuszu",
         heroRoster: "Lista Bohaterów",
         events: "Wydarzenia",
         cageFight: "Strategia Walki w Klatce",
-        terminalSiege: "Strategia Oblężenia Terminalu",
-        allianceLaws: "Prawa Sojuszu",
-        intelLinks: "Wywiad i Linki"
+        terminalSiege: "Strategia Oblężenia Terminala",
+        alliancelaws: "Prawo Sojuszu",
+        intelLinks: "Informacje i Linki"
     },
     tr: {
         warRoom: "Savaş Odası",
-        allianceRoster: "İttifak Kadrosu",
-        heroRoster: "Kahraman Kadrosu",
+        allianceRoster: "İttifak Listesi",
+        heroRoster: "Kahraman Listesi",
         events: "Etkinlikler",
         cageFight: "Kafes Dövüşü Stratejisi",
         terminalSiege: "Terminal Kuşatması Stratejisi",
-        allianceLaws: "İttifak Kanunları",
-        intelLinks: "İstihbarat ve Bağlantılar"
+        alliancelaws: "İttifak Kuralları",
+        intelLinks: "Bilgi ve Bağlantılar"
     },
     es: {
         warRoom: "Sala de Guerra",
-        allianceRoster: "Lista de Alianza",
+        allianceRoster: "Lista de la Alianza",
         heroRoster: "Lista de Héroes",
         events: "Eventos",
-        cageFight: "Estrategia de Pelea en Jaula",
-        terminalSiege: "Estrategia de Asedio Terminal",
-        allianceLaws: "Leyes de la Alianza",
-        intelLinks: "Inteligencia y Enlaces"
+        cageFight: "Estrategia de Pelea de Jaula",
+        terminalSiege: "Estrategia de Asedio de Terminal",
+        alliancelaws: "Leyes de la Alianza",
+        intelLinks: "Información y Enlaces"
     },
     fr: {
         warRoom: "Salle de Guerre",
@@ -56,8 +76,8 @@ const translations = {
         events: "Événements",
         cageFight: "Stratégie de Combat en Cage",
         terminalSiege: "Stratégie de Siège du Terminal",
-        allianceLaws: "Lois de l'Alliance",
-        intelLinks: "Renseignements et Liens"
+        alliancelaws: "Lois de l'Alliance",
+        intelLinks: "Infos et Liens"
     },
     it: {
         warRoom: "Sala di Guerra",
@@ -66,8 +86,8 @@ const translations = {
         events: "Eventi",
         cageFight: "Strategia Combattimento in Gabbia",
         terminalSiege: "Strategia Assedio Terminale",
-        allianceLaws: "Leggi dell'Alleanza",
-        intelLinks: "Intelligence e Link"
+        alliancelaws: "Leggi dell'Alleanza",
+        intelLinks: "Informazioni e Link"
     },
     ko: {
         warRoom: "전쟁 룸",
@@ -75,40 +95,60 @@ const translations = {
         heroRoster: "영웅 명단",
         events: "이벤트",
         cageFight: "케이지 파이트 전략",
-        terminalSiege: "터미널 시즈 전략",
-        allianceLaws: "연맹 법규",
-        intelLinks: "정보 및 링크"
+        terminalSiege: "터미널 공성 전략",
+        alliancelaws: "연맹 법률",
+        intelLinks: "인텔 및 링크"
     },
     la: {
-        warRoom: "Tablinum Belli",
+        warRoom: "Conclave Belli",
         allianceRoster: "Index Societatis",
         heroRoster: "Index Heroum",
-        events: "Res Gestae",
-        cageFight: "Consilium Pugnae in Cavea",
-        terminalSiege: "Consilium Obsidionis Terminalis",
-        allianceLaws: "Leges Societatis",
+        events: "Eventus",
+        cageFight: "Strategia Pugnae Caveae",
+        terminalSiege: "Strategia Obsidionis Terminalis",
+        alliancelaws: "Leges Societatis",
         intelLinks: "Intellegentia et Nexus"
     }
 };
 
-// Function to update page text based on selected language
+// Global Language Handler with persistent storage (remembers user selection via localStorage)
 function changeLanguage(lang) {
-    if (!translations[lang]) return;
+    localStorage.setItem('gge_preferred_lang', lang);
+    applyTranslations(lang);
+}
+
+function applyTranslations(lang) {
+    const t = translations[lang] || translations['en'];
     
-    // Update elements safely if they exist on the current page
-    const elements = {
-        'nav-war-room': translations[lang].warRoom,
-        'nav-alliance-roster': translations[lang].allianceRoster,
-        'nav-hero-roster': translations[lang].heroRoster,
-        'nav-events': translations[lang].events,
-        'nav-cage-fight': translations[lang].cageFight,
-        'nav-terminal-siege': translations[lang].terminalSiege,
-        'nav-alliance-laws': translations[lang].allianceLaws,
-        'nav-intel-links': translations[lang].intelLinks
+    // Translate navigation links across your pages
+    const mapping = {
+        'nav-war-room': 'warRoom',
+        'nav-alliance-roster': 'allianceRoster',
+        'nav-hero-roster': 'heroRoster',
+        'nav-events': 'events',
+        'nav-alliance-laws': 'alliancelaws',
+        'nav-intel-links': 'intelLinks'
     };
 
-    for (const [id, text] of Object.entries(elements)) {
+    for (const [id, key] of Object.entries(mapping)) {
         const el = document.getElementById(id);
-        if (el) el.innerText = text;
+        if (el && t[key]) {
+            el.innerHTML = el.innerHTML.includes('🏠') ? `🏠 ${t[key]}` :
+                           el.innerHTML.includes('🛡️') ? `🛡️ ${t[key]}` :
+                           el.innerHTML.includes('⚔️') ? `⚔️ ${t[key]}` :
+                           el.innerHTML.includes('📅') ? `📅 ${t[key]}` :
+                           el.innerHTML.includes('📜') ? `📜 ${t[key]}` :
+                           el.innerHTML.includes('🌐') ? `🌐 ${t[key]}` : t[key];
+        }
     }
 }
+
+// Auto-load saved language preference instantly when any page loads
+window.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('gge_preferred_lang') || 'en';
+    const selectEl = document.getElementById('languageSelect');
+    if (selectEl) {
+        selectEl.value = savedLang;
+    }
+    applyTranslations(savedLang);
+});
