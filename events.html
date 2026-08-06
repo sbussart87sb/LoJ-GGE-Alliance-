@@ -10,103 +10,30 @@
     <div class="overlay"></div>
     <div class="container">
         
-        <div class="top-bar">
-            <nav class="taskbar">
-                <a href="index.html" id="nav-home">Home</a>
-                <a href="roster.html" id="nav-roster">Roster</a>
-                <a href="events.html" class="active" id="nav-events">Events</a>
-                <a href="rules.html" id="nav-rules">Rules</a>
-            </nav>
-            <div class="language-bar">
-                <label for="lang-select">🌐</label>
-                <select id="lang-select" onchange="changeLanguage(this.value)">
-                    <option value="en">English</option>
-                    <option value="es">Español</option>
-                    <option value="fr">Français</option>
-                    <option value="de">Deutsch</option>
-                </select>
-            </div>
-        </div>
+        <!-- Top Bar: Populated automatically by translations.js -->
+        <div class="top-bar"></div>
 
         <header>
-            <h1 id="events-title">Alliance Events</h1>
-            <p class="subtitle" id="events-subtitle">Server 199 • Battle Schedule & Mobilization</p>
+            <h1 id="eventsTitle">Alliance Events</h1>
+            <p class="subtitle" id="eventsSubtitle">Server 199 • Battle Schedule & Mobilization</p>
         </header>
 
         <main>
             <section class="card">
-                <h2 id="schedule-title">Upcoming Operations</h2>
+                <h2 id="scheduleTitle">Upcoming Operations</h2>
                 <ul>
-                    <li><strong id="event-1-title">Capital Clash / Territory Rallies:</strong> <span id="event-1-text">Coordinate with R4 leadership for timed attacks and defense formations. Check alliance mail for precise timing.</span></li>
-                    <li><strong id="event-2-title">Resource Gathering Rush:</strong> <span id="event-2-text">Maximize production and secure high-level tiles to boost alliance power rankings.</span></li>
+                    <li><strong id="event1Title">Capital Clash / Territory Rallies:</strong> <span id="event1Text">Coordinate with R4 leadership for timed attacks and defense formations. Check alliance mail for precise timing.</span></li>
+                    <li><strong id="event2Title">Resource Gathering Rush:</strong> <span id="event2Text">Maximize production and secure high-level tiles to boost alliance power rankings.</span></li>
                 </ul>
             </section>
         </main>
 
         <footer>
-            <p id="footer-text">&copy; 2026 GGE Alliance. All rights reserved on the battlefield.</p>
+            <p id="footer">&copy; 2026 GGE Alliance. All rights reserved on the battlefield.</p>
         </footer>
     </div>
 
-    <script>
-        const translations = {
-            en: {
-                navHome: "Home", navRoster: "Roster", navEvents: "Events", navRules: "Rules",
-                eventsTitle: "Alliance Events", eventsSubtitle: "Server 199 • Battle Schedule & Mobilization",
-                scheduleTitle: "Upcoming Operations",
-                event1Title: "Capital Clash / Territory Rallies:", event1Text: "Coordinate with R4 leadership for timed attacks and defense formations. Check alliance mail for precise timing.",
-                event2Title: "Resource Gathering Rush:", event2Text: "Maximize production and secure high-level tiles to boost alliance power rankings.",
-                footer: "© 2026 GGE Alliance. All rights reserved on the battlefield."
-            },
-            es: {
-                navHome: "Inicio", navRoster: "Miembros", navEvents: "Eventos", navRules: "Reglas",
-                eventsTitle: "Eventos de la Alianza", eventsSubtitle: "Servidor 199 • Calendario de Batalla y Movilización",
-                scheduleTitle: "Próximas Operaciones",
-                event1Title: "Choque de la Capital / Ataques Grupales:", event1Text: "Coordina con el liderazgo R4 para ataques sincronizados y formaciones defensivas.",
-                event2Title: "Fiebre de Recolección:", event2Text: "Maximiza la producción y asegura fichas de alto nivel para aumentar el poder de la alianza.",
-                footer: "© 2026 Alianza GGE. Todos los derechos reservados en el campo de batalla."
-            },
-            fr: {
-                navHome: "Accueil", navRoster: "Membres", navEvents: "Événements", navRules: "Règles",
-                eventsTitle: "Événements de l'Alliance", eventsSubtitle: "Serveur 199 • Calendrier des Batailles",
-                scheduleTitle: "Opérations à Venir",
-                event1Title: "Affrontement de la Capitale :", event1Text: "Coordonnez-vous avec les leaders R4 pour les attaques planifiées.",
-                event2Title: "Ruée vers les Ressources :", event2Text: "Maximisez la production pour booster le classement de l'alliance.",
-                footer: "© 2026 Alliance GGE. Tous droits réservés sur le champ de bataille."
-            },
-            de: {
-                navHome: "Startseite", navRoster: "Mitglieder", navEvents: "Events", navRules: "Regeln",
-                eventsTitle: "Allianz-Events", eventsSubtitle: "Server 199 • Schlachtplan & Mobilisierung",
-                scheduleTitle: "Kommende Operationen",
-                event1Title: "Hauptstadt-Schlacht / Rallyes:", event1Text: "Koordiniere dich mit der R4-Führung für zeitgesteuerte Angriffe.",
-                event2Title: "Ressourcen-Ansturm:", event2Text: "Maximiere die Produktion, um das Allianz-Ranking zu steigern.",
-                footer: "© 2026 GGE Allianz. Alle Rechte auf dem Schlachtfeld vorbehalten."
-            }
-        };
-
-        function changeLanguage(lang) {
-            localStorage.setItem('preferredLang', lang);
-            document.getElementById('nav-home').innerText = translations[lang].navHome;
-            document.getElementById('nav-roster').innerText = translations[lang].navRoster;
-            document.getElementById('nav-events').innerText = translations[lang].navEvents;
-            document.getElementById('nav-rules').innerText = translations[lang].navRules;
-            document.getElementById('events-title').innerText = translations[lang].eventsTitle;
-            document.getElementById('events-subtitle').innerText = translations[lang].eventsSubtitle;
-            document.getElementById('schedule-title').innerText = translations[lang].scheduleTitle;
-            document.getElementById('event-1-title').innerText = translations[lang].event1Title;
-            document.getElementById('event-1-text').innerText = translations[lang].event1Text;
-            document.getElementById('event-2-title').innerText = translations[lang].event2Title;
-            document.getElementById('event-2-text').innerText = translations[lang].event2Text;
-            document.getElementById('footer-text').innerText = translations[lang].footer;
-        }
-
-        window.onload = function() {
-            const savedLang = localStorage.getItem('preferredLang');
-            if (savedLang && translations[savedLang]) {
-                document.getElementById('lang-select').value = savedLang;
-                changeLanguage(savedLang);
-            }
-        };
-    </script>
+    <!-- Centralized Translation, Navigation & Clock Script -->
+    <script src="translations.js"></script>
 </body>
 </html>
