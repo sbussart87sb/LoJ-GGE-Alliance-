@@ -3,158 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alliance Roster | GGE Alliance</title>
+    <title>GGE Server 199 - Alliance Roster</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .roster-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .rank-section {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+        }
+        .rank-section h2 {
+            color: #ffcc00;
+            font-size: 18px;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 8px;
+            margin-top: 0;
+        }
+        .name-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 10px 0 0 0;
+        }
+        .name-list li {
+            padding: 6px 0;
+            border-bottom: 1px solid #21262d;
+            font-size: 15px;
+        }
+        .name-list li:last-child {
+            border-bottom: none;
+        }
+    </style>
 </head>
 <body>
-    <!-- 1. This must be right at the top of the body -->
-    <div id="leftBannerContainer"></div>
 
-    <!-- 2. This wrapper pushes your content to the right of the banner -->
-    <div class="main-content-wrapper">
-        <header style="margin-bottom: 25px;">
-            <h1 style="color: #ffcc00; letter-spacing: 1px;">Alliance Roster</h1>
-            <p style="color: #8b949e;">Server 199 • GGE Command Hierarchy & Member Directory</p>
-        </header>
+    <!-- Top Navigation & Utility Bar -->
+    <header class="top-nav-bar" style="background: #161b22; padding: 15px; border-bottom: 1px solid #30363d; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+        <div class="nav-links" style="display: flex; gap: 15px; flex-wrap: wrap;">
+            <a href="index.html" style="color: #c9d1d9; text-decoration: none;">War Room</a>
+            <a href="roster.html" style="color: #ffcc00; text-decoration: none; font-weight: bold;">Roster</a>
+            <a href="hero.html" style="color: #c9d1d9; text-decoration: none;">Hero</a>
+            <a href="events.html" style="color: #c9d1d9; text-decoration: none;">Events</a>
+            <a href="cage.html" style="color: #c9d1d9; text-decoration: none;">Cage Fight</a>
+            <a href="terminal.html" style="color: #c9d1d9; text-decoration: none;">Terminal Siege</a>
+            <a href="rules.html" style="color: #c9d1d9; text-decoration: none;">Rules</a>
+            <a href="links.html" style="color: #c9d1d9; text-decoration: none;">Links</a>
+        </div>
+        
+        <div class="nav-utilities" style="display: flex; gap: 20px; align-items: center;">
+            <!-- Server Time Display -->
+            <div id="serverTime" style="color: #8b949e; font-size: 13px;">UTC Time: <span id="clock">Loading...</span></div>
+            
+            <!-- Language Selector Bar -->
+            <select id="languageSelect" onchange="changeLanguage(this.value)" style="background: #21262d; color: #c9d1d9; border: 1px solid #30363d; padding: 5px; border-radius: 4px;">
+                <option value="en">English</option>
+                <option value="pl">Polski</option>
+                <option value="de">Deutsch</option>
+                <option value="ar">العربية</option>
+                <option value="el">Ελληνικά</option>
+            </select>
+        </div>
+    </header>
 
-        <main>
-            <!-- R5 Command Leader -->
-            <section class="card">
-                <h2>👑 R5 • Supreme Command</h2>
-                <div style="overflow-x: auto;">
-                    <table style="width: 100%; border-collapse: collapse; text-align: left; margin-top: 10px;">
-                        <thead>
-                            <tr style="border-bottom: 2px solid rgba(255,204,0,0.4); color: #ffcc00; font-size: 13px; text-transform: uppercase;">
-                                <th style="padding: 10px;">Rank</th>
-                                <th style="padding: 10px;">Callsign</th>
-                                <th style="padding: 10px;">Designation</th>
-                            </tr>
-                        </thead>
-                        <tbody style="color: #c9d1d9; font-size: 14px;">
-                            <tr style="border-bottom: 1px solid rgba(255,204,0,0.1);">
-                                <td style="padding: 12px; font-weight: bold; color: #ffcc00;">R5</td>
-                                <td style="padding: 12px; font-weight: bold;">Gökbörü</td>
-                                <td style="padding: 12px; color: #8b949e;">Alliance Leader</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
+    <!-- Main Content Area: Alliance Roster -->
+    <main class="roster-container">
+        <h1 style="text-align: center; color: #ffffff;">Alliance Roster</h1>
+        <p style="text-align: center; color: #8b949e; margin-bottom: 30px;">Server 199 • GGE Command Hierarchy & Member Directory</p>
 
-            <!-- R4 Officers -->
-            <section class="card" style="margin-top: 25px;">
-                <h2>⭐ R4 • Command Officers</h2>
-                <div style="overflow-x: auto;">
-                    <table style="width: 100%; border-collapse: collapse; text-align: left; margin-top: 10px;">
-                        <thead>
-                            <tr style="border-bottom: 2px solid rgba(255,204,0,0.4); color: #ffcc00; font-size: 13px; text-transform: uppercase;">
-                                <th style="padding: 10px;">Rank</th>
-                                <th style="padding: 10px;">Callsign</th>
-                                <th style="padding: 10px;">Designation</th>
-                            </tr>
-                        </thead>
-                        <tbody style="color: #c9d1d9; font-size: 14px;">
-                            <tr style="border-bottom: 1px solid rgba(255,204,0,0.1);">
-                                <td style="padding: 12px; font-weight: bold; color: #ffcc00;">R4</td>
-                                <td style="padding: 12px;">Darth Hater</td>
-                                <td style="padding: 12px; color: #8b949e;">Officer</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,204,0,0.1);">
-                                <td style="padding: 12px; font-weight: bold; color: #ffcc00;">R4</td>
-                                <td style="padding: 12px;">Ozge</td>
-                                <td style="padding: 12px; color: #8b949e;">Officer</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,204,0,0.1);">
-                                <td style="padding: 12px; font-weight: bold; color: #ffcc00;">R4</td>
-                                <td style="padding: 12px;">jaco</td>
-                                <td style="padding: 12px; color: #8b949e;">Officer</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
+        <!-- R5 -->
+        <div class="rank-section">
+            <h2>R5 • Supreme Command</h2>
+            <ul class="name-list">
+                <li>Gökbörü</li>
+            </ul>
+        </div>
 
-            <!-- R3 Members -->
-            <section class="card" style="margin-top: 25px;">
-                <h2>⚔️ R3 • Elite Vanguard</h2>
-                <div style="overflow-x: auto;">
-                    <table style="width: 100%; border-collapse: collapse; text-align: left; margin-top: 10px;">
-                        <thead>
-                            <tr style="border-bottom: 2px solid rgba(255,204,0,0.4); color: #ffcc00; font-size: 13px; text-transform: uppercase;">
-                                <th style="padding: 10px;">Rank</th>
-                                <th style="padding: 10px;">Callsign</th>
-                                <th style="padding: 10px;">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody style="color: #c9d1d9; font-size: 14px;">
-                            <tr style="border-bottom: 1px solid rgba(255,204,0,0.1);">
-                                <td style="padding: 12px; font-weight: bold; color: #8b949e;">R3</td>
-                                <td style="padding: 12px; font-weight: bold; color: #ffcc00;">Hand of God</td>
-                                <td style="padding: 12px; color: #00ff66;">Active Operative</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,204,0,0.1);">
-                                <td style="padding: 12px; font-weight: bold; color: #8b949e;">R3</td>
-                                <td style="padding: 12px;">Kingkit, Spazz, Corgi, AppleCrumble, Killua, ZARD, ATLAS, AsanBey, Ron_A, WTP, MORI, LAURA, DANILOSKY, KarmaRose, CELES, Nicko, OBEN, BOZKURT_33, CriilisTopher, Pablo2026, FIRLAMA, HAKAN, Eclipse, Sith.Jk8, ZenZey, ScorpX, Veri, Yachiru Unohana, Brad Pitt, Scarlatti, loli, CoJ, Queenbaby1cheta, Smaugg, steffi, eselu, Reis, Okan, PumpkinPie, Muhammad Bilal, Jaserin, Night Fury, elChapo, FénixDePlata, Solomon, Poison, Franzua, Jess, Teddy Bear, Valki, Vodka, Steppenwolf, Vapking_Bzh 高気王, bluedream</td>
-                                <td style="padding: 12px; color: #00ff66;">Active Core</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
+        <!-- R4 -->
+        <div class="rank-section">
+            <h2>R4 • Command Officers</h2>
+            <ul class="name-list">
+                <li>Darth Hater</li>
+                <li>Özge</li>
+                <li>jaco</li>
+            </ul>
+        </div>
 
-            <!-- R2 Members -->
-            <section class="card" style="margin-top: 25px;">
-                <h2>🛡️ R2 • Operatives</h2>
-                <div style="overflow-x: auto;">
-                    <table style="width: 100%; border-collapse: collapse; text-align: left; margin-top: 10px;">
-                        <thead>
-                            <tr style="border-bottom: 2px solid rgba(255,204,0,0.4); color: #ffcc00; font-size: 13px; text-transform: uppercase;">
-                                <th style="padding: 10px;">Rank</th>
-                                <th style="padding: 10px;">Callsigns</th>
-                                <th style="padding: 10px;">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody style="color: #c9d1d9; font-size: 14px;">
-                            <tr style="border-bottom: 1px solid rgba(255,204,0,0.1);">
-                                <td style="padding: 12px; font-weight: bold; color: #8b949e;">R2</td>
-                                <td style="padding: 12px;">Ratchet, S4M43L三, Bumblebee, ELKC2025, Monster, 조상이, Amr, Buzzy, Türk, F B I, Gautlieri, Ardamanya61, Mr.JhonNeci, KingDangerRank, Xo_smiling, DebatinAtom, Wolverine, Blitz195, Whisky, cypriot93, JOHNICK003, khadeja, Sherif, Ahmet, PaintedBrute 01, Viuva Negra37, yanivjun, JewelRider, Aisha</td>
-                                <td style="padding: 12px; color: #00ff66;">Active Deployment</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
+        <!-- R3 -->
+        <div class="rank-section">
+            <h2>R3 • Elite Vanguard</h2>
+            <ul class="name-list">
+                <li>Hand of God</li>
+                <li>kingkit</li>
+                <li>Spazz</li>
+                <li>Corgi</li>
+                <li>AppleCrumble</li>
+                <li>Killua</li>
+                <li>ZARD</li>
+                <li>ATLAS</li>
+                <li>AsanBey</li>
+                <li>Ron_A</li>
+                <li>WTP</li>
+                <li>FIRLAMA</li>
+                <li>HAKAN</li>
+                <li>Eclipse</li>
+                <li>Sith_Jk8</li>
+                <li>ZenZey</li>
+                <li>ScorpX</li>
+                <li>Veri</li>
+                <li>Yachiru Unohana</li>
+                <li>Brad Pitt</li>
+                <li>Scarlatti</li>
+                <li>loli</li>
+                <li>CoJ</li>
+                <li>Queenbaby1cheta</li>
+                <li>Smaugg</li>
+                <li>steffi</li>
+                <li>eselu</li>
+                <li>Reis</li>
+                <li>Okan</li>
+                <li>PumpkinPile</li>
+                <li>Muhammad Bilal</li>
+                <li>Jaserin</li>
+                <li>Night Fury</li>
+                <li>elChapo</li>
+                <li>FénixDePlata</li>
+                <li>Solomon</li>
+                <li>Poison</li>
+                <li>Franzua</li>
+                <li>Jess</li>
+                <li>Teddy Bear</li>
+                <li>Valki</li>
+                <li>Vodka</li>
+                <li>Steppenwolf</li>
+                <li>Vapking_Bzh</li>
+                <li>bluedream</li>
+            </ul>
+        </div>
 
-            <!-- R1 Members -->
-            <section class="card" style="margin-top: 25px;">
-                <h2>🛡️ R1 • Recruits & Support</h2>
-                <div style="overflow-x: auto;">
-                    <table style="width: 100%; border-collapse: collapse; text-align: left; margin-top: 10px;">
-                        <thead>
-                            <tr style="border-bottom: 2px solid rgba(255,204,0,0.4); color: #ffcc00; font-size: 13px; text-transform: uppercase;">
-                                <th style="padding: 10px;">Rank</th>
-                                <th style="padding: 10px;">Callsigns</th>
-                                <th style="padding: 10px;">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody style="color: #c9d1d9; font-size: 14px;">
-                            <tr style="border-bottom: 1px solid rgba(255,204,0,0.1);">
-                                <td style="padding: 12px; font-weight: bold; color: #8b949e;">R1</td>
-                                <td style="padding: 12px;">Palestinian, HöRuS, Kayra, Osterhase, LunarVex</td>
-                                <td style="padding: 12px; color: #00ff66;">Support & Growth</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-        </main>
+        <!-- R2 -->
+        <div class="rank-section">
+            <h2>R2 • Veteran Cadre</h2>
+            <ul class="name-list">
+                <li>Ratchet</li>
+                <li>S4M43L</li>
+                <li>Bumblebee</li>
+                <li>ELKC2025</li>
+                <li>Monster</li>
+                <li>쿵상이</li>
+                <li>Amr</li>
+                <li>Buzzy</li>
+                <li>Türk</li>
+                <li>F B I</li>
+                <li>Gautlieri</li>
+                <li>Ardamanya61</li>
+                <li>Mr_JhonNeci</li>
+                <li>KingDangeranger</li>
+                <li>Xo_smiling</li>
+                <li>DebatinAtom</li>
+                <li>Wolverine</li>
+                <li>Blitz195</li>
+                <li>Whisky</li>
+                <li>cypriot93</li>
+                <li>JOHNICK003</li>
+                <li>khadeja</li>
+                <li>Sherif</li>
+                <li>Ahmet</li>
+                <li>PaintedBrute 01</li>
+                <li>Viuva Negra37</li>
+                <li>yanivjun</li>
+                <li>JewelRider</li>
+                <li>Aisha</li>
+            </ul>
+        </div>
 
-        <footer style="text-align: center; margin-top: 40px; padding: 20px; color: #8b949e; font-size: 12px; border-top: 1px solid rgba(255,204,0,0.1);">
-            <p>&copy; 2026 GGE Alliance • Server 199. All rights reserved on the battlefield.</p>
-        </footer>
-    </div>
+        <!-- R1 -->
+        <div class="rank-section">
+            <h2>R1 • Recruits</h2>
+            <ul class="name-list">
+                <li>Palestinian</li>
+                <li>HôRus</li>
+                <li>Kayra</li>
+                <li>Osterhase</li>
+                <li>LunarVex</li>
+            </ul>
+        </div>
+    </main>
 
-    <!-- 3. This must be at the very bottom -->
+    <!-- Scripts -->
     <script src="translations.js"></script>
+    <script>
+        // Live UTC server clock script
+        function updateServerTime() {
+            const now = new Date();
+            const utcTime = now.toUTCString().slice(17, 25) + " UTC";
+            const clockElement = document.getElementById('clock');
+            if (clockElement) {
+                clockElement.innerText = utcTime;
+            }
+        }
+        setInterval(updateServerTime, 1000);
+        updateServerTime();
+    </script>
 </body>
 </html>
