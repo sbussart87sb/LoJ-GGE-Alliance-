@@ -1,60 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alliance Hub | GGE Alliance</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="overlay"></div>
-    <div class="container">
-        
-        <!-- Top Bar / Navigation Injector -->
-        <div class="top-bar"></div>
-
-        <!-- Master Navigation Menu with Dropdown & Language Support -->
-        <nav class="nav-menu" style="margin: 20px 0; text-align: center; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px;">
-            <a href="index.html" id="navHome" style="color: #fff; text-decoration: none;">Home / War Room</a>
-            <a href="roster.html" id="navRoster" style="color: #fff; text-decoration: none;">Alliance Roster</a>
-            <a href="heroes.html" id="navHeroes" style="color: #fff; text-decoration: none;">Hero Roster</a>
+<!-- Master Navigation Menu with Clean Spacing -->
+        <nav class="nav-menu" style="margin: 20px auto; text-align: center; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 20px; padding: 10px;">
+            <a href="index.html" id="navHome" style="color: #fff; text-decoration: none; padding: 5px 10px;">Home / War Room</a>
+            <a href="roster.html" id="navRoster" style="color: #fff; text-decoration: none; padding: 5px 10px;">Alliance Roster</a>
+            <a href="heroes.html" id="navHeroes" style="color: #fff; text-decoration: none; padding: 5px 10px;">Hero Roster</a>
             
             <!-- Events Dropdown Menu -->
-            <div class="dropdown" style="display:inline-block; position:relative;">
-                <a href="events.html" class="dropbtn" id="navEvents" style="color: #fff; text-decoration: none;">Alliance Events ▼</a>
-                <div class="dropdown-content" style="display:none; position:absolute; left: 50%; transform: translateX(-50%); background:#1a1a1a; min-width:180px; box-shadow:0px 8px 16px rgba(0,0,0,0.5); z-index:1; text-align: left; border: 1px solid rgba(255,204,0,0.3);">
+            <div class="dropdown" style="display:inline-block; position:relative; padding: 5px 0;">
+                <a href="events.html" class="dropbtn" id="navEvents" style="color: #fff; text-decoration: none; padding: 5px 10px;">Alliance Events ▼</a>
+                <div class="dropdown-content" style="display:none; position:absolute; left: 50%; transform: translateX(-50%); top: 100%; background:#1a1a1a; min-width:180px; box-shadow:0px 8px 16px rgba(0,0,0,0.8); z-index:99; text-align: left; border: 1px solid rgba(255,204,0,0.3); border-radius: 4px;">
                     <a href="cage-fight.html" style="padding:10px 15px; display:block; color:#fff; text-decoration:none;">Cage Fight</a>
                     <a href="terminal-siege.html" style="padding:10px 15px; display:block; color:#fff; text-decoration:none;">Terminal Siege</a>
                 </div>
             </div>
 
-            <a href="rules.html" id="navRules" style="color: #fff; text-decoration: none;">Alliance Laws</a>
-            <a href="links.html" id="navLinks" style="color: #fff; text-decoration: none;">Intel & Links</a>
+            <a href="rules.html" id="navRules" style="color: #fff; text-decoration: none; padding: 5px 10px;">Alliance Laws</a>
+            <a href="links.html" id="navLinks" style="color: #fff; text-decoration: none; padding: 5px 10px;">Intel & Links</a>
 
-            <!-- Language Selector Container (Managed by translations.js) -->
-            <div id="languageSelectorContainer" style="display: inline-block; margin-left: 15px;"></div>
+            <!-- Language Selector Container -->
+            <div id="languageSelectorContainer" style="display: inline-block; margin-left: 10px;"></div>
         </nav>
 
-        <!-- Dropdown Hover and Global Styling -->
+        <!-- Dropdown Hover and Clean Link Styling -->
         <style>
             .dropdown:hover .dropdown-content { display: block !important; }
-            .dropdown-content a:hover { background: rgba(255, 204, 0, 0.2); color: #ffcc00; }
-            .nav-menu a:hover { color: #ffcc00; }
+            .dropdown-content a:hover { background: rgba(255, 204, 0, 0.2); color: #ffcc00 !important; }
+            .nav-menu > a:hover { color: #ffcc00 !important; }
         </style>
-
-        <main>
-            <section class="card">
-                <h2>Server 199 • GGE Alliance Command Center</h2>
-                <p>Select a section above to view leadership rosters, strategic event breakdowns, and alliance guidelines.</p>
-            </section>
-        </main>
-
-        <footer>
-            <p id="footer">&copy; 2026 GGE Alliance. All rights reserved on the battlefield.</p>
-        </footer>
-    </div>
-
-    <!-- Centralized Translation, Navigation & Language Script -->
-    <script src="translations.js"></script>
-</body>
-</html>
