@@ -103,6 +103,7 @@
         };
 
         function changeLanguage(lang) {
+            localStorage.setItem('preferredLang', lang);
             document.getElementById('nav-home').innerText = translations[lang].navHome;
             document.getElementById('nav-roster').innerText = translations[lang].navRoster;
             document.getElementById('nav-events').innerText = translations[lang].navEvents;
@@ -120,6 +121,14 @@
             document.getElementById('dir-3-text').innerText = translations[lang].dir3Text;
             document.getElementById('footer-text').innerText = translations[lang].footer;
         }
+
+        window.onload = function() {
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang && translations[savedLang]) {
+                document.getElementById('lang-select').value = savedLang;
+                changeLanguage(savedLang);
+            }
+        };
     </script>
 </body>
 </html>
