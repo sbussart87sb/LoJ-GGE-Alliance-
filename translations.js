@@ -68,7 +68,7 @@ const translations = {
         dir2Title: "Coordination :", dir2Text: "Consultez régulièrement les leaders R4 pour les cibles de ralliement et les affectations de défense.",
         dir3Title: "Force et Honneur :", dir3Text: "Partagez des ressources, augmentez votre puissance et protégez l'alliance.",
         
-        rosterTitle: "Liste des Membres", rosterSubtitle: "Serveur 199 • Guerriers de Land of Jail",
+        rosterTitle: "Liste des Membres", rosterSubtitle: "Server 199 • Guerriers de Land of Jail",
         leadershipTitle: "Structure de Commandement",
         r5Title: "Chef R5 :", r4Title: "Officiers R4 :",
         r3TitleSection: "Membres R3", r2TitleSection: "Membres R2", r1TitleSection: "Membres R1",
@@ -243,10 +243,24 @@ function applyTranslations(lang) {
     }
 }
 
+// Locked Server Clock function (Non-editable, displays server time right after digits)
+function updateServerClock() {
+    const clockElement = document.getElementById('server-clock');
+    if (clockElement) {
+        const now = new Date();
+        const hours = String(now.getUTCHours()).padStart(2, '0');
+        const minutes = String(now.getUTCMinutes()).padStart(2, '0');
+        const seconds = String(now.getUTCSeconds()).padStart(2, '0');
+        
+        // This text is hardcoded into the script so website visitors cannot click or change it
+        clockElement.innerText = `${hours}:${minutes}:${seconds} Server Time`;
+    }
+}
+
 window.addEventListener('DOMContentLoaded', function() {
-    // Inject both the command menu dropdown and the language selector into the top bar automatically
     const topBar = document.querySelector('.top-bar');
     if (topBar) {
+        // 1. Command Menu Dropdown on the left
         let navContainer = document.createElement('div');
         navContainer.className = 'dropdown-menu-container';
         navContainer.innerHTML = `
@@ -260,8 +274,17 @@ window.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
         `;
-        topBar.insertBefore(navContainer, topBar.firstChild);
+        topBar.appendChild(navContainer);
 
+        // 2. Locked Server Clock in the middle
+        let clockContainer = document.createElement('div');
+        clockContainer.id = 'server-clock';
+        clockContainer.className = 'server-clock';
+        topBar.appendChild(clockContainer);
+        setInterval(updateServerClock, 1000);
+        updateServerClock();
+
+        // 3. Language Bar on the right
         let langBar = document.createElement('div');
         langBar.className = 'language-bar';
         langBar.innerHTML = `
