@@ -1,149 +1,73 @@
+// Centralized Translation Script for GGE Server 199
 const translations = {
     en: {
-        warRoom: "War Room",
-        allianceRoster: "Alliance Roster",
-        heroRoster: "Hero Roster",
-        events: "Events",
-        cageFight: "Cage Fight Strategy",
-        terminalSiege: "Terminal Siege Strategy",
-        alliancelaws: "Alliance Laws",
-        intelLinks: "Intel & Links"
+        // Navigation Bar items
+        navWarRoom: "War Room",
+        navRoster: "Roster",
+        navHero: "Hero",
+        navEvents: "Events",
+        navCage: "Cage Fight",
+        navTerminal: "Terminal Siege",
+        navRules: "Rules",
+        navLinks: "Links",
+        
+        // Footer text
+        footerText: "2026 GGE Alliance • Server 199. All rights reserved on the battlefield."
     },
-    de: { // German
-        warRoom: "Kriegsraum",
-        allianceRoster: "Allianz-Mitglieder",
-        heroRoster: "Helden-Liste",
-        events: "Ereignisse",
-        cageFight: "Käfigkampf-Strategie",
-        terminalSiege: "Terminal-Belagerungs-Strategie",
-        alliancelaws: "Allianzgesetze",
-        intelLinks: "Informationen & Links"
+    de: {
+        // Navigation Bar items
+        navWarRoom: "Kriegsraum",
+        navRoster: "Kader",
+        navHero: "Held",
+        navEvents: "Ereignisse",
+        navCage: "Käfigkampf",
+        navTerminal: "Terminal-Belagerung",
+        navRules: "Regeln",
+        navLinks: "Links",
+        
+        // Footer text
+        footerText: "2026 GGE Allianz • Server 199. Alle Rechte auf dem Schlachtfeld vorbehalten."
     },
-    ar: { // Arabic
-        warRoom: "غرفة الحرب",
-        allianceRoster: "قائمة التحالف",
-        heroRoster: "قائمة الأبطال",
-        events: "الفعاليات",
-        cageFight: "استراتيجية قتال القفص",
-        terminalSiege: "استراتيجية حصار المحطة",
-        alliancelaws: "قوانين التحالف",
-        intelLinks: "معلومات وروابط"
-    },
-    hu: {
-        warRoom: "Harciszoba",
-        allianceRoster: "Szövetségi Névsor",
-        heroRoster: "Hősök Névsor",
-        events: "Események",
-        cageFight: "Cage Fight Stratégia",
-        terminalSiege: "Terminal Siege Stratégia",
-        alliancelaws: "Szövetségi Törvények",
-        intelLinks: "Infók és Linkek"
-    },
-    pl: {
-        warRoom: "Pokój Wojny",
-        allianceRoster: "Skład Sojuszu",
-        heroRoster: "Lista Bohaterów",
-        events: "Wydarzenia",
-        cageFight: "Strategia Walki w Klatce",
-        terminalSiege: "Strategia Oblężenia Terminala",
-        alliancelaws: "Prawo Sojuszu",
-        intelLinks: "Informacje i Linki"
-    },
-    tr: {
-        warRoom: "Savaş Odası",
-        allianceRoster: "İttifak Listesi",
-        heroRoster: "Kahraman Listesi",
-        events: "Etkinlikler",
-        cageFight: "Kafes Dövüşü Stratejisi",
-        terminalSiege: "Terminal Kuşatması Stratejisi",
-        alliancelaws: "İttifak Kuralları",
-        intelLinks: "Bilgi ve Bağlantılar"
-    },
-    es: {
-        warRoom: "Sala de Guerra",
-        allianceRoster: "Lista de la Alianza",
-        heroRoster: "Lista de Héroes",
-        events: "Eventos",
-        cageFight: "Estrategia de Pelea de Jaula",
-        terminalSiege: "Estrategia de Asedio de Terminal",
-        alliancelaws: "Leyes de la Alianza",
-        intelLinks: "Información y Enlaces"
-    },
-    fr: {
-        warRoom: "Salle de Guerre",
-        allianceRoster: "Liste de l'Alliance",
-        heroRoster: "Liste des Héros",
-        events: "Événements",
-        cageFight: "Stratégie de Combat en Cage",
-        terminalSiege: "Stratégie de Siège du Terminal",
-        alliancelaws: "Lois de l'Alliance",
-        intelLinks: "Infos et Liens"
-    },
-    it: {
-        warRoom: "Sala di Guerra",
-        allianceRoster: "Roster dell'Alleanza",
-        heroRoster: "Roster Eroi",
-        events: "Eventi",
-        cageFight: "Strategia Combattimento in Gabbia",
-        terminalSiege: "Strategia Assedio Terminale",
-        alliancelaws: "Leggi dell'Alleanza",
-        intelLinks: "Informazioni e Link"
-    },
-    ko: {
-        warRoom: "전쟁 룸",
-        allianceRoster: "연맹 명단",
-        heroRoster: "영웅 명단",
-        events: "이벤트",
-        cageFight: "케이지 파이트 전략",
-        terminalSiege: "터미널 공성 전략",
-        alliancelaws: "연맹 법률",
-        intelLinks: "인텔 및 링크"
-    },
-    la: {
-        warRoom: "Conclave Belli",
-        allianceRoster: "Index Societatis",
-        heroRoster: "Index Heroum",
-        events: "Eventus",
-        cageFight: "Strategia Pugnae Caveae",
-        terminalSiege: "Strategia Obsidionis Terminalis",
-        alliancelaws: "Leges Societatis",
-        intelLinks: "Intellegentia et Nexus"
+    ar: {
+        // Navigation Bar items
+        navWarRoom: "غرفة الحرب",
+        navRoster: "القائمة",
+        navHero: "البطل",
+        navEvents: "الأحداث",
+        navCage: "قتال القفص",
+        navTerminal: "حصار المحطة",
+        navRules: "القواعد",
+        navLinks: "الروابط",
+        
+        // Footer text
+        footerText: "2026 تحالف GGE • الخادم 199. جميع الحقوق محفوظة في ساحة المعركة."
     }
 };
 
-// Global Language Handler with persistent storage
+// Function to handle language switching across pages
 function changeLanguage(lang) {
-    localStorage.setItem('gge_preferred_lang', lang);
-    applyTranslations(lang);
-}
-
-function applyTranslations(lang) {
-    const t = translations[lang] || translations['en'];
+    localStorage.setItem('selectedLanguage', lang);
     
-    // Target only the text node or update text content safely without destroying button styles/emojis
-    const mapping = {
-        'nav-war-room': { key: 'warRoom', icon: '🏠 ' },
-        'nav-alliance-roster': { key: 'allianceRoster', icon: '🛡️ ' },
-        'nav-hero-roster': { key: 'heroRoster', icon: '⚔️ ' },
-        'nav-events': { key: 'events', icon: '📅 ' },
-        'nav-alliance-laws': { key: 'alliancelaws', icon: '📜 ' },
-        'nav-intel-links': { key: 'intelLinks', icon: '🌐 ' }
-    };
+    // Translate standard navigation elements if they have matching keys
+    const langData = translations[lang];
+    if (!langData) return;
 
-    for (const [id, info] of Object.entries(mapping)) {
-        const el = document.getElementById(id);
-        if (el && t[info.key]) {
-            el.textContent = info.icon + t[info.key];
+    for (const key in langData) {
+        const element = document.getElementById(key);
+        if (element) {
+            element.innerText = langData[key];
         }
     }
 }
 
-// Auto-load saved language preference instantly when any page loads
+// Auto-run on page load to keep the selected language active when clicking links
 window.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('gge_preferred_lang') || 'en';
-    const selectEl = document.getElementById('languageSelect');
-    if (selectEl) {
-        selectEl.value = savedLang;
+    const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+    changeLanguage(savedLang);
+    
+    // Set dropdown value if you have a language selector dropdown
+    const selector = document.getElementById('languageSelect');
+    if (selector) {
+        selector.value = savedLang;
     }
-    applyTranslations(savedLang);
 });
