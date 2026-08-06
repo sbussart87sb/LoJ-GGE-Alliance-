@@ -7,34 +7,42 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="overlay"></div>
-    <div class="container">
-        
-        <!-- Top Bar: Populated automatically by translations.js -->
-        <div class="top-bar"></div>
+    <!-- Left-Side Alliance Flag Banner Injection Point -->
+    <div id="leftBannerContainer"></div>
 
-        <header>
-            <h1 id="rulesTitle">Alliance Laws</h1>
-            <p class="subtitle" id="rulesSubtitle">Server 199 • Code of Conduct</p>
+    <!-- Main Content Wrapper -->
+    <div class="main-content-wrapper">
+        <header style="margin-bottom: 30px;">
+            <h1 style="color: #ffcc00; letter-spacing: 1px; font-size: 28px;">Alliance Laws</h1>
+            <p style="color: #8b949e; font-size: 14px; margin-top: 5px;">Server 199 • Code of Conduct & Server Rules</p>
         </header>
 
         <main>
-            <section class="card">
-                <h2>The Code of the Land</h2>
-                <ul style="margin-top: 15px; line-height: 2.2;">
-                    <li><strong>Resource Protection:</strong> Do not hit alliance members or friendly farm tiles. Keep internal peace strong.</li>
-                    <li><strong>Active Participation:</strong> Contribute to alliance events, rally defenses, and maintain active troop deployment.</li>
-                    <li><strong>Respect & Loyalty:</strong> Follow R4 and R5 directions during wartime and territorial conflicts. We stand as one unit.</li>
+            <section class="card" style="background-color: #161b22; border: 1px solid rgba(255,204,0,0.2); border-radius: 8px; padding: 20px; margin-bottom: 25px;">
+                <h2 style="color: #ffcc00; font-size: 18px; border-bottom: 1px solid rgba(255,204,0,0.2); padding-bottom: 10px; margin-bottom: 15px;">📜 The Code of the Land</h2>
+                <ul style="color: #c9d1d9; list-style: disc; padding-left: 20px; line-height: 2; font-size: 14px;">
+                    <li><strong>Resource Protection:</strong> Do not hit alliance members or friendly farm tiles. Keep internal peace strong across Server 199.</li>
+                    <li><strong>Active Participation:</strong> Contribute to alliance events, rally defenses, and maintain active troop deployment protocols.</li>
+                    <li><strong>Respect & Loyalty:</strong> Follow R4 and R5 directions during wartime and territorial conflicts. We stand unified as GGE.</li>
+                </ul>
+            </section>
+
+            <section class="card" style="background-color: #161b22; border: 1px solid rgba(255,204,0,0.2); border-radius: 8px; padding: 20px;">
+                <h2 style="color: #ffcc00; font-size: 18px; border-bottom: 1px solid rgba(255,204,0,0.2); padding-bottom: 10px; margin-bottom: 15px;">⚔️ Server Rules & Guidelines</h2>
+                <p style="color: #c9d1d9; font-size: 14px; margin-bottom: 15px;">Official game regulations and server-wide protocols:</p>
+                <ul style="color: #c9d1d9; list-style: disc; padding-left: 20px; line-height: 2; font-size: 14px;">
+                    <li><strong>NAP (Non-Aggression Pact) Terms:</strong> Respect designated server treaties and alliance boundaries.</li>
+                    <li><strong>Tile Harvesting:</strong> High-level resource tiles belong to the first claimant; scout before gathering during peak windows.</li>
+                    <li><strong>Battlefield Conduct:</strong> Coordinate rally targets through leadership channels to maximize efficiency during combat events.</li>
                 </ul>
             </section>
         </main>
 
-        <footer>
-            <p id="footer">&copy; 2026 GGE Alliance. All rights reserved on the battlefield.</p>
+        <footer style="text-align: center; margin-top: 40px; padding: 20px; color: #8b949e; font-size: 12px; border-top: 1px solid rgba(255,204,0,0.1);">
+            <p>&copy; 2026 GGE Alliance • Server 199. All rights reserved on the battlefield.</p>
         </footer>
     </div>
 
-    <!-- Centralized Translation, Navigation & Clock Script -->
     <script src="translations.js"></script>
 </body>
 </html>
