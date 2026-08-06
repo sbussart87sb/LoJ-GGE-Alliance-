@@ -10,125 +10,36 @@
     <div class="overlay"></div>
     <div class="container">
         
-        <div class="top-bar">
-            <nav class="taskbar">
-                <a href="index.html" class="active" id="nav-home">Home</a>
-                <a href="roster.html" id="nav-roster">Roster</a>
-                <a href="events.html" id="nav-events">Events</a>
-                <a href="rules.html" id="nav-rules">Rules</a>
-            </nav>
-            <div class="language-bar">
-                <label for="lang-select">🌐</label>
-                <select id="lang-select" onchange="changeLanguage(this.value)">
-                    <option value="en">English</option>
-                    <option value="es">Español</option>
-                    <option value="fr">Français</option>
-                    <option value="de">Deutsch</option>
-                </select>
-            </div>
-        </div>
+        <!-- Top Bar: Populated automatically by translations.js -->
+        <div class="top-bar"></div>
 
         <header>
-            <h1 id="site-title">GGE ALLIANCE</h1>
-            <p class="subtitle" id="site-subtitle">Server 199 • Land of Jail</p>
+            <h1 id="homeTitle">GGE ALLIANCE</h1>
+            <p class="subtitle" id="homeSubtitle">Server 199 • Land of Jail</p>
         </header>
 
         <main>
             <section class="card">
-                <h2 id="war-room-title">The War Room</h2>
-                <p id="war-room-text">Welcome, warrior. Blood, steel, and strategy govern these lands. We ride together, we conquer together, and we hold the line against all foes.</p>
+                <h2 id="warRoomTitle">The War Room</h2>
+                <p id="warRoomText">Welcome, warrior. Blood, steel, and strategy govern these lands. We ride together, we conquer together, and we hold the line against all foes.</p>
             </section>
 
             <section class="card">
-                <h2 id="directives-title">Alliance Directives</h2>
+                <h2 id="directivesTitle">Alliance Directives</h2>
                 <ul>
-                    <li><strong id="dir-1-title">Active Deployment:</strong> <span id="dir-1-text">Keep shields up and troops ready for mobilization.</span></li>
-                    <li><strong id="dir-2-title">Coordination:</strong> <span id="dir-2-text">Check in regularly with R4 leadership for rally targets and defense assignments.</span></li>
-                    <li><strong id="dir-3-title">Strength & Honor:</strong> <span id="dir-3-text">Share resources, grow your might, and protect the alliance.</span></li>
+                    <li><strong id="dir1Title">Active Deployment:</strong> <span id="dir1Text">Keep shields up and troops ready for mobilization.</span></li>
+                    <li><strong id="dir2Title">Coordination:</strong> <span id="dir2Text">Check in regularly with R4 leadership for rally targets and defense assignments.</span></li>
+                    <li><strong id="dir3Title">Strength & Honor:</strong> <span id="dir3Text">Share resources, grow your might, and protect the alliance.</span></li>
                 </ul>
             </section>
         </main>
 
         <footer>
-            <p id="footer-text">&copy; 2026 GGE Alliance. All rights reserved on the battlefield.</p>
+            <p id="footer">&copy; 2026 GGE Alliance. All rights reserved on the battlefield.</p>
         </footer>
     </div>
 
-    <script>
-        const translations = {
-            en: {
-                navHome: "Home", navRoster: "Roster", navEvents: "Events", navRules: "Rules",
-                title: "GGE ALLIANCE", subtitle: "Server 199 • Land of Jail",
-                warRoomTitle: "The War Room",
-                warRoomText: "Welcome, warrior. Blood, steel, and strategy govern these lands. We ride together, we conquer together, and we hold the line against all foes.",
-                directivesTitle: "Alliance Directives",
-                dir1Title: "Active Deployment:", dir1Text: "Keep shields up and troops ready for mobilization.",
-                dir2Title: "Coordination:", dir2Text: "Check in regularly with R4 leadership for rally targets and defense assignments.",
-                dir3Title: "Strength & Honor:", dir3Text: "Share resources, grow your might, and protect the alliance.",
-                footer: "© 2026 GGE Alliance. All rights reserved on the battlefield."
-            },
-            es: {
-                navHome: "Inicio", navRoster: "Miembros", navEvents: "Eventos", navRules: "Reglas",
-                title: "ALIANZA GGE", subtitle: "Servidor 199 • Land of Jail",
-                warRoomTitle: "La Sala de Guerra",
-                warRoomText: "Bienvenido, guerrero. La sangre, el acero y la estrategia gobiernan estas tierras. Cabalgamos juntos, conquistamos juntos y mantenemos la línea contra todos los enemigos.",
-                directivesTitle: "Directivas de la Alianza",
-                dir1Title: "Despliegue Activo:", dir1Text: "Mantén los escudos arriba y las tropas listas para la movilización.",
-                dir2Title: "Coordinación:", dir2Text: "Consulta regularmente con el liderazgo R4 para objetivos de ataque y asignaciones de defensa.",
-                dir3Title: "Fuerza y Honor:", dir3Text: "Comparte recursos, aumenta tu poder y protege a la alianza.",
-                footer: "© 2026 Alianza GGE. Todos los derechos reservados en el campo de batalla."
-            },
-            fr: {
-                navHome: "Accueil", navRoster: "Membres", navEvents: "Événements", navRules: "Règles",
-                title: "ALLIANCE GGE", subtitle: "Serveur 199 • Land of Jail",
-                warRoomTitle: "La Salle de Guerre",
-                warRoomText: "Bienvenue, guerrier. Le sang, l'acier et la stratégie gouvernent ces terres. Nous chevauchons ensemble, nous conquéron ensemble et nous tenons bon face à tous les ennemis.",
-                directivesTitle: "Directives de l'Alliance",
-                dir1Title: "Déploiement Actif :", dir1Text: "Gardez vos boucliers levés et vos troupes prêtes à la mobilisation.",
-                dir2Title: "Coordination :", dir2Text: "Consultez régulièrement les leaders R4 pour les cibles de ralliement et les affectations de défense.",
-                dir3Title: "Force et Honneur :", dir3Text: "Partagez des ressources, augmentez votre puissance et protégez l'alliance.",
-                footer: "© 2026 Alliance GGE. Tous droits réservés sur le champ de bataille."
-            },
-            de: {
-                navHome: "Startseite", navRoster: "Mitglieder", navEvents: "Events", navRules: "Regeln",
-                title: "GGE ALLIANZ", subtitle: "Server 199 • Land of Jail",
-                warRoomTitle: "Das Kriegsraum",
-                warRoomText: "Willkommen, Krieger. Blut, Stahl und Strategie regieren diese Ländereien. Wir reiten zusammen, wir erobern zusammen und wir halten die Stellung gegen alle Feinde.",
-                directivesTitle: "Allianz-Richtlinien",
-                dir1Title: "Aktiver Einsatz:", dir1Text: "Halte die Schilde oben und die Truppen bereit zur Mobilisierung.",
-                dir2Title: "Koordination:", dir2Text: "Melde dich regelmäßig bei der R4-Führung für Rallye-Ziele und Verteidigungszuweisungen.",
-                dir3Title: "Stärke & Ehre:", dir3Text: "Teile Ressourcen, steigere deine Macht und schütze die Allianz.",
-                footer: "© 2026 GGE Allianz. Alle Rechte auf dem Schlachtfeld vorbehalten."
-            }
-        };
-
-        function changeLanguage(lang) {
-            localStorage.setItem('preferredLang', lang);
-            document.getElementById('nav-home').innerText = translations[lang].navHome;
-            document.getElementById('nav-roster').innerText = translations[lang].navRoster;
-            document.getElementById('nav-events').innerText = translations[lang].navEvents;
-            document.getElementById('nav-rules').innerText = translations[lang].navRules;
-            document.getElementById('site-title').innerText = translations[lang].title;
-            document.getElementById('site-subtitle').innerText = translations[lang].subtitle;
-            document.getElementById('war-room-title').innerText = translations[lang].warRoomTitle;
-            document.getElementById('war-room-text').innerText = translations[lang].warRoomText;
-            document.getElementById('directives-title').innerText = translations[lang].directivesTitle;
-            document.getElementById('dir-1-title').innerText = translations[lang].dir1Title;
-            document.getElementById('dir-1-text').innerText = translations[lang].dir1Text;
-            document.getElementById('dir-2-title').innerText = translations[lang].dir2Title;
-            document.getElementById('dir-2-text').innerText = translations[lang].dir2Text;
-            document.getElementById('dir-3-title').innerText = translations[lang].dir3Title;
-            document.getElementById('dir-3-text').innerText = translations[lang].dir3Text;
-            document.getElementById('footer-text').innerText = translations[lang].footer;
-        }
-
-        window.onload = function() {
-            const savedLang = localStorage.getItem('preferredLang');
-            if (savedLang && translations[savedLang]) {
-                document.getElementById('lang-select').value = savedLang;
-                changeLanguage(savedLang);
-            }
-        };
-    </script>
+    <!-- Centralized Translation, Navigation & Clock Script -->
+    <script src="translations.js"></script>
 </body>
 </html>
