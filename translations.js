@@ -81,13 +81,14 @@ function changeLanguage(lang) {
     location.reload();
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+// Auto-run translation immediately on script load if a non-English language is saved
+(function() {
     const savedLang = localStorage.getItem('selectedLanguage') || 'en';
-    const selector = document.getElementById('languageSelect');
-    if (selector) {
-        selector.value = savedLang;
-    }
     if (savedLang !== 'en') {
-        translatePage(savedLang);
+        window.addEventListener('DOMContentLoaded', () => {
+            translatePage(savedLang);
+            const selector = document.getElementById('languageSelect');
+            if (selector) selector.value = savedLang;
+        });
     }
-});
+})();
