@@ -1,55 +1,64 @@
+// GGE Alliance Server 199 - Left Banner Navigation & Translation Core
+
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Automatically Inject the Master Navigation Bar
-    const navContainer = document.getElementById("navigationContainer");
-    if (navContainer) {
-        navContainer.innerHTML = `
-            <nav class="nav-menu" style="margin: 20px auto; text-align: center; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 20px; padding: 10px;">
-                <a href="index.html" id="navHome" style="color: #fff; text-decoration: none; padding: 5px 10px;">Home / War Room</a>
-                <a href="roster.html" id="navRoster" style="color: #fff; text-decoration: none; padding: 5px 10px;">Alliance Roster</a>
-                <a href="heroes.html" id="navHeroes" style="color: #fff; text-decoration: none; padding: 5px 10px;">Hero Roster</a>
-                
-                <!-- Events Dropdown Menu -->
-                <div class="dropdown" style="display:inline-block; position:relative; padding: 5px 0;">
-                    <a href="events.html" class="dropbtn" id="navEvents" style="color: #fff; text-decoration: none; padding: 5px 10px;">Alliance Events ▼</a>
-                    <div class="dropdown-content" style="display:none; position:absolute; left: 50%; transform: translateX(-50%); top: 100%; background:#1a1a1a; min-width:180px; box-shadow:0px 8px 16px rgba(0,0,0,0.8); z-index:99; text-align: left; border: 1px solid rgba(255,204,0,0.3); border-radius: 4px;">
-                        <a href="cage-fight.html" id="cageFight" style="padding:10px 15px; display:block; color:#fff; text-decoration:none;">Cage Fight</a>
-                        <a href="terminal-siege.html" id="terminalSiege" style="padding:10px 15px; display:block; color:#fff; text-decoration:none;">Terminal Siege</a>
-                    </div>
+    // Inject Left Flag Banner Navigation into every page
+    const bannerContainer = document.getElementById("leftBannerContainer");
+    if (bannerContainer) {
+        bannerContainer.innerHTML = `
+            <div class="alliance-banner">
+                <div class="alliance-shield">
+                    <div style="font-size: 28px;">🛡️</div>
+                    <h2 id="bannerTitle">GGE</h2>
+                    <span id="bannerServer">Server 199</span>
                 </div>
 
-                <a href="rules.html" id="navRules" style="color: #fff; text-decoration: none; padding: 5px 10px;">Alliance Laws</a>
-                <a href="links.html" id="navLinks" style="color: #fff; text-decoration: none; padding: 5px 10px;">Intel & Links</a>
+                <div class="banner-nav">
+                    <a href="index.html" id="navHome">🏠 War Room</a>
+                    <a href="roster.html" id="navRoster">🛡️ Alliance Roster</a>
+                    <a href="hero.html" id="navHeroes">⚔️ Hero Roster</a>
+                    
+                    <div class="banner-dropdown">
+                        <button class="banner-dropdown-btn" id="navEvents">📅 Events ▼</button>
+                        <div class="banner-dropdown-content">
+                            <a href="cage-fight.html" id="cageFight">🥊 Cage Fight</a>
+                            <a href="terminal-siege.html" id="terminalSiege">🛡️ Terminal Siege</a>
+                        </div>
+                    </div>
 
-                <!-- Language Selector Container -->
-                <div id="languageSelectorContainer" style="display: inline-block; margin-left: 10px;"></div>
-            </nav>
+                    <a href="rules.html" id="navRules">📜 Alliance Laws</a>
+                    <a href="links.html" id="navLinks">🔗 Intel & Links</a>
+                </div>
 
-            <style>
-                .dropdown:hover .dropdown-content { display: block !important; }
-                .dropdown-content a:hover { background: rgba(255, 204, 0, 0.2); color: #ffcc00 !important; }
-                .nav-menu > a:hover { color: #ffcc00 !important; }
-            </style>
+                <div class="banner-footer">
+                    <div id="languageSelectorContainer"></div>
+                    <div id="liveTime">Time: Loading...</div>
+                </div>
+            </div>
         `;
     }
 
-    // 2. Build Language Selector Dropdown
+    // Dropdown toggle logic for events in the side banner
+    const eventBtn = document.querySelector(".banner-dropdown-btn");
+    const eventContent = document.querySelector(".banner-dropdown-content");
+    if (eventBtn && eventContent) {
+        eventBtn.addEventListener("click", () => {
+            eventContent.classList.toggle("show");
+        });
+    }
+
+    // Build Language Selector Dropdown
     const langContainer = document.getElementById("languageSelectorContainer");
     if (langContainer) {
         const select = document.createElement("select");
         select.id = "languageSelector";
-        select.style.background = "#1a1a1a";
-        select.style.color = "#fff";
-        select.style.border = "1px solid rgba(255,204,0,0.4)";
-        select.style.padding = "4px 8px";
-        select.style.borderRadius = "4px";
-        select.style.cursor = "pointer";
 
         const languages = {
             en: "English",
+            de: "Deutsch",
+            pl: "Polski",
             tr: "Türkçe",
             es: "Español",
             fr: "Français",
-            de: "Deutsch",
             it: "Italiano",
             ko: "한국어",
             la: "Latina"
@@ -74,89 +83,119 @@ document.addEventListener("DOMContentLoaded", () => {
 
         langContainer.appendChild(select);
     }
+
+    // Live Server Clock
+    function updateClock() {
+        const timeEl = document.getElementById("liveTime");
+        if (timeEl) {
+            const now = new Date();
+            timeEl.textContent = "UTC: " + now.toUTCString().slice(17, 25);
+        }
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
 });
 
-// Translation Dictionary Mapping
+// Translation Dictionary
 const translations = {
     en: {
-        navHome: "Home / War Room",
-        navRoster: "Alliance Roster",
-        navHeroes: "Hero Roster",
-        navEvents: "Alliance Events ▼",
-        navRules: "Alliance Laws",
-        navLinks: "Intel & Links",
-        cageFight: "Cage Fight",
-        terminalSiege: "Terminal Siege"
-    },
-    tr: {
-        navHome: "Ana Sayfa / Savaş Odası",
-        navRoster: "İttifak Kadrosu",
-        navHeroes: "Kahraman Kadrosu",
-        navEvents: "İttifak Etkinlikleri ▼",
-        navRules: "İttifak Kanunları",
-        navLinks: "İstihbarat ve Bağlantılar",
-        cageFight: "Kafes Dövüşü",
-        terminalSiege: "Terminal Kuşatması"
-    },
-    es: {
-        navHome: "Inicio / Sala de Guerra",
-        navRoster: "Lista de la Alianza",
-        navHeroes: "Lista de Héroes",
-        navEvents: "Eventos de la Alianza ▼",
-        navRules: "Leyes de la Alianza",
-        navLinks: "Información y Enlaces",
-        cageFight: "Combate en Jaula",
-        terminalSiege: "Asedio Terminal"
-    },
-    fr: {
-        navHome: "Accueil / Salle de Guerre",
-        navRoster: "Liste de l'Alliance",
-        navHeroes: "Liste des Héros",
-        navEvents: "Événements de l'Alliance ▼",
-        navRules: "Lois de l'Alliance",
-        navLinks: "Infos et Liens",
-        cageFight: "Combat en Cage",
-        terminalSiege: "Siège du Terminal"
+        bannerServer: "Server 199",
+        navHome: "🏠 War Room",
+        navRoster: "🛡️ Alliance Roster",
+        navHeroes: "⚔️ Hero Roster",
+        navEvents: "📅 Events ▼",
+        cageFight: "🥊 Cage Fight",
+        terminalSiege: "🛡️ Terminal Siege",
+        navRules: "📜 Alliance Laws",
+        navLinks: "🔗 Intel & Links"
     },
     de: {
-        navHome: "Startseite / Kriegszimmer",
-        navRoster: "Allianz-Roster",
-        navHeroes: "Helden-Roster",
-        navEvents: "Allianz-Ereignisse ▼",
-        navRules: "Allianz-Gesetze",
-        navLinks: "Intel & Links",
-        cageFight: "Käfigkampf",
-        terminalSiege: "Terminal-Belagerung"
+        bannerServer: "Server 199",
+        navHome: "🏠 Kriegszimmer",
+        navRoster: "🛡️ Allianz-Roster",
+        navHeroes: "⚔️ Helden-Roster",
+        navEvents: "📅 Ereignisse ▼",
+        cageFight: "🥊 Käfigkampf",
+        terminalSiege: "🛡️ Terminal-Belagerung",
+        navRules: "📜 Allianzgesetze",
+        navLinks: "🔗 Intel & Links"
+    },
+    pl: {
+        bannerServer: "Serwer 199",
+        navHome: "🏠 Sala Gier",
+        navRoster: "🛡️ Skład Sojuszu",
+        navHeroes: "⚔️ Lista Bohaterów",
+        navEvents: "📅 Wydarzenia ▼",
+        cageFight: "🥊 Walka w Klatce",
+        terminalSiege: "🛡️ Oblężenie Terminalu",
+        navRules: "📜 Zasady Sojuszu",
+        navLinks: "🔗 Intel i Linki"
+    },
+    tr: {
+        bannerServer: "Sunucu 199",
+        navHome: "🏠 Savaş Odası",
+        navRoster: "🛡️ İttifak Kadrosu",
+        navHeroes: "⚔️ Kahraman Kadrosu",
+        navEvents: "📅 Etkinlikler ▼",
+        cageFight: "🥊 Kafes Dövüşü",
+        terminalSiege: "🛡️ Terminal Kuşatması",
+        navRules: "📜 İttifak Kanunları",
+        navLinks: "🔗 İstihbarat"
+    },
+    es: {
+        bannerServer: "Servidor 199",
+        navHome: "🏠 Sala de Guerra",
+        navRoster: "🛡️ Lista de la Alianza",
+        navHeroes: "⚔️ Lista de Héroes",
+        navEvents: "📅 Eventos ▼",
+        cageFight: "🥊 Combate en Jaula",
+        terminalSiege: "🛡️ Asedio Terminal",
+        navRules: "📜 Leyes",
+        navLinks: "🔗 Enlaces"
+    },
+    fr: {
+        bannerServer: "Serveur 199",
+        navHome: "🏠 Salle de Guerre",
+        navRoster: "🛡️ Liste de l'Alliance",
+        navHeroes: "⚔️ Liste des Héros",
+        navEvents: "📅 Événements ▼",
+        cageFight: "🥊 Combat en Cage",
+        terminalSiege: "🛡️ Siège du Terminal",
+        navRules: "📜 Lois",
+        navLinks: "🔗 Infos & Liens"
     },
     it: {
-        navHome: "Home / Sala Guerra",
-        navRoster: "Roster Alleanza",
-        navHeroes: "Roster Eroi",
-        navEvents: "Eventi Alleanza ▼",
-        navRules: "Leggi dell'Alleanza",
-        navLinks: "Intel & Link",
-        cageFight: "Combattimento in Gabbia",
-        terminalSiege: "Assedio al Terminale"
+        bannerServer: "Server 199",
+        navHome: "🏠 Sala Guerra",
+        navRoster: "🛡️ Roster Alleanza",
+        navHeroes: "⚔️ Roster Eroi",
+        navEvents: "📅 Eventi ▼",
+        cageFight: "🥊 Combattimento",
+        terminalSiege: "🛡️ Assedio",
+        navRules: "📜 Leggi",
+        navLinks: "🔗 Link"
     },
     ko: {
-        navHome: "홈 / 전쟁 룸",
-        navRoster: "연맹 명단",
-        navHeroes: "영웅 명단",
-        navEvents: "연맹 이벤트 ▼",
-        navRules: "연맹 규칙",
-        navLinks: "정보 및 링크",
-        cageFight: "케이지 파이트",
-        terminalSiege: "터미널 시즈"
+        bannerServer: "서버 199",
+        navHome: "🏠 전쟁 룸",
+        navRoster: "🛡️ 연맹 명단",
+        navHeroes: "⚔️ 영웅 명단",
+        navEvents: "📅 이벤트 ▼",
+        cageFight: "🥊 케이지 파이트",
+        terminalSiege: "🛡️ 터미널 시즈",
+        navRules: "📜 연맹 규칙",
+        navLinks: "🔗 링크"
     },
     la: {
-        navHome: "Domus / Cubiculum Belli",
-        navRoster: "Societas Aliae",
-        navHeroes: "Heroica Aliae",
-        navEvents: "Eventa Societatis ▼",
-        navRules: "Leges Societatis",
-        navLinks: "Intel & Nexus",
-        cageFight: "Pugna Caveae",
-        terminalSiege: "Obsidio Terminalis"
+        bannerServer: "Servitor 199",
+        navHome: "🏠 Cubiculum Belli",
+        navRoster: "🛡️ Societas Aliae",
+        navHeroes: "⚔️ Heroica Aliae",
+        navEvents: "📅 Eventa ▼",
+        cageFight: "🥊 Pugna Caveae",
+        terminalSiege: "🛡️ Obsidio Terminalis",
+        navRules: "📜 Leges",
+        navLinks: "🔗 Nexus"
     }
 };
 
@@ -167,14 +206,10 @@ function setLanguage(lang) {
     for (const [id, text] of Object.entries(translationTable)) {
         const element = document.getElementById(id);
         if (element) {
-            if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
-                element.placeholder = text;
+            if (element.innerHTML.includes("▼") && !text.includes("▼")) {
+                element.innerHTML = text + " ▼";
             } else {
-                if (element.innerHTML.includes("▼") && !text.includes("▼")) {
-                    element.innerHTML = text + " ▼";
-                } else {
-                    element.innerHTML = text;
-                }
+                element.innerHTML = text;
             }
         }
     }
