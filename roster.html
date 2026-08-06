@@ -10,125 +10,84 @@
     <div class="overlay"></div>
     <div class="container">
         
-        <div class="top-bar">
-            <nav class="taskbar">
-                <a href="index.html" id="nav-home">Home</a>
-                <a href="roster.html" class="active" id="nav-roster">Roster</a>
-                <a href="events.html" id="nav-events">Events</a>
-                <a href="rules.html" id="nav-rules">Rules</a>
-            </nav>
-            <div class="language-bar">
-                <label for="lang-select">🌐</label>
-                <select id="lang-select" onchange="changeLanguage(this.value)">
-                    <option value="en">English</option>
-                    <option value="es">Español</option>
-                    <option value="fr">Français</option>
-                    <option value="de">Deutsch</option>
-                </select>
-            </div>
-        </div>
+        <!-- Top Bar: Populated automatically by translations.js -->
+        <div class="top-bar"></div>
 
         <header>
-            <h1 id="roster-title">Alliance Roster</h1>
-            <p class="subtitle" id="roster-subtitle">Server 199 • Land of Jail Warriors</p>
+            <h1 id="rosterTitle">Alliance Roster</h1>
+            <p class="subtitle" id="rosterSubtitle">Server 199 • Land of Jail Warriors</p>
         </header>
 
         <main>
+            <!-- Command Structure Section -->
             <section class="card">
-                <h2 id="leadership-title">Command Structure</h2>
-                <ul>
-                    <li><strong id="r5-title">R5 Leader:</strong> Gökbörü</li>
-                    <li><strong id="r4-title">R4 Officers:</strong> Darth Hater, Özge, Jaco</li>
-                </ul>
+                <h2 id="leadershipTitle">Command Structure</h2>
+                <div class="roster-grid">
+                    <div class="roster-row">
+                        <strong id="r5Title">R5 Leader:</strong>
+                        <span>Gökbörü</span>
+                    </div>
+                    <div class="roster-row">
+                        <strong id="r4Title">R4 Officers:</strong>
+                        <span>Darth Hater, Özge, Jaco</span>
+                    </div>
+                </div>
             </section>
 
+            <!-- R3 Members Section -->
             <section class="card">
-                <h2 id="r3-title-section">R3 Members</h2>
-                <ul>
-                    <li>kingkit, Spazz, Corgi, AppleCrumble, Killua, HandOfGod87RIP, ZARD, ATLAS, AslanBey, Ron_A, WTP, MORI, LAURA, D4NILOSKY, KarmaRose, 恕知雨, CELES, Nicko, OBEN, Father, BOZKURT_33, CriisTopher, Pablo2026, FIRLAMA, HAKAN, Eclipse, Veri, Yachiru Unohana, Brad Pitt, Scarlatti, loli, CoJ, Queenbaby1cheta, Smaugg, steffi, eselu, Reis, Okan, PumpkinPie, Muhammad Bilal, Jaserin, Night Fury, elChapo, FénixDePlata, Solomon, Poison, Franzua, Jess, Teddy Bear, Valki, Vodka, Steppenwolf, Vapking_Bzh, bluedream, Ratchet, S4M43L, Bumblebee, ELKC2025, Monster, 춘삼이, Amr, Buzzy, Türk, FBI, Gaultier, Ardamanya61, Mr JhonNeci, KingDangerRanger, Xo_smiling, DebatinAtom, Wolverine, Blitz195, Whisky, cypriot93, JOHNWICK003, khadeja, Sherif, Ahmet, PaintedBrute01, Viuva Negra37, yaniyjun, JewelRider, Aisha</li>
-                </ul>
+                <h2 id="r3TitleSection">R3 Members</h2>
+                <div class="member-grid">
+                    <span>kingkit</span><span>Spazz</span><span>Corgi</span><span>AppleCrumble</span>
+                    <span>Killua</span><span>HandOfGod87RIP</span><span>ZARD</span><span>ATLAS</span>
+                    <span>AslanBey</span><span>Ron_A</span><span>WTP</span><span>MORI</span>
+                    <span>LAURA</span><span>D4NILOSKY</span><span>KarmaRose</span><span>恕知雨</span>
+                    <span>CELES</span><span>Nicko</span><span>OBEN</span><span>Father</span>
+                    <span>BOZKURT_33</span><span>CriisTopher</span><span>Pablo2026</span><span>FIRLAMA</span>
+                    <span>HAKAN</span><span>Eclipse</span><span>Veri</span><span>Yachiru Unohana</span>
+                    <span>Brad Pitt</span><span>Scarlatti</span><span>loli</span><span>CoJ</span>
+                    <span>Queenbaby1cheta</span><span>Smaugg</span><span>steffi</span><span>eselu</span>
+                    <span>Reis</span><span>Okan</span><span>PumpkinPie</span><span>Muhammad Bilal</span>
+                    <span>Jaserin</span><span>Night Fury</span><span>elChapo</span><span>FénixDePlata</span>
+                    <span>Solomon</span><span>Poison</span><span>Franzua</span><span>Jess</span>
+                    <span>Teddy Bear</span><span>Valki</span><span>Vodka</span><span>Steppenwolf</span>
+                    <span>Vapking_Bzh</span><span>bluedream</span><span>Ratchet</span><span>S4M43L</span>
+                    <span>Bumblebee</span><span>ELKC2025</span><span>Monster</span><span>춘삼이</span>
+                    <span>Amr</span><span>Buzzy</span><span>Türk</span><span>FBI</span>
+                    <span>Gaultier</span><span>Ardamanya61</span><span>Mr JhonNeci</span><span>KingDangerRanger</span>
+                    <span>Xo_smiling</span><span>DebatinAtom</span><span>Wolverine</span><span>Blitz195</span>
+                    <span>Whisky</span><span>cypriot93</span><span>JOHNWICK003</span><span>khadeja</span>
+                    <span>Sherif</span><span>Ahmet</span><span>PaintedBrute01</span><span>Viuva Negra37</span>
+                    <span>yaniyjun</span><span>JewelRider</span><span>Aisha</span>
+                </div>
             </section>
 
+            <!-- R2 Members Section -->
             <section class="card">
-                <h2 id="r2-title-section">R2 Members</h2>
-                <ul>
-                    <li>Jaserin, Night Fury, elChapo, FénixDePlata, Solomon, Poison, Franzua, Jess, Teddy Bear, Valki, Vodka, Steppenwolf, Vapking_Bzh, bluedream</li>
-                </ul>
+                <h2 id="r2TitleSection">R2 Members</h2>
+                <div class="member-grid">
+                    <span>Jaserin</span><span>Night Fury</span><span>elChapo</span><span>FénixDePlata</span>
+                    <span>Solomon</span><span>Poison</span><span>Franzua</span><span>Jess</span>
+                    <span>Teddy Bear</span><span>Valki</span><span>Vodka</span><span>Steppenwolf</span>
+                    <span>Vapking_Bzh</span><span>bluedream</span>
+                </div>
             </section>
 
+            <!-- R1 Members Section -->
             <section class="card">
-                <h2 id="r1-title-section">R1 Members</h2>
-                <ul>
-                    <li>Palestinian, HōRūs, Kayra, Osterhase, LunarVex</li>
-                </ul>
+                <h2 id="r1TitleSection">R1 Members</h2>
+                <div class="member-grid">
+                    <span>Palestinian</span><span>HōRūs</span><span>Kayra</span><span>Osterhase</span><span>LunarVex</span>
+                </div>
             </section>
         </main>
 
         <footer>
-            <p id="footer-text">&copy; 2026 GGE Alliance. All rights reserved on the battlefield.</p>
+            <p id="footer">&copy; 2026 GGE Alliance. All rights reserved on the battlefield.</p>
         </footer>
     </div>
 
-    <script>
-        const translations = {
-            en: {
-                navHome: "Home", navRoster: "Roster", navEvents: "Events", navRules: "Rules",
-                rosterTitle: "Alliance Roster", rosterSubtitle: "Server 199 • Land of Jail Warriors",
-                leadershipTitle: "Command Structure",
-                r5Title: "R5 Leader:", r4Title: "R4 Officers:",
-                r3TitleSection: "R3 Members", r2TitleSection: "R2 Members", r1TitleSection: "R1 Members",
-                footer: "© 2026 GGE Alliance. All rights reserved on the battlefield."
-            },
-            es: {
-                navHome: "Inicio", navRoster: "Miembros", navEvents: "Eventos", navRules: "Reglas",
-                rosterTitle: "Lista de Miembros", rosterSubtitle: "Servidor 199 • Guerreros de Land of Jail",
-                leadershipTitle: "Estructura de Comando",
-                r5Title: "Líder R5:", r4Title: "Oficiales R4:",
-                r3TitleSection: "Miembros R3", r2TitleSection: "Miembros R2", r1TitleSection: "Miembros R1",
-                footer: "© 2026 Alianza GGE. Todos los derechos reservados en el campo de batalla."
-            },
-            fr: {
-                navHome: "Accueil", navRoster: "Membres", navEvents: "Événements", navRules: "Règles",
-                rosterTitle: "Liste des Membres", rosterSubtitle: "Serveur 199 • Guerriers de Land of Jail",
-                leadershipTitle: "Structure de Commandement",
-                r5Title: "Chef R5 :", r4Title: "Officiers R4 :",
-                r3TitleSection: "Membres R3", r2TitleSection: "Membres R2", r1TitleSection: "Membres R1",
-                footer: "© 2026 Alliance GGE. Tous droits réservés sur le champ de bataille."
-            },
-            de: {
-                navHome: "Startseite", navRoster: "Mitglieder", navEvents: "Events", navRules: "Regeln",
-                rosterTitle: "Mitgliederliste", rosterSubtitle: "Server 199 • Land of Jail Krieger",
-                leadershipTitle: "Führungsstruktur",
-                r5Title: "R5 Anführer:", r4Title: "R4 Offiziere:",
-                r3TitleSection: "R3 Mitglieder", r2TitleSection: "R2 Mitglieder", r1TitleSection: "R1 Mitglieder",
-                footer: "© 2026 GGE Allianz. Alle Rechte auf dem Schlachtfeld vorbehalten."
-            }
-        };
-
-        function changeLanguage(lang) {
-            localStorage.setItem('preferredLang', lang);
-            document.getElementById('nav-home').innerText = translations[lang].navHome;
-            document.getElementById('nav-roster').innerText = translations[lang].navRoster;
-            document.getElementById('nav-events').innerText = translations[lang].navEvents;
-            document.getElementById('nav-rules').innerText = translations[lang].navRules;
-            document.getElementById('roster-title').innerText = translations[lang].rosterTitle;
-            document.getElementById('roster-subtitle').innerText = translations[lang].rosterSubtitle;
-            document.getElementById('leadership-title').innerText = translations[lang].leadershipTitle;
-            document.getElementById('r5-title').innerText = translations[lang].r5Title;
-            document.getElementById('r4-title').innerText = translations[lang].r4Title;
-            document.getElementById('r3-title-section').innerText = translations[lang].r3TitleSection;
-            document.getElementById('r2-title-section').innerText = translations[lang].r2TitleSection;
-            document.getElementById('r1-title-section').innerText = translations[lang].r1TitleSection;
-            document.getElementById('footer-text').innerText = translations[lang].footer;
-        }
-
-        window.onload = function() {
-            const savedLang = localStorage.getItem('preferredLang');
-            if (savedLang && translations[savedLang]) {
-                document.getElementById('lang-select').value = savedLang;
-                changeLanguage(savedLang);
-            }
-        };
-    </script>
+    <!-- Centralized Translation, Navigation & Clock Script -->
+    <script src="translations.js"></script>
 </body>
 </html>
