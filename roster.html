@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roster | GGE Alliance</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        
+        <div class="top-bar">
+            <nav class="taskbar">
+                <a href="index.html" id="nav-home">Home</a>
+                <a href="roster.html" class="active" id="nav-roster">Roster</a>
+                <a href="events.html" id="nav-events">Events</a>
+                <a href="rules.html" id="nav-rules">Rules</a>
+            </nav>
+            <div class="language-bar">
+                <label for="lang-select">🌐</label>
+                <select id="lang-select" onchange="changeLanguage(this.value)">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                </select>
+            </div>
+        </div>
+
+        <header>
+            <h1 id="roster-title">Alliance Roster</h1>
+            <p class="subtitle" id="roster-subtitle">Server 199 • Land of Jail Warriors</p>
+        </header>
+
+        <main>
+            <section class="card">
+                <h2 id="leadership-title">Command Structure</h2>
+                <ul>
+                    <li><strong id="r5-title">R5 Leader:</strong> Gökbörü (975.2M)</li>
+                    <li><strong id="r4-title">R4 Officers:</strong> Darth Hater, Özge, Jaco</li>
+                </ul>
+            </section>
+
+            <section class="card">
+                <h2 id="members-title">Elite Vanguard & Members</h2>
+                <p id="members-desc">Active fighters holding the line in Server 199. Sorted by power, readiness, and battlefield rank.</p>
+                <ul>
+                    <li>ZARD (844.1M)</li>
+                    <li>ATLAS (798.9M)</li>
+                    <li>AslanBey (780.2M)</li>
+                    <li>Ron_A (754.4M)</li>
+                    <li>WTP (734.6M)</li>
+                    <li>kingkit (731.6M)</li>
+                    <li>MORI (612.8M)</li>
+                    <li>Spazz (671.6M)</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p id="footer-text">&copy; 2026 GGE Alliance. All rights reserved on the battlefield.</p>
+        </footer>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                navHome: "Home", navRoster: "Roster", navEvents: "Events", navRules: "Rules",
+                rosterTitle: "Alliance Roster", rosterSubtitle: "Server 199 • Land of Jail Warriors",
+                leadershipTitle: "Command Structure",
+                r5Title: "R5 Leader:", r4Title: "R4 Officers:",
+                membersTitle: "Elite Vanguard & Members",
+                membersDesc: "Active fighters holding the line in Server 199. Sorted by power, readiness, and battlefield rank.",
+                footer: "© 2026 GGE Alliance. All rights reserved on the battlefield."
+            },
+            es: {
+                navHome: "Inicio", navRoster: "Miembros", navEvents: "Eventos", navRules: "Reglas",
+                rosterTitle: "Lista de Miembros", rosterSubtitle: "Servidor 199 • Guerreros de Land of Jail",
+                leadershipTitle: "Estructura de Comando",
+                r5Title: "Líder R5:", r4Title: "Oficiales R4:",
+                membersTitle: "Vanguardia de Élite y Miembros",
+                membersDesc: "Luchadores activos manteniendo la línea en el Servidor 199. Ordenados por poder y rango.",
+                footer: "© 2026 Alianza GGE. Todos los derechos reservados en el campo de batalla."
+            },
+            fr: {
+                navHome: "Accueil", navRoster: "Membres", navEvents: "Événements", navRules: "Règles",
+                rosterTitle: "Liste des Membres", rosterSubtitle: "Serveur 199 • Guerriers de Land of Jail",
+                leadershipTitle: "Structure de Commandement",
+                r5Title: "Chef R5 :", r4Title: "Officiers R4 :",
+                membersTitle: "Avant-garde d'Élite & Membres",
+                membersDesc: "Combattants actifs tenant la ligne sur le Serveur 199.",
+                footer: "© 2026 Alliance GGE. Tous droits réservés sur le champ de bataille."
+            },
+            de: {
+                navHome: "Startseite", navRoster: "Mitglieder", navEvents: "Events", navRules: "Regeln",
+                rosterTitle: "Mitgliederliste", rosterSubtitle: "Server 199 • Land of Jail Krieger",
+                leadershipTitle: "Führungsstruktur",
+                r5Title: "R5 Anführer:", r4Title: "R4 Offiziere:",
+                membersTitle: "Elite-Vanguard & Mitglieder",
+                membersDesc: "Aktive Kämpfer, die die Linie auf Server 199 halten.",
+                footer: "© 2026 GGE Allianz. Alle Rechte auf dem Schlachtfeld vorbehalten."
+            }
+        };
+
+        function changeLanguage(lang) {
+            localStorage.setItem('preferredLang', lang);
+            document.getElementById('nav-home').innerText = translations[lang].navHome;
+            document.getElementById('nav-roster').innerText = translations[lang].navRoster;
+            document.getElementById('nav-events').innerText = translations[lang].navEvents;
+            document.getElementById('nav-rules').innerText = translations[lang].navRules;
+            document.getElementById('roster-title').innerText = translations[lang].rosterTitle;
+            document.getElementById('roster-subtitle').innerText = translations[lang].rosterSubtitle;
+            document.getElementById('leadership-title').innerText = translations[lang].leadershipTitle;
+            document.getElementById('r5-title').innerText = translations[lang].r5Title;
+            document.getElementById('r4-title').innerText = translations[lang].r4Title;
+            document.getElementById('members-title').innerText = translations[lang].membersTitle;
+            document.getElementById('members-desc').innerText = translations[lang].membersDesc;
+            document.getElementById('footer-text').innerText = translations[lang].footer;
+        }
+
+        window.onload = function() {
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang && translations[savedLang]) {
+                document.getElementById('lang-select').value = savedLang;
+                changeLanguage(savedLang);
+            }
+        };
+    </script>
+</body>
+</html>
