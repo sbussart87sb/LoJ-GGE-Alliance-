@@ -9,7 +9,7 @@ const translations = {
         alliancelaws: "Alliance Laws",
         intelLinks: "Intel & Links"
     },
-    de: { // German (Deutsch)
+    de: { // German
         warRoom: "Kriegsraum",
         allianceRoster: "Allianz-Mitglieder",
         heroRoster: "Helden-Liste",
@@ -19,7 +19,7 @@ const translations = {
         alliancelaws: "Allianzgesetze",
         intelLinks: "Informationen & Links"
     },
-    ar: { // Arabic (العربية)
+    ar: { // Arabic
         warRoom: "غرفة الحرب",
         allianceRoster: "قائمة التحالف",
         heroRoster: "قائمة الأبطال",
@@ -111,7 +111,7 @@ const translations = {
     }
 };
 
-// Global Language Handler with persistent storage (remembers user selection via localStorage)
+// Global Language Handler with persistent storage
 function changeLanguage(lang) {
     localStorage.setItem('gge_preferred_lang', lang);
     applyTranslations(lang);
@@ -120,25 +120,20 @@ function changeLanguage(lang) {
 function applyTranslations(lang) {
     const t = translations[lang] || translations['en'];
     
-    // Translate navigation links across your pages
+    // Target only the text node or update text content safely without destroying button styles/emojis
     const mapping = {
-        'nav-war-room': 'warRoom',
-        'nav-alliance-roster': 'allianceRoster',
-        'nav-hero-roster': 'heroRoster',
-        'nav-events': 'events',
-        'nav-alliance-laws': 'alliancelaws',
-        'nav-intel-links': 'intelLinks'
+        'nav-war-room': { key: 'warRoom', icon: '🏠 ' },
+        'nav-alliance-roster': { key: 'allianceRoster', icon: '🛡️ ' },
+        'nav-hero-roster': { key: 'heroRoster', icon: '⚔️ ' },
+        'nav-events': { key: 'events', icon: '📅 ' },
+        'nav-alliance-laws': { key: 'alliancelaws', icon: '📜 ' },
+        'nav-intel-links': { key: 'intelLinks', icon: '🌐 ' }
     };
 
-    for (const [id, key] of Object.entries(mapping)) {
+    for (const [id, info] of Object.entries(mapping)) {
         const el = document.getElementById(id);
-        if (el && t[key]) {
-            el.innerHTML = el.innerHTML.includes('🏠') ? `🏠 ${t[key]}` :
-                           el.innerHTML.includes('🛡️') ? `🛡️ ${t[key]}` :
-                           el.innerHTML.includes('⚔️') ? `⚔️ ${t[key]}` :
-                           el.innerHTML.includes('📅') ? `📅 ${t[key]}` :
-                           el.innerHTML.includes('📜') ? `📜 ${t[key]}` :
-                           el.innerHTML.includes('🌐') ? `🌐 ${t[key]}` : t[key];
+        if (el && t[info.key]) {
+            el.textContent = info.icon + t[info.key];
         }
     }
 }
