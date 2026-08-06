@@ -43,6 +43,24 @@
             font-size: 0.95rem;
         }
 
+        .nav-bar {
+            text-align: center;
+            padding: 1rem;
+            background-color: rgba(26, 29, 36, 0.7);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-bar a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+        }
+
+        .nav-bar a:hover {
+            text-decoration: underline;
+        }
+
         .container {
             max-width: 1200px;
             margin: 2rem auto;
@@ -95,9 +113,14 @@
         <p>Server 199 Tactical Operations & Strategy Hub</p>
     </header>
 
+    <div class="nav-bar">
+        <a href="index.html">Command Hub</a>
+        <a href="roster.html">Roster</a>
+    </div>
+
     <div class="container">
         <!-- Section 1: Command Structure -->
-        div class="card">
+        <div class="card">
             <h2>Command Hierarchy</h2>
             <ul>
                 <li><strong>R5:</strong> Alliance Leader / Supreme Command</li>
