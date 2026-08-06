@@ -1,6 +1,7 @@
 const translations = {
     en: {
-        navHome: "Home", navRoster: "Roster", navEvents: "Events", navRules: "Rules",
+        navHome: "Home / War Room", navRoster: "Alliance Roster", navEvents: "Alliance Events", navRules: "Alliance Laws",
+        menuTitle: "≡ GGE Command ▾",
         homeTitle: "GGE ALLIANCE", homeSubtitle: "Server 199 • Land of Jail",
         warRoomTitle: "The War Room",
         warRoomText: "Welcome, warrior. Blood, steel, and strategy govern these lands. We ride together, we conquer together, and we hold the line against all foes.",
@@ -28,7 +29,8 @@ const translations = {
         footer: "© 2026 GGE Alliance. All rights reserved on the battlefield."
     },
     es: {
-        navHome: "Inicio", navRoster: "Miembros", navEvents: "Eventos", navRules: "Reglas",
+        navHome: "Inicio / Sala de Guerra", navRoster: "Lista de Miembros", navEvents: "Eventos de la Alianza", navRules: "Leyes de la Alianza",
+        menuTitle: "≡ Comando GGE ▾",
         homeTitle: "ALIANZA GGE", homeSubtitle: "Servidor 199 • Land of Jail",
         warRoomTitle: "La Sala de Guerra",
         warRoomText: "Bienvenido, guerrero. La sangre, el acero y la estrategia gobiernan estas tierras. Cabalgamos juntos, conquistamos juntos y mantenemos la línea contra todos los enemigos.",
@@ -56,7 +58,8 @@ const translations = {
         footer: "© 2026 Alianza GGE. Todos los derechos reservados en el campo de batalla."
     },
     fr: {
-        navHome: "Accueil", navRoster: "Membres", navEvents: "Événements", navRules: "Règles",
+        navHome: "Accueil / Salle de Guerre", navRoster: "Liste des Membres", navEvents: "Événements", navRules: "Lois de l'Alliance",
+        menuTitle: "≡ Commande GGE ▾",
         homeTitle: "ALLIANCE GGE", homeSubtitle: "Serveur 199 • Land of Jail",
         warRoomTitle: "La Salle de Guerre",
         warRoomText: "Bienvenue, guerrier. Le sang, l'acier et la stratégie gouvernent ces terres. Nous chevauchons ensemble, nous conquéron ensemble et nous tenons bon face à tous les ennemis.",
@@ -84,7 +87,8 @@ const translations = {
         footer: "© 2026 Alliance GGE. Tous droits réservés sur le champ de bataille."
     },
     de: {
-        navHome: "Startseite", navRoster: "Mitglieder", navEvents: "Events", navRules: "Regeln",
+        navHome: "Startseite / Kriegsraum", navRoster: "Mitgliederliste", navEvents: "Allianz-Events", navRules: "Allianz-Gesetze",
+        menuTitle: "≡ GGE Befehl ▾",
         homeTitle: "GGE ALLIANZ", homeSubtitle: "Server 199 • Land of Jail",
         warRoomTitle: "Das Kriegsraum",
         warRoomText: "Willkommen, Krieger. Blut, Stahl und Strategie regieren diese Ländereien. Wir reiten zusammen, wir erobern zusammen und wir halten die Stellung gegen alle Feinde.",
@@ -112,7 +116,8 @@ const translations = {
         footer: "© 2026 GGE Allianz. Alle Rechte auf dem Schlachtfeld vorbehalten."
     },
     ko: {
-        navHome: "홈", navRoster: "명부", navEvents: "이벤트", navRules: "규칙",
+        navHome: "홈 / 작전실", navRoster: "동맹 명부", navEvents: "동맹 이벤트", navRules: "동맹 법률",
+        menuTitle: "≡ GGE 지휘부 ▾",
         homeTitle: "GGE 동맹", homeSubtitle: "서버 199 • 랜드 오브 제일",
         warRoomTitle: "작전실",
         warRoomText: "전사여, 환영합니다. 피, 강철, 그리고 전략이 이곳을 지배합니다. 우리는 함께 달리며, 함께 정복하고, 모든 적에 맞서 전선을 지킵니다.",
@@ -140,7 +145,8 @@ const translations = {
         footer: "© 2026 GGE 동맹. 전장의 모든 권리 보유."
     },
     tr: {
-        navHome: "Ana Sayfa", navRoster: "Üyeler", navEvents: "Etkinlikler", navRules: "Kurallar",
+        navHome: "Ana Sayfa / Savaş Odası", navRoster: "İttifak Kadrosu", navEvents: "İttifak Etkinlikleri", navRules: "İttifak Kuralları",
+        menuTitle: "≡ GGE Komuta ▾",
         homeTitle: "GGE İTTİFAKI", homeSubtitle: "Sunucu 199 • Land of Jail",
         warRoomTitle: "Savaş Odası",
         warRoomText: "Hoş geldin savaşçı. Kan, çelik ve strateji bu topraklara hükmeder. Birlikte sürer, birlikte fetheder ve tüm düşmanlara karşı hattı tutarız.",
@@ -163,12 +169,13 @@ const translations = {
         codeTitle: "Toprağın Kanunu",
         rule1Title: "Kaynak Koruması:", rule1Text: "İttifak üyelerine veya dost çiftlik karolarına saldırmayın.",
         rule2Title: "Aktif Katılım:", rule2Text: "İttifak etkinliklerine ve savunma çağrarlarına katkıda bulunun.",
-        rule3Title: "Saygı ve Sadakat:", rule3Text: "Savaş ve toprak çatışmaları sırasında R4 ve R5 talimatlarını izleyin.",
+        rule3Title: "Saygı und Sadakat:", rule3Text: "Savaş ve toprak çatışmaları sırasında R4 ve R5 talimatlarını izleyin.",
         
         footer: "© 2026 GGE İttifakı. Savaş alanında tüm hakları saklıdır."
     },
     it: {
-        navHome: "Home", navRoster: "Membri", navEvents: "Eventi", navRules: "Regole",
+        navHome: "Home / Sala della Guerra", navRoster: "Elenco Membri", navEvents: "Eventi dell'Alleanza", navRules: "Leggi dell'Alleanza",
+        menuTitle: "≡ Comando GGE ▾",
         homeTitle: "ALLEANZA GGE", homeSubtitle: "Server 199 • Land of Jail",
         warRoomTitle: "La Sala della Guerra",
         warRoomText: "Benvenuto, guerriero. Sangue, acciaio e strategia governano queste terre. Cavalchiamo insieme, conquistiamo insieme e teniamo la linea contro ogni nemico.",
@@ -196,7 +203,8 @@ const translations = {
         footer: "© 2026 Alleanza GGE. Tutti i diritti riservati sul campo di battaglia."
     },
     la: {
-        navHome: "Domus", navRoster: "Sodales", navEvents: "Eventa", navRules: "Regulae",
+        navHome: "Domus / Cubiculum Belli", navRoster: "Ordo Societatis", navEvents: "Eventa Societatis", navRules: "Leges Societatis",
+        menuTitle: "≡ Imperium GGE ▾",
         homeTitle: "GGE SOCIETAS", homeSubtitle: "Server 199 • Land of Jail",
         warRoomTitle: "Cubiculum Belli",
         warRoomText: "Salve, bellator. Sanguis, ferrum, et consilium has terras gubernant. Una equitamus, una vincimus, et aciem contra omnes hostes tenemus.",
@@ -236,8 +244,26 @@ function applyTranslations(lang) {
 }
 
 window.addEventListener('DOMContentLoaded', function() {
-    const langBar = document.querySelector('.language-bar');
-    if (langBar) {
+    // Inject both the command menu dropdown and the language selector into the top bar automatically
+    const topBar = document.querySelector('.top-bar');
+    if (topBar) {
+        let navContainer = document.createElement('div');
+        navContainer.className = 'dropdown-menu-container';
+        navContainer.innerHTML = `
+            <div class="dropdown">
+                <button class="dropbtn" id="menu-title">≡ GGE Command ▾</button>
+                <div class="dropdown-content">
+                    <a href="index.html" id="navHome">Home / War Room</a>
+                    <a href="roster.html" id="navRoster">Alliance Roster</a>
+                    <a href="events.html" id="navEvents">Alliance Events</a>
+                    <a href="rules.html" id="navRules">Alliance Laws</a>
+                </div>
+            </div>
+        `;
+        topBar.insertBefore(navContainer, topBar.firstChild);
+
+        let langBar = document.createElement('div');
+        langBar.className = 'language-bar';
         langBar.innerHTML = `
             <label for="lang-select">🌐</label>
             <select id="lang-select" onchange="applyTranslations(this.value)">
@@ -251,6 +277,7 @@ window.addEventListener('DOMContentLoaded', function() {
                 <option value="la">Latina</option>
             </select>
         `;
+        topBar.appendChild(langBar);
     }
 
     const savedLang = localStorage.getItem('preferredLang') || 'en';
