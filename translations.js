@@ -31,6 +31,22 @@ const translations = {
         r2Name: "R2 • Cuadro de Veteranos",
         r1Name: "R1 • Reclutas"
     },
+    de: {
+        ggeFlag: "GGE",
+        home: "Startseite",
+        warroom: "Kriegsraum",
+        allianceroster: "Mitglieder",
+        events: "Ereignisse",
+        rules: "Regeln",
+        intelliLinks: "Links",
+        rosterMainTitle: "Allianz-Mitglieder",
+        rosterSubtitle: "Server 199 • GGE Befehlshierarchie & Mitgliederverzeichnis",
+        r5Name: "R5 • Oberstes Kommando",
+        r4Name: "R4 • Führungsoffiziere",
+        r3Name: "R3 • Elite-Vanguard",
+        r2Name: "R2 • Veteranen-Kader",
+        r1Name: "R1 • Rekruten"
+    },
     pt: {
         ggeFlag: "GGE",
         home: "Início",
