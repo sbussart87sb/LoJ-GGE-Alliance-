@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GGE Server 199 - Alliance Events & Operations</title>
+    <title>GGE Server 199 - Cage Fight Tactical Intel</title>
     <style>
         body {
             background: linear-gradient(135deg, #0f141d 0%, #070a0f 100%);
@@ -14,7 +14,6 @@
             display: flex;
             min-height: 100vh;
         }
-        /* Vertical Military Flag Sidebar on the Left */
         .sidebar {
             width: 270px;
             background: #111823;
@@ -29,7 +28,6 @@
             box-shadow: inset -6px 0 15px rgba(0, 0, 0, 0.7);
             z-index: 10;
         }
-        /* GGE Flag Header at the Top */
         .flag-header {
             background: linear-gradient(180deg, #1b2635 0%, #0f141d 100%);
             border: 2px solid #ffcc00;
@@ -70,7 +68,6 @@
             letter-spacing: 0.5px;
             text-align: center;
         }
-        /* Bulky Tactical Navigation Buttons */
         .nav-links {
             display: flex;
             flex-direction: column;
@@ -104,7 +101,6 @@
             border-color: #ffcc00;
             border-left-color: #ffcc00;
         }
-        /* Main Command Content Area shifted right */
         .main-content {
             margin-left: 270px;
             flex: 1;
@@ -114,72 +110,36 @@
             flex-direction: column;
             justify-content: space-between;
         }
-        .events-container {
+        .content-container {
             max-width: 1050px;
             margin: 0 auto;
             width: 100%;
         }
-        .section-title {
-            color: #ffcc00;
-            font-size: 18px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin: 30px 0 15px 0;
-            border-bottom: 2px solid #33445c;
-            padding-bottom: 8px;
-        }
-        /* Tactical Event Cards */
-        .event-card {
+        .intel-card {
             background: #111823;
             border: 1px solid #223042;
             border-top: 3px solid #3b4d66;
             border-radius: 6px;
             padding: 25px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
-        .event-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #223042;
-            padding-bottom: 12px;
-            margin-bottom: 15px;
-        }
-        .event-title {
+        .intel-card h3 {
             color: #ffcc00;
-            font-size: 18px;
+            font-size: 16px;
             text-transform: uppercase;
-            font-weight: bold;
-            margin: 0;
+            margin-top: 0;
+            border-bottom: 1px solid #223042;
+            padding-bottom: 8px;
         }
-        .event-badge {
-            color: #93c5fd;
-            font-size: 12px;
-            font-family: monospace;
-            background: #161f2e;
-            padding: 4px 10px;
-            border: 1px solid #33445c;
-            border-radius: 4px;
-        }
-        .event-details p {
+        .intel-card p, .intel-card li {
             color: #d1d5db;
             font-size: 14px;
             line-height: 1.6;
-            margin: 0 0 10px 0;
         }
-        .event-details ul {
-            margin: 10px 0 20px 0;
+        .intel-card ul {
             padding-left: 20px;
-            color: #d1d5db;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        .event-details li {
-            margin-bottom: 6px;
-        }
-        .event-details strong {
-            color: #ffcc00;
+            margin: 10px 0;
         }
         .alert-box {
             background: rgba(239, 68, 68, 0.1);
@@ -191,7 +151,7 @@
             font-weight: bold;
             font-size: 13.5px;
         }
-        .event-btn {
+        .back-btn {
             display: inline-block;
             background: #1b2635;
             color: #93c5fd;
@@ -203,9 +163,9 @@
             font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            transition: all 0.2s ease;
+            margin-bottom: 20px;
         }
-        .event-btn:hover {
+        .back-btn:hover {
             background: #25344a;
             color: #ffcc00;
             border-color: #ffcc00;
@@ -224,15 +184,11 @@
 </head>
 <body>
 
-    <!-- Vertical Military Flag Sidebar -->
     <aside class="sidebar">
-        <!-- GGE Flag Header -->
         <div class="flag-header">
             <h1 id="ggeFlag">GGE</h1>
         </div>
-
         <div class="sidebar-top">
-            <!-- Language Selector (All 13 Languages) -->
             <select id="languageSelect" onchange="changeLanguage(this.value)">
                 <option value="en">English</option>
                 <option value="es">Español</option>
@@ -248,11 +204,8 @@
                 <option value="it">Italiano</option>
                 <option value="ar">العربية</option>
             </select>
-            <!-- UTC Server Time Clock -->
             <div class="sidebar-clock">UTC: <span id="clock">Loading...</span></div>
         </div>
-
-        <!-- Bulky Tactical Navigation Buttons with Events Active -->
         <nav class="nav-links">
             <a href="index.html" id="home">Home</a>
             <a href="war-room.html" id="warroom">War Room</a>
@@ -264,54 +217,46 @@
         </nav>
     </aside>
 
-    <!-- Main Command Interface -->
-    <main class="main-content">
-        <div class="events-container">
-            <h1 id="eventsMainTitle" style="text-align: center; color: #f9fafb; text-transform: uppercase; letter-spacing: 2px; font-size: 24px; margin-bottom: 5px;">Alliance Combat Operations & Events</h1>
-            <p id="eventsSubtitle" style="text-align: center; color: #9ca3af; margin-bottom: 30px; font-size: 13px; letter-spacing: 0.5px;">Server 199 • Tactical Directives & Active Battle Schedules</p>
+    <div class="main-content">
+        <main class="content-container">
+            <a href="events.html" class="back-btn">&larr; Back to Events Overview</a>
+            
+            <h1 style="color: #f9fafb; text-transform: uppercase; letter-spacing: 2px; font-size: 24px; margin-bottom: 5px;">Cage Fight Master Intel</h1>
+            <p style="color: #9ca3af; margin-bottom: 25px; font-size: 13px;">Server 199 • Advanced Combat & Deployment Breakdowns</p>
 
-            <!-- Cage Fight Event Card -->
-            <div class="event-card">
-                <div class="event-header">
-                    <h2 class="event-title">🥊 Cage Fight Operations</h2>
-                    <span class="event-badge">Active Rotation</span>
-                </div>
-                <div class="event-details">
-                    <p><strong>Rotation Schedule:</strong> Ran every other day; timing rotates and changes weekly.</p>
-                    <p><strong>Deployment Times (Server Time):</strong></p>
-                    <ul>
-                        <li><strong>Cage 1:</strong> 13:10 ST</li>
-                        <li><strong>Cage 2:</strong> 16:10 ST</li>
-                    </ul>
-                    <p><strong>Troop Ratio Protocols (100k Standard):</strong> We are currently testing the 100k ratio for troops at <strong>0 / 20,000 / 80,000</strong>.</p>
-                    <p><strong>Personal Rallies:</strong> When running your own rallies, we request maintaining the exact <strong>0 / 20% / 80%</strong> configuration.</p>
-                    
-                    <div class="alert-box">
-                        ⚠️ DIRECT ORDER: Never run Shields during the Cage Fight event! Keep lines open and active.
-                    </div>
-                </div>
-                <a href="cage-fight.html" class="event-btn">Open Cage Fight Intel Hub</a>
+            <div class="intel-card">
+                <h3>🥊 Event Execution & Timing Protocol</h3>
+                <p>Cage Fight operations run on an alternating schedule that shifts weekly. Commanders must check active rotation notices in leadership channels to confirm daily slots.</p>
+                <ul>
+                    <li><strong>Cage 1 Window:</strong> 13:10 Server Time (ST)</li>
+                    <li><strong>Cage 2 Window:</strong> 16:10 Server Time (ST)</li>
+                </ul>
             </div>
 
-            <!-- Terminal Siege Event Card -->
-            <div class="event-card">
-                <div class="event-header">
-                    <h2 class="event-title">🛡️ Terminal Siege Operations</h2>
-                    <span class="event-badge">Tactical Defense</span>
+            <div class="intel-card">
+                <h3>🛡️ Standardized Troop Ratios & Directives</h3>
+                <p>To maximize damage scaling and ensure frontline integrity during alliance-wide cage battles, all participating squads are configured to the optimized standard layout:</p>
+                <ul>
+                    <li><strong>Shields:</strong> 0% (Strictly Prohibited)</li>
+                    <li><strong>Grenadiers / Bombers:</strong> 20,000 troops (20%)</li>
+                    <li><strong>Shooters:</strong> 80,000 troops (80%)</li>
+                </ul>
+                <div class="alert-box">
+                    ⚠️ MANDATORY DIRECTIVE: Never run Shields during the Cage Fight event! Keep lines open and active.
                 </div>
-                <div class="event-details">
-                    <p>Coordinate wave defenses, fortification support, and allied reinforcement lanes through leadership channels.</p>
-                </div>
-                <a href="terminal-siege.html" class="event-btn">Open Terminal Siege Intel Hub</a>
             </div>
-        </div>
+
+            <div class="intel-card">
+                <h3>📋 Solo Rally Guidelines</h3>
+                <p>When initiating or commanding your own independent rallies outside of primary alliance coordination blocks, commanders are requested to strictly maintain the identical <strong>0% Shields / 20% Grenadiers / 80% Shooters</strong> configuration to preserve damage output consistency.</p>
+            </div>
+        </main>
 
         <footer>
             GGE Server 199 Tactical Command Time Clock: <span id="bottomClock">Loading...</span>
         </footer>
-    </main>
+    </div>
 
-    <!-- Scripts -->
     <script>
         function updateServerTime() {
             const now = new Date();
@@ -323,37 +268,6 @@
         }
         setInterval(updateServerTime, 1000);
         updateServerTime();
-
-        // 13-Language Dynamic Text Translation Support
-        const translations = {
-            en: { home: "Home", warroom: "War Room", allianceroster: "Roster", heroroster: "Hero", events: "Events", rules: "Rules", intelliLinks: "Links", eventsMainTitle: "Alliance Combat Operations & Events", eventsSubtitle: "Server 199 • Tactical Directives & Active Battle Schedules" },
-            es: { home: "Inicio", warroom: "Sala de Guerra", allianceroster: "Lista", heroroster: "Héroe", events: "Eventos", rules: "Reglas", intelliLinks: "Enlaces", eventsMainTitle: "Operaciones de Combate y Eventos", eventsSubtitle: "Servidor 199 • Directivas Tácticas y Horarios" },
-            de: { home: "Startseite", warroom: "Kriegsraum", allianceroster: "Kader", heroroster: "Held", events: "Ereignisse", rules: "Regeln", intelliLinks: "Links", eventsMainTitle: "Allianz-Kampfeinsätze", eventsSubtitle: "Server 199 • Taktische Richtlinien & Zeitpläne" },
-            pl: { home: "Start", warroom: "Pokój Bojowy", allianceroster: "Skład", heroroster: "Bohater", events: "Wydarzenia", rules: "Zasady", intelliLinks: "Linki", eventsMainTitle: "Operacje Bojowe Sojuszu", eventsSubtitle: "Serwer 199 • Dyrektywy Taktyczne" },
-            fr: { home: "Accueil", warroom: "Salle de Guerre", allianceroster: "Effectif", heroroster: "Héros", events: "Événements", rules: "Règles", intelliLinks: "Liens", eventsMainTitle: "Opérations de Combat", eventsSubtitle: "Serveur 199 • Directives Tactiques" },
-            nl: { home: "Thuis", warroom: "Oorlogskamer", allianceroster: "Rooster", heroroster: "Held", events: "Evenementen", rules: "Regels", intelliLinks: "Links", eventsMainTitle: "Alliantie Gevechtsoperaties", eventsSubtitle: "Server 199 • Tactische Richtlijnen" },
-            pt: { home: "Início", warroom: "Sala de Guerra", allianceroster: "Elenco", heroroster: "Herói", events: "Eventos", rules: "Regras", intelliLinks: "Links", eventsMainTitle: "Operações de Combate", eventsSubtitle: "Servidor 199 • Diretrizes Táticas" },
-            la: { home: "Domus", warroom: "Cubiculum Belli", allianceroster: "Index", heroroster: "Heros", events: "Eventa", rules: "Regulae", intelliLinks: "Nexus", eventsMainTitle: "Operationes Pugnae", eventsSubtitle: "Servulus 199 • Praecepta Tacticus" },
-            ko: { home: "홈", warroom: "상상실", allianceroster: "명단", heroroster: "영웅", events: "이벤트", rules: "규칙", intelliLinks: "링크", eventsMainTitle: "동맹 전투 작전 및 이벤트", eventsSubtitle: "서버 199 • 전술 지침 및 일정" },
-            tr: { home: "Ana Sayfa", warroom: "Savaş Odası", allianceroster: "Kadro", heroroster: "Kahraman", events: "Etkinlikler", rules: "Kurallar", intelliLinks: "Bağlantılar", eventsMainTitle: "İttifak Savaş Operasyonları", eventsSubtitle: "Sunucu 199 • Taktiksel Talimatlar" },
-            ru: { home: "Главная", warroom: "Военный зал", allianceroster: "Состав", heroroster: "Герой", events: "События", rules: "Правила", intelliLinks: "Ссылки", eventsMainTitle: "Боевые операции альянса", eventsSubtitle: "Сервер 199 • Тактические директивы" },
-            it: { home: "Home", warroom: "Stanza di Guerra", allianceroster: "Roster", heroroster: "Eroe", events: "Eventi", rules: "Regole", intelliLinks: "Link", eventsMainTitle: "Operazioni di Combattimento", eventsSubtitle: "Server 199 • Direttive Tattiche" },
-            ar: { home: "الرئيسية", warroom: "غرفة الحرب", allianceroster: "القائمة", heroroster: "البطل", events: "الفعاليات", rules: "القواعد", intelliLinks: "الروابط", eventsMainTitle: "عمليات القتال والفعاليات", eventsSubtitle: "الخادم 199 • التوجيهات التكتيكية" }
-        };
-
-        function changeLanguage(lang) {
-            const t = translations[lang];
-            if (!t) return;
-            document.getElementById('home').innerText = t.home;
-            document.getElementById('warroom').innerText = t.warroom;
-            document.getElementById('allianceroster').innerText = t.allianceroster;
-            document.getElementById('heroroster').innerText = t.heroroster;
-            document.getElementById('events').innerText = t.events;
-            document.getElementById('rules').innerText = t.rules;
-            document.getElementById('intelliLinks').innerText = t.intelliLinks;
-            document.getElementById('eventsMainTitle').innerText = t.eventsMainTitle;
-            document.getElementById('eventsSubtitle').innerText = t.eventsSubtitle;
-        }
     </script>
 </body>
 </html>
