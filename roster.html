@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GGE Server 199 - Alliance Roster</title>
+    <title>GGE Server 199 - Hero Directory</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -187,31 +187,32 @@
         </div>
 
         <div class="sidebar-top">
-            <!-- Language Selector -->
+            <!-- Language Selector (All 13 Languages) -->
             <select id="languageSelect" onchange="changeLanguage(this.value)">
                 <option value="en">English</option>
                 <option value="es">Español</option>
                 <option value="de">Deutsch</option>
+                <option value="pl">Polski</option>
+                <option value="fr">Français</option>
+                <option value="nl">Nederlands</option>
                 <option value="pt">Português</option>
                 <option value="la">Latina</option>
                 <option value="ko">한국어</option>
-                <option value="ar">العربية</option>
                 <option value="tr">Türkçe</option>
-                <option value="pl">Polski</option>
-                <option value="nl">Nederlands</option>
-                <option value="fr">Français</option>
                 <option value="ru">Русский</option>
                 <option value="it">Italiano</option>
+                <option value="ar">العربية</option>
             </select>
             <!-- UTC Server Time Clock -->
             <div class="sidebar-clock">UTC: <span id="clock">Loading...</span></div>
         </div>
 
-        <!-- Bulky Tactical Navigation Buttons (No Cage or Terminal) -->
+        <!-- Bulky Tactical Navigation Buttons with Hero Active -->
         <nav class="nav-links">
             <a href="index.html" id="home">Home</a>
             <a href="war-room.html" id="warroom">War Room</a>
-            <a href="roster.html" id="allianceroster" class="active">Roster</a>
+            <a href="roster.html" id="allianceroster">Roster</a>
+            <a href="hero.html" id="heroroster" class="active">Hero</a>
             <a href="events.html" id="events">Events</a>
             <a href="rules.html" id="rules">Rules</a>
             <a href="links.html" id="intelliLinks">Links</a>
@@ -221,38 +222,28 @@
     <!-- Main Command Interface -->
     <div class="main-content">
         <main class="roster-container">
-            <h1 id="rosterMainTitle" style="text-align: center; color: #f9fafb; text-transform: uppercase; letter-spacing: 2px; font-size: 24px; margin-bottom: 5px;">Alliance Roster</h1>
-            <p id="rosterSubtitle" style="text-align: center; color: #9ca3af; margin-bottom: 30px; font-size: 13px; letter-spacing: 0.5px;">Server 199 • GGE Command Hierarchy & Member Directory</p>
+            <h1 id="heroMainTitle" style="text-align: center; color: #f9fafb; text-transform: uppercase; letter-spacing: 2px; font-size: 24px; margin-bottom: 5px;">Alliance Heroes</h1>
+            <p id="heroSubtitle" style="text-align: center; color: #9ca3af; margin-bottom: 30px; font-size: 13px; letter-spacing: 0.5px;">Server 199 • GGE Commander & Hero Loadout Directory</p>
 
-            <!-- R5 -->
+            <!-- Commander / Legendary Tier -->
             <div class="rank-section">
                 <div class="rank-header">
-                    <h2 id="r5Name">R5 • Supreme Command</h2>
-                    <div class="rank-stats">👑 1/1</div>
+                    <h2 id="heroTier1">Legendary Commanders</h2>
+                    <div class="rank-stats">⭐ Core</div>
                 </div>
                 <ul class="name-list">
                     <li>Gökbörü</li>
-                </ul>
-            </div>
-
-            <!-- R4 -->
-            <div class="rank-section">
-                <div class="rank-header">
-                    <h2 id="r4Name">R4 • Command Officers</h2>
-                    <div class="rank-stats">3/3</div>
-                </div>
-                <ul class="name-list">
                     <li>Darth Hater</li>
                     <li>Özge</li>
                     <li>jaco</li>
                 </ul>
             </div>
 
-            <!-- R3 -->
+            <!-- Vanguard Tier -->
             <div class="rank-section">
                 <div class="rank-header">
-                    <h2 id="r3Name">R3 • Elite Vanguard</h2>
-                    <div class="rank-stats">⚔️ 45/58</div>
+                    <h2 id="heroTier2">Vanguard Champions</h2>
+                    <div class="rank-stats">⚔️ Elite</div>
                 </div>
                 <ul class="name-list">
                     <li>Hand of God</li>
@@ -265,6 +256,16 @@
                     <li>ATLAS</li>
                     <li>AsanBey</li>
                     <li>Ron_A</li>
+                </ul>
+            </div>
+
+            <!-- Tactical Support Tier -->
+            <div class="rank-section">
+                <div class="rank-header">
+                    <h2 id="heroTier3">Tactical Specialists</h2>
+                    <div class="rank-stats">🛡️ Support</div>
+                </div>
+                <ul class="name-list">
                     <li>WTP</li>
                     <li>FIRLAMA</li>
                     <li>HAKAN</li>
@@ -275,85 +276,6 @@
                     <li>Veri</li>
                     <li>Yachiru Unohana</li>
                     <li>Brad Pitt</li>
-                    <li>Scarlatti</li>
-                    <li>loli</li>
-                    <li>CoJ</li>
-                    <li>Queenbaby1cheta</li>
-                    <li>Smaugg</li>
-                    <li>steffi</li>
-                    <li>eselu</li>
-                    <li>Reis</li>
-                    <li>Okan</li>
-                    <li>PumpkinPile</li>
-                    <li>Muhammad Bilal</li>
-                    <li>Jaserin</li>
-                    <li>Night Fury</li>
-                    <li>elChapo</li>
-                    <li>FénixDePlata</li>
-                    <li>Solomon</li>
-                    <li>Poison</li>
-                    <li>Franzua</li>
-                    <li>Jess</li>
-                    <li>Teddy Bear</li>
-                    <li>Valki</li>
-                    <li>Vodka</li>
-                    <li>Steppenwolf</li>
-                    <li>Vapking_Bzh</li>
-                    <li>bluedream</li>
-                </ul>
-            </div>
-
-            <!-- R2 -->
-            <div class="rank-section">
-                <div class="rank-header">
-                    <h2 id="r2Name">R2 • Veteran Cadre</h2>
-                    <div class="rank-stats">⭐ 29/29</div>
-                </div>
-                <ul class="name-list">
-                    <li>Ratchet</li>
-                    <li>S4M43L</li>
-                    <li>Bumblebee</li>
-                    <li>ELKC2025</li>
-                    <li>Monster</li>
-                    <li>쿵상이</li>
-                    <li>Amr</li>
-                    <li>Buzzy</li>
-                    <li>Türk</li>
-                    <li>F B I</li>
-                    <li>Gautlieri</li>
-                    <li>Ardamanya61</li>
-                    <li>Mr_JhonNeci</li>
-                    <li>KingDangeranger</li>
-                    <li>Xo_smiling</li>
-                    <li>DebatinAtom</li>
-                    <li>Wolverine</li>
-                    <li>Blitz195</li>
-                    <li>Whisky</li>
-                    <li>cypriot93</li>
-                    <li>JOHNICK003</li>
-                    <li>khadeja</li>
-                    <li>Sherif</li>
-                    <li>Ahmet</li>
-                    <li>PaintedBrute 01</li>
-                    <li>Viuva Negra37</li>
-                    <li>yanivjun</li>
-                    <li>JewelRider</li>
-                    <li>Aisha</li>
-                </ul>
-            </div>
-
-            <!-- R1 -->
-            <div class="rank-section">
-                <div class="rank-header">
-                    <h2 id="r1Name">R1 • Recruits</h2>
-                    <div class="rank-stats">♦️ 5/5</div>
-                </div>
-                <ul class="name-list">
-                    <li>Palestinian</li>
-                    <li>HôRus</li>
-                    <li>Kayra</li>
-                    <li>Osterhase</li>
-                    <li>LunarVex</li>
                 </ul>
             </div>
         </main>
