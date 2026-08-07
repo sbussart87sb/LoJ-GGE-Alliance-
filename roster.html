@@ -25,20 +25,31 @@
             padding: 15px 20px;
             margin-bottom: 20px;
         }
-        .rank-section h2 {
-            color: #ffcc00;
-            font-size: 18px;
+        .rank-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             border-bottom: 1px solid #30363d;
             padding-bottom: 8px;
             margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .rank-header h2 {
+            color: #ffcc00;
+            font-size: 18px;
+            margin: 0;
+        }
+        .rank-stats {
+            color: #8b949e;
+            font-size: 14px;
         }
         .name-list {
             list-style-type: none;
             padding-left: 0;
-            margin: 10px 0 0 0;
+            margin: 0;
         }
         .name-list li {
-            padding: 6px 0;
+            padding: 8px 0;
             border-bottom: 1px solid #21262d;
             font-size: 15px;
         }
@@ -52,39 +63,47 @@
     <!-- Top Navigation & Utility Bar -->
     <header class="top-nav-bar" style="background: #161b22; padding: 15px; border-bottom: 1px solid #30363d; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
         <div class="nav-links" style="display: flex; gap: 15px; flex-wrap: wrap;">
-            <a href="index.html" style="color: #c9d1d9; text-decoration: none;">War Room</a>
-            <a href="roster.html" style="color: #ffcc00; text-decoration: none; font-weight: bold;">Roster</a>
-            <a href="hero.html" style="color: #c9d1d9; text-decoration: none;">Hero</a>
-            <a href="events.html" style="color: #c9d1d9; text-decoration: none;">Events</a>
-            <a href="cage.html" style="color: #c9d1d9; text-decoration: none;">Cage Fight</a>
-            <a href="terminal.html" style="color: #c9d1d9; text-decoration: none;">Terminal Siege</a>
-            <a href="rules.html" style="color: #c9d1d9; text-decoration: none;">Rules</a>
-            <a href="links.html" style="color: #c9d1d9; text-decoration: none;">Links</a>
+            <a href="index.html" id="home" style="color: #c9d1d9; text-decoration: none;">Home</a>
+            <a href="war-room.html" id="warroom" style="color: #c9d1d9; text-decoration: none;">War Room</a>
+            <a href="roster.html" id="allianceroster" style="color: #ffcc00; text-decoration: none; font-weight: bold;">Roster</a>
+            <a href="hero.html" id="heroroster" style="color: #c9d1d9; text-decoration: none;">Hero</a>
+            <a href="events.html" id="events" style="color: #c9d1d9; text-decoration: none;">Events</a>
+            <a href="cage.html" id="cagefight" style="color: #c9d1d9; text-decoration: none;">Cage Fight</a>
+            <a href="terminal.html" id="terminalsiege" style="color: #c9d1d9; text-decoration: none;">Terminal Siege</a>
+            <a href="rules.html" id="rules" style="color: #c9d1d9; text-decoration: none;">Rules</a>
+            <a href="links.html" id="intelliLinks" style="color: #c9d1d9; text-decoration: none;">Links</a>
         </div>
         
         <div class="nav-utilities" style="display: flex; gap: 20px; align-items: center;">
             <!-- Server Time Display -->
             <div id="serverTime" style="color: #8b949e; font-size: 13px;">UTC Time: <span id="clock">Loading...</span></div>
             
-            <!-- Language Selector Bar -->
+            <!-- Language Selector Bar (All 9 Languages) -->
             <select id="languageSelect" onchange="changeLanguage(this.value)" style="background: #21262d; color: #c9d1d9; border: 1px solid #30363d; padding: 5px; border-radius: 4px;">
                 <option value="en">English</option>
-                <option value="pl">Polski</option>
-                <option value="de">Deutsch</option>
+                <option value="es">Español</option>
+                <option value="ru">Русский</option>
+                <option value="la">Latina</option>
+                <option value="ko">한국어</option>
                 <option value="ar">العربية</option>
-                <option value="el">Ελληνικά</option>
+                <option value="de">Deutsch</option>
+                <option value="pl">Polski</option>
+                <option value="tr">Türkçe</option>
             </select>
         </div>
     </header>
 
     <!-- Main Content Area: Alliance Roster -->
     <main class="roster-container">
-        <h1 style="text-align: center; color: #ffffff;">Alliance Roster</h1>
-        <p style="text-align: center; color: #8b949e; margin-bottom: 30px;">Server 199 • GGE Command Hierarchy & Member Directory</p>
+        <h1 id="rosterMainTitle" style="text-align: center; color: #ffffff;">Alliance Roster</h1>
+        <p id="rosterSubtitle" style="text-align: center; color: #8b949e; margin-bottom: 30px;">Server 199 • GGE Command Hierarchy & Member Directory</p>
 
         <!-- R5 -->
         <div class="rank-section">
-            <h2>R5 • Supreme Command</h2>
+            <div class="rank-header">
+                <h2 id="r5Name">R5 • Supreme Command</h2>
+                <div class="rank-stats">👑 1/1</div>
+            </div>
             <ul class="name-list">
                 <li>Gökbörü</li>
             </ul>
@@ -92,7 +111,10 @@
 
         <!-- R4 -->
         <div class="rank-section">
-            <h2>R4 • Command Officers</h2>
+            <div class="rank-header">
+                <h2 id="r4Name">R4 • Command Officers</h2>
+                <div class="rank-stats">3/3</div>
+            </div>
             <ul class="name-list">
                 <li>Darth Hater</li>
                 <li>Özge</li>
@@ -102,7 +124,10 @@
 
         <!-- R3 -->
         <div class="rank-section">
-            <h2>R3 • Elite Vanguard</h2>
+            <div class="rank-header">
+                <h2 id="r3Name">R3 • Elite Vanguard</h2>
+                <div class="rank-stats">⚔️ 45/58</div>
+            </div>
             <ul class="name-list">
                 <li>Hand of God</li>
                 <li>kingkit</li>
@@ -154,7 +179,10 @@
 
         <!-- R2 -->
         <div class="rank-section">
-            <h2>R2 • Veteran Cadre</h2>
+            <div class="rank-header">
+                <h2 id="r2Name">R2 • Veteran Cadre</h2>
+                <div class="rank-stats">⭐ 29/29</div>
+            </div>
             <ul class="name-list">
                 <li>Ratchet</li>
                 <li>S4M43L</li>
@@ -190,7 +218,10 @@
 
         <!-- R1 -->
         <div class="rank-section">
-            <h2>R1 • Recruits</h2>
+            <div class="rank-header">
+                <h2 id="r1Name">R1 • Recruits</h2>
+                <div class="rank-stats">♦️ 5/5</div>
+            </div>
             <ul class="name-list">
                 <li>Palestinian</li>
                 <li>HôRus</li>
