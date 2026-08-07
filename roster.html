@@ -7,242 +7,372 @@
     <link rel="stylesheet" href="style.css">
     <style>
         body {
-            background-color: #0d1117;
-            color: #c9d1d9;
-            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0f141d 0%, #070a0f 100%);
+            color: #d1d5db;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+        /* Vertical Military Flag Sidebar on the Left */
+        .sidebar {
+            width: 270px;
+            background: #111823;
+            border-right: 3px solid #33445c;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: fixed;
+            height: 100vh;
+            box-sizing: border-box;
+            box-shadow: inset -6px 0 15px rgba(0, 0, 0, 0.7);
+        }
+        /* GGE Flag Header at the Top */
+        .flag-header {
+            background: linear-gradient(180deg, #1b2635 0%, #0f141d 100%);
+            border: 2px solid #ffcc00;
+            border-radius: 6px;
+            text-align: center;
+            padding: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        .flag-header h1 {
+            color: #ffcc00;
+            font-size: 26px;
+            margin: 0;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            font-weight: 900;
+        }
+        .sidebar-top {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border-bottom: 1px solid #223042;
+            padding-bottom: 15px;
+        }
+        .sidebar select {
+            background: #1b2635;
+            color: #e5e7eb;
+            border: 2px solid #33445c;
+            padding: 10px;
+            border-radius: 6px;
+            width: 100%;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .sidebar-clock {
+            color: #93c5fd;
+            font-size: 12px;
+            font-family: monospace;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+        /* Bulky Tactical Navigation Buttons */
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .nav-links a {
+            color: #f3f4f6;
+            text-decoration: none;
+            padding: 14px 18px;
+            border-radius: 6px;
+            background: #1b2635;
+            border: 2px solid #33445c;
+            border-left: 6px solid #475569;
+            transition: all 0.2s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-align: center;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+        }
+        .nav-links a:hover {
+            background: #25344a;
+            border-color: #93c5fd;
+            border-left-color: #93c5fd;
+            transform: translateY(-1px);
+        }
+        .nav-links a.active {
+            background: #223042;
+            color: #ffcc00;
+            border-color: #ffcc00;
+            border-left-color: #ffcc00;
+        }
+        /* Main Command Content Area shifted right */
+        .main-content {
+            margin-left: 270px;
+            flex: 1;
+            padding: 30px 50px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .roster-container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 20px;
+            max-width: 950px;
+            margin: 0 auto;
+            width: 100%;
         }
+        /* Tactical Armor Panels */
         .rank-section {
-            background: #161b22;
-            border: 1px solid #30363d;
+            background: #111823;
+            border: 1px solid #223042;
+            border-top: 3px solid #3b4d66;
             border-radius: 6px;
-            padding: 15px 20px;
+            padding: 18px 22px;
             margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
         .rank-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #30363d;
-            padding-bottom: 8px;
+            border-bottom: 1px solid #223042;
+            padding-bottom: 10px;
             margin-top: 0;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         .rank-header h2 {
             color: #ffcc00;
-            font-size: 18px;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin: 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         .rank-stats {
-            color: #8b949e;
-            font-size: 14px;
+            color: #9ca3af;
+            font-size: 13px;
+            font-family: monospace;
         }
         .name-list {
             list-style-type: none;
             padding-left: 0;
             margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 8px 15px;
         }
         .name-list li {
-            padding: 8px 0;
-            border-bottom: 1px solid #21262d;
-            font-size: 15px;
+            padding: 6px 0;
+            border-bottom: 1px dashed #1b2635;
+            font-size: 14px;
+            color: #e5e7eb;
         }
-        .name-list li:last-child {
-            border-bottom: none;
+        footer {
+            text-align: center;
+            color: #6b7280;
+            font-size: 12px;
+            border-top: 1px solid #223042;
+            padding-top: 15px;
+            margin-top: 40px;
+            font-family: monospace;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Navigation & Utility Bar -->
-    <header class="top-nav-bar" style="background: #161b22; padding: 15px; border-bottom: 1px solid #30363d; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-        <div class="nav-links" style="display: flex; gap: 15px; flex-wrap: wrap;">
-            <a href="index.html" id="home" style="color: #c9d1d9; text-decoration: none;">Home</a>
-            <a href="war-room.html" id="warroom" style="color: #c9d1d9; text-decoration: none;">War Room</a>
-            <a href="roster.html" id="allianceroster" style="color: #ffcc00; text-decoration: none; font-weight: bold;">Roster</a>
-            <a href="hero.html" id="heroroster" style="color: #c9d1d9; text-decoration: none;">Hero</a>
-            <a href="events.html" id="events" style="color: #c9d1d9; text-decoration: none;">Events</a>
-            <a href="cage.html" id="cagefight" style="color: #c9d1d9; text-decoration: none;">Cage Fight</a>
-            <a href="terminal.html" id="terminalsiege" style="color: #c9d1d9; text-decoration: none;">Terminal Siege</a>
-            <a href="rules.html" id="rules" style="color: #c9d1d9; text-decoration: none;">Rules</a>
-            <a href="links.html" id="intelliLinks" style="color: #c9d1d9; text-decoration: none;">Links</a>
+    <!-- Vertical Military Flag Sidebar -->
+    <aside class="sidebar">
+        <!-- GGE Flag Header -->
+        <div class="flag-header">
+            <h1 id="ggeFlag">GGE</h1>
         </div>
-        
-        <div class="nav-utilities" style="display: flex; gap: 20px; align-items: center;">
-            <!-- Server Time Display -->
-            <div id="serverTime" style="color: #8b949e; font-size: 13px;">UTC Time: <span id="clock">Loading...</span></div>
-            
-            <!-- Language Selector Bar (All 9 Languages) -->
-            <select id="languageSelect" onchange="changeLanguage(this.value)" style="background: #21262d; color: #c9d1d9; border: 1px solid #30363d; padding: 5px; border-radius: 4px;">
+
+        <div class="sidebar-top">
+            <!-- Language Selector -->
+            <select id="languageSelect" onchange="changeLanguage(this.value)">
                 <option value="en">English</option>
                 <option value="es">Español</option>
-                <option value="ru">Русский</option>
+                <option value="de">Deutsch</option>
+                <option value="pt">Português</option>
                 <option value="la">Latina</option>
                 <option value="ko">한국어</option>
                 <option value="ar">العربية</option>
-                <option value="de">Deutsch</option>
-                <option value="pl">Polski</option>
                 <option value="tr">Türkçe</option>
+                <option value="pl">Polski</option>
+                <option value="nl">Nederlands</option>
+                <option value="fr">Français</option>
+                <option value="ru">Русский</option>
+                <option value="it">Italiano</option>
             </select>
+            <!-- UTC Server Time Clock -->
+            <div class="sidebar-clock">UTC: <span id="clock">Loading...</span></div>
         </div>
-    </header>
 
-    <!-- Main Content Area: Alliance Roster -->
-    <main class="roster-container">
-        <h1 id="rosterMainTitle" style="text-align: center; color: #ffffff;">Alliance Roster</h1>
-        <p id="rosterSubtitle" style="text-align: center; color: #8b949e; margin-bottom: 30px;">Server 199 • GGE Command Hierarchy & Member Directory</p>
+        <!-- Bulky Tactical Navigation Buttons (No Cage or Terminal) -->
+        <nav class="nav-links">
+            <a href="index.html" id="home">Home</a>
+            <a href="war-room.html" id="warroom">War Room</a>
+            <a href="roster.html" id="allianceroster" class="active">Roster</a>
+            <a href="events.html" id="events">Events</a>
+            <a href="rules.html" id="rules">Rules</a>
+            <a href="links.html" id="intelliLinks">Links</a>
+        </nav>
+    </aside>
 
-        <!-- R5 -->
-        <div class="rank-section">
-            <div class="rank-header">
-                <h2 id="r5Name">R5 • Supreme Command</h2>
-                <div class="rank-stats">👑 1/1</div>
+    <!-- Main Command Interface -->
+    <div class="main-content">
+        <main class="roster-container">
+            <h1 id="rosterMainTitle" style="text-align: center; color: #f9fafb; text-transform: uppercase; letter-spacing: 2px; font-size: 24px; margin-bottom: 5px;">Alliance Roster</h1>
+            <p id="rosterSubtitle" style="text-align: center; color: #9ca3af; margin-bottom: 30px; font-size: 13px; letter-spacing: 0.5px;">Server 199 • GGE Command Hierarchy & Member Directory</p>
+
+            <!-- R5 -->
+            <div class="rank-section">
+                <div class="rank-header">
+                    <h2 id="r5Name">R5 • Supreme Command</h2>
+                    <div class="rank-stats">👑 1/1</div>
+                </div>
+                <ul class="name-list">
+                    <li>Gökbörü</li>
+                </ul>
             </div>
-            <ul class="name-list">
-                <li>Gökbörü</li>
-            </ul>
-        </div>
 
-        <!-- R4 -->
-        <div class="rank-section">
-            <div class="rank-header">
-                <h2 id="r4Name">R4 • Command Officers</h2>
-                <div class="rank-stats">3/3</div>
+            <!-- R4 -->
+            <div class="rank-section">
+                <div class="rank-header">
+                    <h2 id="r4Name">R4 • Command Officers</h2>
+                    <div class="rank-stats">3/3</div>
+                </div>
+                <ul class="name-list">
+                    <li>Darth Hater</li>
+                    <li>Özge</li>
+                    <li>jaco</li>
+                </ul>
             </div>
-            <ul class="name-list">
-                <li>Darth Hater</li>
-                <li>Özge</li>
-                <li>jaco</li>
-            </ul>
-        </div>
 
-        <!-- R3 -->
-        <div class="rank-section">
-            <div class="rank-header">
-                <h2 id="r3Name">R3 • Elite Vanguard</h2>
-                <div class="rank-stats">⚔️ 45/58</div>
+            <!-- R3 -->
+            <div class="rank-section">
+                <div class="rank-header">
+                    <h2 id="r3Name">R3 • Elite Vanguard</h2>
+                    <div class="rank-stats">⚔️ 45/58</div>
+                </div>
+                <ul class="name-list">
+                    <li>Hand of God</li>
+                    <li>kingkit</li>
+                    <li>Spazz</li>
+                    <li>Corgi</li>
+                    <li>AppleCrumble</li>
+                    <li>Killua</li>
+                    <li>ZARD</li>
+                    <li>ATLAS</li>
+                    <li>AsanBey</li>
+                    <li>Ron_A</li>
+                    <li>WTP</li>
+                    <li>FIRLAMA</li>
+                    <li>HAKAN</li>
+                    <li>Eclipse</li>
+                    <li>Sith_Jk8</li>
+                    <li>ZenZey</li>
+                    <li>ScorpX</li>
+                    <li>Veri</li>
+                    <li>Yachiru Unohana</li>
+                    <li>Brad Pitt</li>
+                    <li>Scarlatti</li>
+                    <li>loli</li>
+                    <li>CoJ</li>
+                    <li>Queenbaby1cheta</li>
+                    <li>Smaugg</li>
+                    <li>steffi</li>
+                    <li>eselu</li>
+                    <li>Reis</li>
+                    <li>Okan</li>
+                    <li>PumpkinPile</li>
+                    <li>Muhammad Bilal</li>
+                    <li>Jaserin</li>
+                    <li>Night Fury</li>
+                    <li>elChapo</li>
+                    <li>FénixDePlata</li>
+                    <li>Solomon</li>
+                    <li>Poison</li>
+                    <li>Franzua</li>
+                    <li>Jess</li>
+                    <li>Teddy Bear</li>
+                    <li>Valki</li>
+                    <li>Vodka</li>
+                    <li>Steppenwolf</li>
+                    <li>Vapking_Bzh</li>
+                    <li>bluedream</li>
+                </ul>
             </div>
-            <ul class="name-list">
-                <li>Hand of God</li>
-                <li>kingkit</li>
-                <li>Spazz</li>
-                <li>Corgi</li>
-                <li>AppleCrumble</li>
-                <li>Killua</li>
-                <li>ZARD</li>
-                <li>ATLAS</li>
-                <li>AsanBey</li>
-                <li>Ron_A</li>
-                <li>WTP</li>
-                <li>FIRLAMA</li>
-                <li>HAKAN</li>
-                <li>Eclipse</li>
-                <li>Sith_Jk8</li>
-                <li>ZenZey</li>
-                <li>ScorpX</li>
-                <li>Veri</li>
-                <li>Yachiru Unohana</li>
-                <li>Brad Pitt</li>
-                <li>Scarlatti</li>
-                <li>loli</li>
-                <li>CoJ</li>
-                <li>Queenbaby1cheta</li>
-                <li>Smaugg</li>
-                <li>steffi</li>
-                <li>eselu</li>
-                <li>Reis</li>
-                <li>Okan</li>
-                <li>PumpkinPile</li>
-                <li>Muhammad Bilal</li>
-                <li>Jaserin</li>
-                <li>Night Fury</li>
-                <li>elChapo</li>
-                <li>FénixDePlata</li>
-                <li>Solomon</li>
-                <li>Poison</li>
-                <li>Franzua</li>
-                <li>Jess</li>
-                <li>Teddy Bear</li>
-                <li>Valki</li>
-                <li>Vodka</li>
-                <li>Steppenwolf</li>
-                <li>Vapking_Bzh</li>
-                <li>bluedream</li>
-            </ul>
-        </div>
 
-        <!-- R2 -->
-        <div class="rank-section">
-            <div class="rank-header">
-                <h2 id="r2Name">R2 • Veteran Cadre</h2>
-                <div class="rank-stats">⭐ 29/29</div>
+            <!-- R2 -->
+            <div class="rank-section">
+                <div class="rank-header">
+                    <h2 id="r2Name">R2 • Veteran Cadre</h2>
+                    <div class="rank-stats">⭐ 29/29</div>
+                </div>
+                <ul class="name-list">
+                    <li>Ratchet</li>
+                    <li>S4M43L</li>
+                    <li>Bumblebee</li>
+                    <li>ELKC2025</li>
+                    <li>Monster</li>
+                    <li>쿵상이</li>
+                    <li>Amr</li>
+                    <li>Buzzy</li>
+                    <li>Türk</li>
+                    <li>F B I</li>
+                    <li>Gautlieri</li>
+                    <li>Ardamanya61</li>
+                    <li>Mr_JhonNeci</li>
+                    <li>KingDangeranger</li>
+                    <li>Xo_smiling</li>
+                    <li>DebatinAtom</li>
+                    <li>Wolverine</li>
+                    <li>Blitz195</li>
+                    <li>Whisky</li>
+                    <li>cypriot93</li>
+                    <li>JOHNICK003</li>
+                    <li>khadeja</li>
+                    <li>Sherif</li>
+                    <li>Ahmet</li>
+                    <li>PaintedBrute 01</li>
+                    <li>Viuva Negra37</li>
+                    <li>yanivjun</li>
+                    <li>JewelRider</li>
+                    <li>Aisha</li>
+                </ul>
             </div>
-            <ul class="name-list">
-                <li>Ratchet</li>
-                <li>S4M43L</li>
-                <li>Bumblebee</li>
-                <li>ELKC2025</li>
-                <li>Monster</li>
-                <li>쿵상이</li>
-                <li>Amr</li>
-                <li>Buzzy</li>
-                <li>Türk</li>
-                <li>F B I</li>
-                <li>Gautlieri</li>
-                <li>Ardamanya61</li>
-                <li>Mr_JhonNeci</li>
-                <li>KingDangeranger</li>
-                <li>Xo_smiling</li>
-                <li>DebatinAtom</li>
-                <li>Wolverine</li>
-                <li>Blitz195</li>
-                <li>Whisky</li>
-                <li>cypriot93</li>
-                <li>JOHNICK003</li>
-                <li>khadeja</li>
-                <li>Sherif</li>
-                <li>Ahmet</li>
-                <li>PaintedBrute 01</li>
-                <li>Viuva Negra37</li>
-                <li>yanivjun</li>
-                <li>JewelRider</li>
-                <li>Aisha</li>
-            </ul>
-        </div>
 
-        <!-- R1 -->
-        <div class="rank-section">
-            <div class="rank-header">
-                <h2 id="r1Name">R1 • Recruits</h2>
-                <div class="rank-stats">♦️ 5/5</div>
+            <!-- R1 -->
+            <div class="rank-section">
+                <div class="rank-header">
+                    <h2 id="r1Name">R1 • Recruits</h2>
+                    <div class="rank-stats">♦️ 5/5</div>
+                </div>
+                <ul class="name-list">
+                    <li>Palestinian</li>
+                    <li>HôRus</li>
+                    <li>Kayra</li>
+                    <li>Osterhase</li>
+                    <li>LunarVex</li>
+                </ul>
             </div>
-            <ul class="name-list">
-                <li>Palestinian</li>
-                <li>HôRus</li>
-                <li>Kayra</li>
-                <li>Osterhase</li>
-                <li>LunarVex</li>
-            </ul>
-        </div>
-    </main>
+        </main>
+
+        <footer>
+            GGE Server 199 Tactical Command Time Clock: <span id="bottomClock">Loading...</span>
+        </footer>
+    </div>
 
     <!-- Scripts -->
     <script src="translations.js"></script>
     <script>
-        // Live UTC server clock script
         function updateServerTime() {
             const now = new Date();
             const utcTime = now.toUTCString().slice(17, 25) + " UTC";
             const clockElement = document.getElementById('clock');
-            if (clockElement) {
-                clockElement.innerText = utcTime;
-            }
+            const bottomClockElement = document.getElementById('bottomClock');
+            if (clockElement) clockElement.innerText = utcTime;
+            if (bottomClockElement) bottomClockElement.innerText = utcTime;
         }
         setInterval(updateServerTime, 1000);
         updateServerTime();
