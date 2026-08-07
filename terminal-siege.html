@@ -3,40 +3,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminal Siege Strategy | GGE Alliance</title>
-    <link rel="stylesheet" href="style.css">
+    <title>GGE Server 199 - Terminal Siege Strategy</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f141d 0%, #070a0f 100%);
+            color: #d1d5db;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 270px;
+            background: #111823;
+            border-right: 3px solid #33445c;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: fixed;
+            height: 100vh;
+            box-sizing: border-box;
+            box-shadow: inset -6px 0 15px rgba(0, 0, 0, 0.7);
+            z-index: 10;
+        }
+        .flag-header {
+            background: linear-gradient(180deg, #1b2635 0%, #0f141d 100%);
+            border: 2px solid #ffcc00;
+            border-radius: 6px;
+            text-align: center;
+            padding: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        .flag-header h1 {
+            color: #ffcc00;
+            font-size: 26px;
+            margin: 0;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            font-weight: 900;
+        }
+        .sidebar-top {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border-bottom: 1px solid #223042;
+            padding-bottom: 15px;
+        }
+        .sidebar select {
+            background: #1b2635;
+            color: #e5e7eb;
+            border: 2px solid #33445c;
+            padding: 10px;
+            border-radius: 6px;
+            width: 100%;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .sidebar-clock {
+            color: #93c5fd;
+            font-size: 12px;
+            font-family: monospace;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .nav-links a {
+            color: #f3f4f6;
+            text-decoration: none;
+            padding: 14px 18px;
+            border-radius: 6px;
+            background: #1b2635;
+            border: 2px solid #33445c;
+            border-left: 6px solid #475569;
+            transition: all 0.2s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-align: center;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+        }
+        .nav-links a:hover {
+            background: #25344a;
+            border-color: #93c5fd;
+            border-left-color: #93c5fd;
+            transform: translateY(-1px);
+        }
+        .nav-links a.active {
+            background: #223042;
+            color: #ffcc00;
+            border-color: #ffcc00;
+            border-left-color: #ffcc00;
+        }
+        .main-content {
+            margin-left: 270px;
+            flex: 1;
+            padding: 30px 40px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .content-container {
+            max-width: 1050px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .intel-card {
+            background: #111823;
+            border: 1px solid #223042;
+            border-top: 3px solid #3b4d66;
+            border-radius: 6px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+        .intel-card h3 {
+            color: #ffcc00;
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-top: 0;
+            border-bottom: 1px solid #223042;
+            padding-bottom: 8px;
+        }
+        .intel-card p, .intel-card li {
+            color: #d1d5db;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .intel-card ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        .alert-box {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid #ef4444;
+            padding: 12px 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+            color: #fca5a5;
+            font-weight: bold;
+            font-size: 13.5px;
+        }
+        .back-btn {
+            display: inline-block;
+            background: #1b2635;
+            color: #93c5fd;
+            border: 1px solid #33445c;
+            padding: 10px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+        .back-btn:hover {
+            background: #25344a;
+            color: #ffcc00;
+            border-color: #ffcc00;
+        }
+        footer {
+            text-align: center;
+            color: #6b7280;
+            font-size: 12px;
+            border-top: 1px solid #223042;
+            padding-top: 15px;
+            margin-top: 40px;
+            font-family: monospace;
+            letter-spacing: 0.5px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Left-Side Alliance Flag Banner Injection Point -->
-    <div id="leftBannerContainer"></div>
 
-    <!-- Main Content Wrapper (Ensures content stays to the right of the side banner) -->
-    <div class="main-content-wrapper">
-        <header style="margin-bottom: 30px;">
-            <h1 style="color: #ffcc00; letter-spacing: 1px; font-size: 28px;">Terminal Siege Strategy</h1>
-            <p style="color: #8b949e; font-size: 14px; margin-top: 5px;">Server 199 • Defensive Grid Breakdown</p>
-        </header>
+    <aside class="sidebar">
+        <div class="flag-header">
+            <h1 id="ggeFlag">GGE</h1>
+        </div>
+        <div class="sidebar-top">
+            <select id="languageSelect" onchange="changeLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="de">Deutsch</option>
+                <option value="pl">Polski</option>
+                <option value="fr">Français</option>
+                <option value="nl">Nederlands</option>
+                <option value="pt">Português</option>
+                <option value="la">Latina</option>
+                <option value="ko">한국어</option>
+                <option value="tr">Türkçe</option>
+                <option value="ru">Русский</option>
+                <option value="it">Italiano</option>
+                <option value="ar">العربية</option>
+            </select>
+            <div class="sidebar-clock">UTC: <span id="clock">Loading...</span></div>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html" id="home">Home</a>
+            <a href="war-room.html" id="warroom">War Room</a>
+            <a href="roster.html" id="allianceroster">Roster</a>
+            <a href="hero.html" id="heroroster">Hero</a>
+            <a href="events.html" id="events" class="active">Events</a>
+            <a href="rules.html" id="rules">Rules</a>
+            <a href="links.html" id="intelliLinks">Links</a>
+        </nav>
+    </aside>
 
-        <main>
-            <section class="card" style="background-color: #161b22; border: 1px solid rgba(255,204,0,0.2); border-radius: 8px; padding: 20px; margin-bottom: 25px;">
-                <h2 style="color: #ffcc00; font-size: 18px; border-bottom: 1px solid rgba(255,204,0,0.2); padding-bottom: 10px; margin-bottom: 15px;">🛡️ Event Overview: Terminal Siege</h2>
-                <p style="color: #c9d1d9; font-size: 14px; margin-bottom: 15px;">Terminal Siege requires high-level coordination, solid defensive positioning, and structured team wave-clear tactics to hold back heavy pressure.</p>
-            </section>
+    <div class="main-content">
+        <main class="content-container">
+            <a href="events.html" class="back-btn">&larr; Back to Events Overview</a>
+            
+            <h1 style="color: #f9fafb; text-transform: uppercase; letter-spacing: 2px; font-size: 24px; margin-bottom: 5px;">Terminal Siege Strategy</h1>
+            <p style="color: #9ca3af; margin-bottom: 25px; font-size: 13px;">Server 199 • Defensive Grid & Wave Breakdown</p>
 
-            <section class="card" style="background-color: #161b22; border: 1px solid rgba(255,204,0,0.2); border-radius: 8px; padding: 20px;">
-                <h2 style="color: #ffcc00; font-size: 18px; border-bottom: 1px solid rgba(255,204,0,0.2); padding-bottom: 10px; margin-bottom: 15px;">⚙️ Tactical Deployment & Strategy</h2>
-                <ul style="color: #c9d1d9; list-style: disc; padding-left: 20px; line-height: 2; font-size: 14px;">
-                    <li style="margin-bottom: 10px;"><strong>Line Holding:</strong> Coordinate your squad placements carefully to block incoming enemy pressure points.</li>
-                    <li><strong>Hero Roster Integration:</strong> Make sure high-utility damage-dealing and crowd-control heroes are slotted for maximum efficiency.</li>
+            <div class="intel-card">
+                <h3>🛡️ Event Overview: Terminal Siege</h3>
+                <p>Terminal Siege requires high-level coordination, solid defensive positioning, and structured team wave-clear tactics to hold back heavy enemy pressure and secure max milestone rewards.</p>
+            </div>
+
+            <div class="intel-card">
+                <h3>⚡ Tactical Deployment & Strategy</h3>
+                <ul>
+                    <li><strong>Lane Holdings:</strong> Coordinate your squad placements carefully to block incoming enemy pressure points and prevent leaks through weak flanks.</li>
+                    <li><strong>Hero Roster Integration:</strong> Make use of high-utility damage-dealing and crowd-control heroes on-station for maximum area-of-effect damage efficiency.</li>
+                    <li><strong>Wave Management:</strong> Conserve major ultimate skills and heavy cooldown rotations for elite waves rather than wasting them on early mob spawns.</li>
+                    <li><strong>Alliance Reinforcements:</strong> Keep communication channels open with R4 and alliance leadership to shift reinforcements immediately where lane pressure spikes.</li>
                 </ul>
-            </section>
+                <div class="alert-box">
+                    ⚠️ CRITICAL PROTOCOL: Do not break formation during mid-wave spikes. Hold your assigned sector to maintain defensive line integrity.
+                </div>
+            </div>
         </main>
 
-        <footer style="text-align: center; margin-top: 40px; padding: 20px; color: #8b949e; font-size: 12px; border-top: 1px solid rgba(255,204,0,0.1);">
-            <p>&copy; 2026 GGE Alliance • Server 199. All rights reserved on the battlefield.</p>
+        <footer>
+            GGE Server 199 Tactical Command Time Clock: <span id="bottomClock">Loading...</span>
         </footer>
     </div>
 
-    <script src="translations.js"></script>
+    <script>
+        function updateServerTime() {
+            const now = new Date();
+            const utcTime = now.toUTCString().slice(17, 25) + " UTC";
+            const clockElement = document.getElementById('clock');
+            const bottomClockElement = document.getElementById('bottomClock');
+            if (clockElement) clockElement.innerText = utcTime;
+            if (bottomClockElement) bottomClockElement.innerText = utcTime;
+        }
+        setInterval(updateServerTime, 1000);
+        updateServerTime();
+    </script>
 </body>
 </html>
