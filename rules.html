@@ -3,46 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alliance Laws | GGE Alliance</title>
+    <title>GGE Server 199 - Alliance Laws & Rules</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f141d 0%, #070a0f 100%);
+            color: #d1d5db;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+        /* Vertical Military Flag Sidebar on the Left */
+        .sidebar {
+            width: 270px;
+            background: #111823;
+            border-right: 3px solid #33445c;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: fixed;
+            height: 100vh;
+            box-sizing: border-box;
+            box-shadow: inset -6px 0 15px rgba(0, 0, 0, 0.7);
+            z-index: 10;
+        }
+        /* GGE Flag Header at the Top */
+        .flag-header {
+            background: linear-gradient(180deg, #1b2635 0%, #0f141d 100%);
+            border: 2px solid #ffcc00;
+            border-radius: 6px;
+            text-align: center;
+            padding: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        .flag-header h1 {
+            color: #ffcc00;
+            font-size: 26px;
+            margin: 0;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            font-weight: 900;
+        }
+        .sidebar-top {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border-bottom: 1px solid #223042;
+            padding-bottom: 15px;
+        }
+        .sidebar select {
+            background: #1b2635;
+            color: #e5e7eb;
+            border: 2px solid #33445c;
+            padding: 10px;
+            border-radius: 6px;
+            width: 100%;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .sidebar-clock {
+            color: #93c5fd;
+            font-size: 12px;
+            font-family: monospace;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+        /* Bulky Tactical Navigation Buttons */
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .nav-links a {
+            color: #f3f4f6;
+            text-decoration: none;
+            padding: 14px 18px;
+            border-radius: 6px;
+            background: #1b2635;
+            border: 2px solid #33445c;
+            border-left: 6px solid #475569;
+            transition: all 0.2s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-align: center;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+        }
+        .nav-links a:hover {
+            background: #25344a;
+            border-color: #93c5fd;
+            border-left-color: #93c5fd;
+            transform: translateY(-1px);
+        }
+        .nav-links a.active {
+            background: #223042;
+            color: #ffcc00;
+            border-color: #ffcc00;
+            border-left-color: #ffcc00;
+        }
+        /* Main Command Content Area shifted right */
+        .main-content {
+            margin-left: 270px;
+            flex: 1;
+            padding: 30px 40px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .rules-container {
+            max-width: 1050px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        /* Tactical Armor Panels */
+        .rule-card {
+            background: #111823;
+            border: 1px solid #223042;
+            border-top: 3px solid #3b4d66;
+            border-radius: 6px;
+            padding: 20px 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+        .rule-card h2 {
+            color: #ffcc00;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #223042;
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .rule-card p {
+            color: #d1d5db;
+            font-size: 14px;
+            margin: 0 0 12px 0;
+        }
+        .rule-card ul {
+            margin: 0;
+            padding-left: 20px;
+            color: #d1d5db;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        .rule-card li {
+            margin-bottom: 8px;
+        }
+        footer {
+            text-align: center;
+            color: #6b7280;
+            font-size: 12px;
+            border-top: 1px solid #223042;
+            padding-top: 15px;
+            margin-top: 40px;
+            font-family: monospace;
+            letter-spacing: 0.5px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Left-Side Alliance Flag Banner Injection Point -->
-    <div id="leftBannerContainer"></div>
 
-    <!-- Main Content Wrapper -->
-    <div class="main-content-wrapper">
-        <header style="margin-bottom: 30px;">
-            <h1 style="color: #ffcc00; letter-spacing: 1px; font-size: 28px;">Alliance Laws</h1>
-            <p style="color: #8b949e; font-size: 14px; margin-top: 5px;">Server 199 • Code of Conduct & Server Rules</p>
-        </header>
+    <!-- Vertical Military Flag Sidebar -->
+    <aside class="sidebar">
+        <!-- GGE Flag Header -->
+        <div class="flag-header">
+            <h1 id="ggeFlag">GGE</h1>
+        </div>
 
-        <main>
-            <section class="card" style="background-color: #161b22; border: 1px solid rgba(255,204,0,0.2); border-radius: 8px; padding: 20px; margin-bottom: 25px;">
-                <h2 style="color: #ffcc00; font-size: 18px; border-bottom: 1px solid rgba(255,204,0,0.2); padding-bottom: 10px; margin-bottom: 15px;">📜 The Code of the Land</h2>
-                <ul style="color: #c9d1d9; list-style: disc; padding-left: 20px; line-height: 2; font-size: 14px;">
-                    <li><strong>Resource Protection:</strong> Do not hit alliance members or friendly farm tiles. Keep internal peace strong across Server 199.</li>
-                    <li><strong>Active Participation:</strong> Contribute to alliance events, rally defenses, and maintain active troop deployment protocols.</li>
-                    <li><strong>Respect & Loyalty:</strong> Follow R4 and R5 directions during wartime and territorial conflicts. We stand unified as GGE.</li>
+        <div class="sidebar-top">
+            <!-- Language Selector (All 13 Languages) -->
+            <select id="languageSelect" onchange="changeLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="de">Deutsch</option>
+                <option value="pl">Polski</option>
+                <option value="fr">Français</option>
+                <option value="nl">Nederlands</option>
+                <option value="pt">Português</option>
+                <option value="la">Latina</option>
+                <option value="ko">한국어</option>
+                <option value="tr">Türkçe</option>
+                <option value="ru">Русский</option>
+                <option value="it">Italiano</option>
+                <option value="ar">العربية</option>
+            </select>
+            <!-- UTC Server Time Clock -->
+            <div class="sidebar-clock">UTC: <span id="clock">Loading...</span></div>
+        </div>
+
+        <!-- Bulky Tactical Navigation Buttons with Rules Active -->
+        <nav class="nav-links">
+            <a href="index.html" id="home">Home</a>
+            <a href="war-room.html" id="warroom">War Room</a>
+            <a href="roster.html" id="allianceroster">Roster</a>
+            <a href="hero.html" id="heroroster">Hero</a>
+            <a href="events.html" id="events">Events</a>
+            <a href="rules.html" id="rules" class="active">Rules</a>
+            <a href="links.html" id="intelliLinks">Links</a>
+        </nav>
+    </aside>
+
+    <!-- Main Command Interface -->
+    <div class="main-content">
+        <main class="rules-container">
+            <h1 id="rulesMainTitle" style="text-align: center; color: #f9fafb; text-transform: uppercase; letter-spacing: 2px; font-size: 24px; margin-bottom: 5px;">Alliance Laws</h1>
+            <p id="rulesSubtitle" style="text-align: center; color: #9ca3af; margin-bottom: 30px; font-size: 13px; letter-spacing: 0.5px;">Server 199 • Code of Conduct & Server Rules</p>
+
+            <!-- Card 1: The Code of the Land -->
+            <div class="rule-card">
+                <h2 id="rulesCard1Title">📜 The Code of the Land</h2>
+                <ul class="rule-list">
+                    <li><strong id="rule1Title">Resource Protection:</strong> <span id="rule1Desc">Do not hit alliance members or friendly farm tiles. Keep internal peace strong across Server 199.</span></li>
+                    <li><strong id="rule2Title">Active Participation:</strong> <span id="rule2Desc">Contribute to alliance events, rally defenses, and maintain active troop deployment protocols.</span></li>
+                    <li><strong id="rule3Title">Respect & Loyalty:</strong> <span id="rule3Desc">Follow R4 and R5 directions during wartime and territorial conflicts. We stand unified as GGE.</span></li>
                 </ul>
-            </section>
+            </div>
 
-            <section class="card" style="background-color: #161b22; border: 1px solid rgba(255,204,0,0.2); border-radius: 8px; padding: 20px;">
-                <h2 style="color: #ffcc00; font-size: 18px; border-bottom: 1px solid rgba(255,204,0,0.2); padding-bottom: 10px; margin-bottom: 15px;">⚔️ Server Rules & Guidelines</h2>
-                <p style="color: #c9d1d9; font-size: 14px; margin-bottom: 15px;">Official game regulations and server-wide protocols:</p>
-                <ul style="color: #c9d1d9; list-style: disc; padding-left: 20px; line-height: 2; font-size: 14px;">
-                    <li><strong>NAP (Non-Aggression Pact) Terms:</strong> Respect designated server treaties and alliance boundaries.</li>
-                    <li><strong>Tile Harvesting:</strong> High-level resource tiles belong to the first claimant; scout before gathering during peak windows.</li>
-                    <li><strong>Battlefield Conduct:</strong> Coordinate rally targets through leadership channels to maximize efficiency during combat events.</li>
+            <!-- Card 2: Server Rules & Guidelines -->
+            <div class="rule-card">
+                <h2 id="rulesCard2Title">⚔️ Server Rules & Guidelines</h2>
+                <p id="rulesCard2Intro">Official game regulations and server-wide protocols:</p>
+                <ul class="rule-list">
+                    <li><strong id="rule4Title">NAP (Non-Aggression Pact) Terms:</strong> <span id="rule4Desc">Respect designated server treaties and alliance boundaries.</span></li>
+                    <li><strong id="rule5Title">Tile Harvesting:</strong> <span id="rule5Desc">High-level resource tiles belong to the first claimant; scout before gathering during peak windows.</span></li>
+                    <li><strong id="rule6Title">Battlefield Conduct:</strong> <span id="rule6Desc">Coordinate rally targets through leadership channels to maximize efficiency during combat events.</span></li>
                 </ul>
-            </section>
+            </div>
         </main>
 
-        <footer style="text-align: center; margin-top: 40px; padding: 20px; color: #8b949e; font-size: 12px; border-top: 1px solid rgba(255,204,0,0.1);">
-            <p>&copy; 2026 GGE Alliance • Server 199. All rights reserved on the battlefield.</p>
+        <footer>
+            GGE Server 199 Tactical Command Time Clock: <span id="bottomClock">Loading...</span>
         </footer>
     </div>
 
+    <!-- Scripts -->
     <script src="translations.js"></script>
+    <script>
+        function updateServerTime() {
+            const now = new Date();
+            const utcTime = now.toUTCString().slice(17, 25) + " UTC";
+            const clockElement = document.getElementById('clock');
+            const bottomClockElement = document.getElementById('bottomClock');
+            if (clockElement) clockElement.innerText = utcTime;
+            if (bottomClockElement) bottomClockElement.innerText = utcTime;
+        }
+        setInterval(updateServerTime, 1000);
+        updateServerTime();
+    </script>
 </body>
 </html>
