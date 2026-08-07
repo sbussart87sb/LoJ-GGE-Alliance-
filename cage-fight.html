@@ -141,6 +141,27 @@
             padding-left: 20px;
             margin: 10px 0;
         }
+        .hero-list-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .hero-item {
+            background: #161f2e;
+            border: 1px solid #33445c;
+            padding: 10px 14px;
+            border-radius: 4px;
+            color: #e5e7eb;
+            font-size: 13.5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hero-name {
+            color: #ffcc00;
+            font-weight: bold;
+        }
         .alert-box {
             background: rgba(239, 68, 68, 0.1);
             border-left: 4px solid #ef4444;
@@ -226,11 +247,35 @@
 
             <div class="intel-card">
                 <h3>🥊 Event Execution & Timing Protocol</h3>
-                <p>Cage Fight operations run on an alternating schedule that shifts weekly. Commanders must check active rotation notices in leadership channels to confirm daily slots.</p>
+                <p>Cage 1 and Cage 2 take place on the same day as each other, but run on an alternating <strong>every other day</strong> schedule that shifts weekly. Commanders must verify active rotation slots in alliance announcements.</p>
                 <ul>
                     <li><strong>Cage 1 Window:</strong> 13:10 Server Time (ST)</li>
                     <li><strong>Cage 2 Window:</strong> 16:10 Server Time (ST)</li>
                 </ul>
+            </div>
+
+            <!-- Inserted Hero Set Section -->
+            <div class="intel-card">
+                <h3>⭐ Recommended Cage Fight Hero Roster</h3>
+                <p>Deploy the following fully qualified commanders and specialists to maximize combat efficiency during cage operations:</p>
+                <div class="hero-list-grid">
+                    <div class="hero-item"><span class="hero-name">Phoenix</span><span>Tactical Commander</span></div>
+                    <div class="hero-item"><span class="hero-name">Tyronn</span><span>Assault Specialist</span></div>
+                    <div class="hero-item"><span class="hero-name">Kate</span><span>Combat Officer</span></div>
+                    <div class="hero-item"><span class="hero-name">Worrell</span><span>Paradox Engine</span></div>
+                    <div class="hero-item"><span class="hero-name">Drake</span><span>Hell Warrior</span></div>
+                    <div class="hero-item"><span class="hero-name">Koschevoi</span><span>Vanguard Leader</span></div>
+                    <div class="hero-item"><span class="hero-name">Ryuichi Ito</span><span>Ghost Ninja Tech</span></div>
+                    <div class="hero-item"><span class="hero-name">Panda</span><span>Frontline Brawler</span></div>
+                    <div class="hero-item"><span class="hero-name">Devilian</span><span>Allerges Gunner</span></div>
+                    <div class="hero-item"><span class="hero-name">Veronica</span><span>Inferno Dancer</span></div>
+                    <div class="hero-item"><span class="hero-name">Lofili (Leflil)</span><span>Ranger Specialist</span></div>
+                    <div class="hero-item"><span class="hero-name">Lunari</span><span>Night Specter</span></div>
+                    <div class="hero-item"><span class="hero-name">Samir</span><span>Tactical Striker</span></div>
+                    <div class="hero-item"><span class="hero-name">Ekko</span><span>Soaring Falcon</span></div>
+                    <div class="hero-item"><span class="hero-name">Vivian</span><span>Harmonie Dreamer</span></div>
+                    <div class="hero-item"><span class="hero-name">Flammeus & Misycus</span><span>Flamborne Dual Twins</span></div>
+                </div>
             </div>
 
             <div class="intel-card">
