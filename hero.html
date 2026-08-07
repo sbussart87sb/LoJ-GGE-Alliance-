@@ -3,1112 +3,317 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hero Roster | GGE Alliance</title>
+    <title>GGE Server 199 - Alliance Heroes</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f141d 0%, #070a0f 100%);
+            color: #d1d5db;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+        /* Vertical Military Flag Sidebar on the Left */
+        .sidebar {
+            width: 270px;
+            background: #111823;
+            border-right: 3px solid #33445c;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: fixed;
+            height: 100vh;
+            box-sizing: border-box;
+            box-shadow: inset -6px 0 15px rgba(0, 0, 0, 0.7);
+            z-index: 10;
+        }
+        /* GGE Flag Header at the Top */
+        .flag-header {
+            background: linear-gradient(180deg, #1b2635 0%, #0f141d 100%);
+            border: 2px solid #ffcc00;
+            border-radius: 6px;
+            text-align: center;
+            padding: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        .flag-header h1 {
+            color: #ffcc00;
+            font-size: 26px;
+            margin: 0;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            font-weight: 900;
+        }
+        .sidebar-top {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border-bottom: 1px solid #223042;
+            padding-bottom: 15px;
+        }
+        .sidebar select {
+            background: #1b2635;
+            color: #e5e7eb;
+            border: 2px solid #33445c;
+            padding: 10px;
+            border-radius: 6px;
+            width: 100%;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .sidebar-clock {
+            color: #93c5fd;
+            font-size: 12px;
+            font-family: monospace;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+        /* Bulky Tactical Navigation Buttons */
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .nav-links a {
+            color: #f3f4f6;
+            text-decoration: none;
+            padding: 14px 18px;
+            border-radius: 6px;
+            background: #1b2635;
+            border: 2px solid #33445c;
+            border-left: 6px solid #475569;
+            transition: all 0.2s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-align: center;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+        }
+        .nav-links a:hover {
+            background: #25344a;
+            border-color: #93c5fd;
+            border-left-color: #93c5fd;
+            transform: translateY(-1px);
+        }
+        .nav-links a.active {
+            background: #223042;
+            color: #ffcc00;
+            border-color: #ffcc00;
+            border-left-color: #ffcc00;
+        }
+        /* Main Command Content Area shifted right */
+        .main-content {
+            margin-left: 270px;
+            flex: 1;
+            padding: 30px 40px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .hero-container {
+            max-width: 1050px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        /* Uniform Grid Cards for Equal Size */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .hero-card {
+            background: #111823;
+            border: 1px solid #223042;
+            border-top: 3px solid #3b4d66;
+            border-radius: 6px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 180px;
+            box-sizing: border-box;
+        }
+        .hero-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #223042;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+        .hero-name {
+            color: #ffcc00;
+            font-size: 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin: 0;
+        }
+        .hero-role {
+            color: #93c5fd;
+            font-size: 12px;
+            font-family: monospace;
+            background: #161f2e;
+            padding: 3px 8px;
+            border: 1px solid #33445c;
+            border-radius: 4px;
+        }
+        .hero-stats p {
+            color: #d1d5db;
+            font-size: 13.5px;
+            line-height: 1.5;
+            margin: 0 0 8px 0;
+        }
+        .hero-stats strong {
+            color: #f3f4f6;
+        }
+        footer {
+            text-align: center;
+            color: #6b7280;
+            font-size: 12px;
+            border-top: 1px solid #223042;
+            padding-top: 15px;
+            margin-top: 40px;
+            font-family: monospace;
+            letter-spacing: 0.5px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Left-Side Alliance Flag Banner Navigation Bar -->
-    <div class="alliance-banner">
-        <div>
-            <div style="text-align: center; margin-bottom: 25px;">
-                <div style="font-size: 24px; font-weight: bold; color: #ffcc00; letter-spacing: 2px;">GGE</div>
-                <div style="font-size: 12px; color: #8b949e; margin-top: 2px;">Server 199</div>
-            </div>
-            
-            <hr style="border: none; border-top: 1px solid rgba(255, 204, 0, 0.2); margin-bottom: 20px;">
 
-            <nav style="display: flex; flex-direction: column; gap: 10px;">
-                <a href="war-room.html" id="nav-war-room" style="color: #c9d1d9; text-decoration: none; padding: 10px; border-radius: 6px; font-size: 14px; display: block;">🏠 War Room</a>
-                <a href="roster.html" id="nav-alliance-roster" style="color: #c9d1d9; text-decoration: none; padding: 10px; border-radius: 6px; font-size: 14px; display: block;">🛡️ Alliance Roster</a>
-                <a href="hero.html" id="nav-hero-roster" style="color: #ffcc00; text-decoration: none; padding: 10px; border-radius: 6px; font-size: 14px; display: block; background: rgba(255,204,0,0.05); border: 1px solid rgba(255,204,0,0.2);">⚔️ Hero Roster</a>
-                <a href="events.html" id="nav-events" style="color: #c9d1d9; text-decoration: none; padding: 10px; border-radius: 6px; font-size: 14px; display: block;">📅 Events</a>
-                <a href="rules.html" id="nav-alliance-laws" style="color: #c9d1d9; text-decoration: none; padding: 10px; border-radius: 6px; font-size: 14px; display: block;">📜 Alliance Laws</a>
-                <a href="intel.html" id="nav-intel-links" style="color: #c9d1d9; text-decoration: none; padding: 10px; border-radius: 6px; font-size: 14px; display: block;">🌐 Intel & Links</a>
-            </nav>
+    <!-- Vertical Military Flag Sidebar -->
+    <aside class="sidebar">
+        <!-- GGE Flag Header -->
+        <div class="flag-header">
+            <h1 id="ggeFlag">GGE</h1>
         </div>
 
-        <div>
-            <!-- Language Selector -->
-            <div style="margin-bottom: 15px;">
-                <select id="languageSelect" onchange="changeLanguage(this.value)" style="width: 100%; background: #0d1117; color: #c9d1d9; border: 1px solid rgba(255,204,0,0.3); padding: 8px; border-radius: 6px; font-size: 13px;">
-                    <option value="en">English</option>
-                    <option value="de">Magyar</option>
-                    <option value="pl">Polski</option>
-                    <option value="tr">Türkçe</option>
-                    <option value="es">Español</option>
-                    <option value="fr">Français</option>
-                    <option value="it">Italiano</option>
-                    <option value="ko">한국어</option>
-                    <option value="la">Latina</option>
-                </select>
-            </div>
-
-            <!-- Footer Clock Box -->
-            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,204,0,0.2); border-radius: 6px; padding: 10px; text-align: center;">
-                <div style="font-size: 11px; color: #8b949e;">Server Time</div>
-                <div id="utcClock" style="font-size: 14px; color: #ffcc00; font-family: monospace; margin-top: 2px;">UTC: --:--:--</div>
-            </div>
+        <div class="sidebar-top">
+            <!-- Language Selector (All 13 Languages) -->
+            <select id="languageSelect" onchange="changeLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="de">Deutsch</option>
+                <option value="pl">Polski</option>
+                <option value="fr">Français</option>
+                <option value="nl">Nederlands</option>
+                <option value="pt">Português</option>
+                <option value="la">Latina</option>
+                <option value="ko">한국어</option>
+                <option value="tr">Türkçe</option>
+                <option value="ru">Русский</option>
+                <option value="it">Italiano</option>
+                <option value="ar">العربية</option>
+            </select>
+            <!-- UTC Server Time Clock -->
+            <div class="sidebar-clock">UTC: <span id="clock">Loading...</span></div>
         </div>
-    </div>
 
-    <!-- Main Content Wrapper -->
-    <div class="main-content-wrapper">
-        <header style="margin-bottom: 30px;">
-            <h1 style="color: #ffcc00; letter-spacing: 1px; font-size: 28px;">Hero Command Roster</h1>
-            <p style="color: #8b949e; font-size: 14px; margin-top: 5px;">Server 199 • Land of Jail Verified Hero Database (Shooters, Grenadiers, Shields & Scavengers)</p>
-        </header>
+        <!-- Bulky Tactical Navigation Buttons with Hero Active -->
+        <nav class="nav-links">
+            <a href="index.html" id="home">Home</a>
+            <a href="war-room.html" id="warroom">War Room</a>
+            <a href="roster.html" id="allianceroster">Roster</a>
+            <a href="hero.html" id="heroroster" class="active">Hero</a>
+            <a href="events.html" id="events">Events</a>
+            <a href="rules.html" id="rules">Rules</a>
+            <a href="links.html" id="intelliLinks">Links</a>
+        </nav>
+    </aside>
 
-        <main>
-            <!-- Operational Filter Categories -->
-            <section class="card" style="background-color: #161b22; border: 1px solid rgba(255,204,0,0.2); border-radius: 8px; padding: 20px; margin-bottom: 25px;">
-                <h2 style="color: #ffcc00; font-size: 18px; border-bottom: 1px solid rgba(255,204,0,0.2); padding-bottom: 10px; margin-bottom: 15px;">Operational Categories</h2>
-                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                    <span style="background: rgba(255,204,0,0.1); color: #ffcc00; padding: 6px 12px; border-radius: 4px; font-size: 13px; border: 1px solid rgba(255,204,0,0.3);">Shooters (DPS)</span>
-                    <span style="background: rgba(255,204,0,0.1); color: #ffcc00; padding: 6px 12px; border-radius: 4px; font-size: 13px; border: 1px solid rgba(255,204,0,0.3);">Grenadiers / Bombers</span>
-                    <span style="background: rgba(255,204,0,0.1); color: #ffcc00; padding: 6px 12px; border-radius: 4px; font-size: 13px; border: 1px solid rgba(255,204,0,0.3);">Shields (Tank/Frontline)</span>
-                    <span style="background: rgba(255,204,0,0.1); color: #ffcc00; padding: 6px 12px; border-radius: 4px; font-size: 13px; border: 1px solid rgba(255,204,0,0.3);">Scavenging & Gathering</span>
+    <!-- Main Command Interface -->
+    <div class="main-content">
+        <main class="hero-container">
+            <h1 id="heroMainTitle" style="text-align: center; color: #f9fafb; text-transform: uppercase; letter-spacing: 2px; font-size: 24px; margin-bottom: 5px;">Alliance Heroes</h1>
+            <p id="heroSubtitle" style="text-align: center; color: #9ca3af; margin-bottom: 30px; font-size: 13px; letter-spacing: 0.5px;">Server 199 • GGE Commander & Hero Database</p>
+
+            <div class="hero-grid">
+                <!-- Wukong -->
+                <div class="hero-card">
+                    <div class="hero-header">
+                        <h3 class="hero-name">Wukong, Monkey King</h3>
+                        <span class="hero-role">Artillery</span>
+                    </div>
+                    <div class="hero-stats">
+                        <p><strong>Pro:</strong> Excellent area control and high burst crowd damage.</p>
+                        <p><strong>Con:</strong> Long skill-recovery windows leave openings.</p>
+                    </div>
                 </div>
-            </section>
 
-            <!-- Verified Heroes Database -->
-            <section class="card" style="background-color: #161b22; border: 1px solid rgba(255,204,0,0.2); border-radius: 8px; padding: 20px;">
-                <h2 style="color: #ffcc00; font-size: 18px; border-bottom: 1px solid rgba(255,204,0,0.2); padding-bottom: 15px; margin-bottom: 20px;">📜 Verified Hero Database</h2>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
-                    
-                    <!-- Otto, Tiger King -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHIELD / SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Combat Tier</span>
-                        </div>
-
-                        <!-- Mai Shiranui -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER / GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">KOF Collab</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Mai Shiranui</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Exceptional multi-target fire damage and rapid skill cycling.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Limited defensive scaling in extended brawls.</p>
-                    </div><h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Otto, Tiger King</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High base power scaling, strong frontline impact and durability.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Requires heavy fragment investment to recruit and star up.</p>
+                <!-- Mei Shiratori -->
+                <div class="hero-card">
+                    <div class="hero-header">
+                        <h3 class="hero-name">Mei Shiratori</h3>
+                        <span class="hero-role">R&F Collab</span>
                     </div>
-
-                    <!-- Wukong, Monkey King -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">AoE Burst</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Wukong, Monkey King</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Excellent area control and high burst crowd damage.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Long skill recovery windows leave openings.</p>
+                    <div class="hero-stats">
+                        <p><strong>Pro:</strong> Exceptional multi-target flat damage and rapid skill cycling.</p>
+                        <p><strong>Con:</strong> Limited defensive scaling in extended brawls.</p>
                     </div>
-
-                    <!-- Edwin, the Judge -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Ranged DPS</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Edwin, the Judge</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Reliable ranged output and execution modifiers against targets.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Low baseline mobility makes him vulnerable to close-range rushes.</p>
-                    </div>
-
-                    <!-- Mai Shiranui -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER / GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">KOF Collab</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Mai Shiranui</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Exceptional multi-target fire damage and rapid skill cycling.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Limited defensive scaling in extended brawls.</p>
-                    </div>
-
-                    <!-- Ada, Duo Face -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Tactical DPS</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Ada, Duo Face</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Flexible tactical switching and solid sustained DPS numbers.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Complex positioning requirements to maximize output.</p>
-                    </div>
-
-                    <!-- Drake, Hell Warrior -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Sustain DPS</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Drake, Hell Warrior</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High sustain and pressure potential in active skirmishes.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Vulnerable to heavy crowd control stuns.</p>
-                    </div>
-
-                    <!-- Terry Bogard -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHIELD / BRAWLER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">KOF Collab</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Terry Bogard</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Powerful frontline brawler skills and reliable stagger effects.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Event-exclusive shards make upgrading difficult outside events.</p>
-                    </div>
-
-                    <!-- Ryuichi Ito, Ghost Ninja -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHIELD</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Ninja Tank</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Ryuichi Ito, Ghost Ninja</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High evasion stats and sudden counterattack capability.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Lower overall health pool compared to traditional heavy tanks.</p>
-                    </div>
-
-                    <!-- Omega Rugal -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | GRENADIER / BRAWLER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">KOF Collab</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Omega Rugal</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Massive area dominance and devastating ultimate skill execution.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> High skill cooldown requirements.</p>
-                    </div>
-
-                    <!-- Devilian, Afterglow Gunner -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Gunner DPS</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Devilian, Afterglow Gunner</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Consistent ranged damage output over time.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Requires heavy frontline protection from diving enemies.</p>
-                    </div>
-
-                    <!-- Lee, King of Gamblers -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Crit Modifier</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Lee, King of Gamblers</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High random critical-rate damage spikes.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Inconsistent damage reliability due to RNG dependence.</p>
-                    </div>
-
-                    <!-- Tormund, Hellfire -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | TANK / SHIELD</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Heavy Tank</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Tormund, Hellfire</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Exceptional defense against fire and burn-based environment hazards.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Low movement and rotation speed.</p>
-                    </div>
-
-                    <!-- Marcus, Stitched Monster -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHIELD</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Regen Tank</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Marcus, Stitched Monster</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High health regeneration and exceptional damage soaking capacity.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Low offensive threat output.</p>
-                    </div>
-
-                    <!-- Zoltan, the Redeemer -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHIELD</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Frontline Buff</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Zoltan, the Redeemer</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Excellent defensive armor buffs for nearby allied squads.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Requires strict team grouping to maximize utility.</p>
-                    </div>
-
-                    <!-- Xuanming, Grove Drunkard -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | TANK / MELEE</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Evasion Tank</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Xuanming, Grove Drunkard</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Unpredictable dodge mechanics and strong melee counter-strikes.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Erratic combat mitigation performance.</p>
-                    </div>
-
-                    <!-- Mia, Scarlet Pyros -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Burn Specialist</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Mia, Scarlet Pyros</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High stacking burn damage over time against targets.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Fragile baseline defensive armor.</p>
-                    </div>
-
-                    <!-- Sawyer, the Collector -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Scavenger Meta</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Sawyer, the Collector</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Top-tier salvage bonuses and resource gathering utility speeds.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Mid-tier combat performance in high-end PvP battles.</p>
-                    </div>
-
-                    <!-- Mireya, Shadowpiercer -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Armor Piercer</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Mireya, Shadowpiercer</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High armor-piercing shots ideal for boss targets.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Poor crowd control capacity against minion swarms.</p>
-                    </div>
-
-                    <!-- Veronica, Inferna Dancer -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Speed Buff</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Veronica, Inferna Dancer</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Rapid attack speed buffs for output scaling.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Requires steady, uninterrupted positioning.</p>
-                    </div>
-
-                    <!-- Vesaryon, Annihilator -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #4169E1; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SR | TANK</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Early Tank</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Vesaryon, Annihilator</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Easy to star up, solid early-game frontline tank option.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Falls off significantly in later competitive zones.</p>
-                    </div>
-
-                    <!-- Lunarl, Night Specter -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #4169E1; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Mid-Game DPS</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Lunarl, Night Specter</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Accessible shards, reliable mid-game damage output.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Limited utility past standard development zones.</p>
-                    </div>
-
-                    <!-- Flora, Wildfire Explorer -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #4169E1; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SR | GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Gatherer</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Flora, Wildfire Explorer</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Good gathering speed bonuses for resource exploration tasks.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Low combat engagement scaling.</p>
-                    </div>
-
-                    <!-- Lofili, the Ranger -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #4169E1; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Scavenger</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Lofili, the Ranger</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Decent resource scavenging march capacity.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Soft defenses when intercepted on tiles.</p>
-                    </div>
-
-                    <!-- Koschevoi, Magic Gunner -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Area Destruction</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Koschevoi, Magic Gunner</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Heavy area destruction and massive skill damage.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Slow attack cadence.</p>
-                    </div>
-
-                    <!-- Caesar, Apex Ape -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | TANK</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Apex Tank</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Caesar, Apex Ape</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Staggering base health and frontline intimidation factor.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Large model size makes him vulnerable to coordinated focus fire.</p>
-                    </div>
-
-                    <!-- Whisper, White Reaper -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Assassin</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Whisper, White Reaper</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Incredible single-target assassination potential.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Extremely low group defense scaling.</p>
-                    </div>
-
-                    <!-- Lanchester, Machinist -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Siege Specialist</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Lanchester, Machinist</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High mechanical structure and terminal siege damage bonuses.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Slower movement speed on world map marches.</p>
-                    </div>
-
-                    <!-- Platos, Night Watch -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #4169E1; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Scout Unit</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Platos, Night Watch</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Reliable scouting and baseline defense utility.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Lower tier power ceilings.</p>
-                    </div>
-
-                    <!-- Flameborne, Minyeon & Taehun -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #4169E1; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SR | GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Dual Unit</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Flameborne, Minyeon & Taehun</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Dual-character synergy scaling and area fire damage.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Balanced stats mean they lack specialized focus.</p>
-                    </div>
-
-                    <!-- Ekko, Soaring Falcon -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #4169E1; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Mobile DPS</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Ekko, Soaring Falcon</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High mobility and swift tactical repositioning speed.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Fragile health bar.</p>
-                    </div>
-
-                    <!-- Alph, Surgecaster -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Shock Damage</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Alph, Surgecaster</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Lightning-based area shock damage and crowd disruption.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> High energy consumption cycles.</p>
-                    </div>
-
-                    <!-- Tyronn, Scarlet Butcher -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | TANK</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Drain Tank</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Tyronn, Scarlet Butcher</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Brutal frontline defense and active health drain abilities.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Slow base attack speed.</p>
-                    </div>
-
-                    <!-- Vivian, Harmonic Dreamer -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SUPPORT</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Healer / Buffer</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Vivian, Harmonic Dreamer</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Fantastic squad buffing and healing support utility.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Zero direct offensive threat on her own.</p>
-                    </div>
-
-                    <!-- Inata, the Prodigy -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHIELD</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Ballistic Shield</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Inata, the Prodigy</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Great ballistic shield protection and defense scaling.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Lower mobility when deployed.</p>
-                    </div>
-
-                    <!-- Durga, Seasoned Guard -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #20B2AA; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">R | TANK</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Starter Guard</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Durga, Seasoned Guard</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Extremely easy to upgrade early game.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Low troop capacity and outdated stat caps.</p>
-                    </div>
-
-                    <!-- Harton, the Cleaver -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #20B2AA; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">R | GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Starter Melee</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Harton, the Cleaver</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Cheap resource investment cost for beginners.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Weak utility in serious combat zones.</p>
-                    </div>
-
-                    <!-- Pasino, Venom -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #20B2AA; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">R | GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Toxic Unit</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Pasino, Venom</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Basic chemical damage application.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Very fragile base stats.</p>
-                    </div>
-
-                    <!-- Aiksen, the Reaper -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #20B2AA; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">R | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Starter Filler</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Aiksen, the Reaper</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High availability for early game fillers.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Completely outclassed by SR and SSR heroes.</p>
-                    </div>
-
-                    <!-- Sumo Tyrant, Iwado -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #4169E1; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SR | TANK</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Sumo Tank</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Sumo Tyrant, Iwado</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High minion count and heavy displacement skills.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Limited scaling against late-zone burst damage.</p>
-                    </div>
-
-                    <!-- Phoenix, Flash of Lightning -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Rocket Specialist</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Phoenix, Flash of Lightning</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Devastating rocket launcher splash damage.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Long reload cycles leave vulnerability windows.</p>
-                    </div>
-
-                    <!-- Worrell, Paradox Engine -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Mechanical Unit</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Worrell, Paradox Engine</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Unique mechanical utility and crowd disruption.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Hard to obtain and build shards early on.</p>
-                    </div>
-
-                    <!-- Kate, Dream Chaser -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Chaser DPS</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Kate, Dream Chaser</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High speed chasing mechanics and burst hits.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Low baseline defense weights.</p>
-                    </div>
-
                 </div>
-            </section>
+
+                <!-- Otto -->
+                <div class="hero-card">
+                    <div class="hero-header">
+                        <h3 class="hero-name">Otto, Tiger King</h3>
+                        <span class="hero-role">Combat Tank</span>
+                    </div>
+                    <div class="hero-stats">
+                        <p><strong>Pro:</strong> High base power scaling, strong frontline impact and durability.</p>
+                        <p><strong>Con:</strong> Requires heavy fragment investment to recruit and star up.</p>
+                    </div>
+                </div>
+
+                <!-- Ethe -->
+                <div class="hero-card">
+                    <div class="hero-header">
+                        <h3 class="hero-name">Ethe, the Judge</h3>
+                        <span class="hero-role">Ranged RPS</span>
+                    </div>
+                    <div class="hero-stats">
+                        <p><strong>Pro:</strong> Reliable ranged output and execution modifiers against target.</p>
+                        <p><strong>Con:</strong> Low baseline mobility makes him vulnerable to close-range.</p>
+                    </div>
+                </div>
+
+                <!-- Bary the Bear (Newly Added) -->
+                <div class="hero-card">
+                    <div class="hero-header">
+                        <h3 class="hero-name">Bary the Bear</h3>
+                        <span class="hero-role">Assault Tank</span>
+                    </div>
+                    <div class="hero-stats">
+                        <p><strong>Pro:</strong> Exceptional frontline defense and high health pool absorption.</p>
+                        <p><strong>Con:</strong> Lower movement speed and longer cooldowns on defensive abilities.</p>
+                    </div>
+                </div>
+            </div>
         </main>
 
-        <footer style="text-align: center; margin-top: 40px; padding: 20px; color: #8b949e; font-size: 12px; border-top: 1px solid rgba(255,204,0,0.1);">
-            <p>&copy; 2026 GGE Alliance • Server 199. All rights reserved on the battlefield.</p>
+        <footer>
+            GGE Server 199 Tactical Command Time Clock: <span id="bottomClock">Loading...</span>
         </footer>
     </div>
 
+    <!-- Scripts -->
     <script src="translations.js"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hero Roster | GGE Alliance</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <!-- Left-Side Alliance Flag Banner Navigation Bar -->
-    <div class="alliance-banner">
-        <div>
-            <div style="text-align: center; margin-bottom: 25px;">
-                <div style="font-size: 24px; font-weight: bold; color: #ffcc00; letter-spacing: 2px;">GGE</div>
-                <div style="font-size: 12px; color: #8b949e; margin-top: 2px;">Server 199</div>
-            </div>
-            
-            <hr style="border: none; border-top: 1px solid rgba(255, 204, 0, 0.2); margin-bottom: 20px;">
-
-            <nav style="display: flex; flex-direction: column; gap: 10px;">
-                <a href="war-room.html" id="nav-war-room" style="color: #c9d1d9; text-decoration: none; padding: 10px; border-radius: 6px; font-size: 14px; display: block;">🏠 War Room</a>
-                <a href="roster.html" id="nav-alliance-roster" style="color: #c9d1d9; text-decoration: none; padding: 10px; border-radius: 6px; font-size: 14px; display: block;">🛡️ Alliance Roster</a>
-                <a href="hero.html" id="nav-hero-roster" style="color: #ffcc00; text-decoration: none; padding: 10px; border-radius: 6px; font-size: 14px; display: block; background: rgba(255,204,0,0.05); border: 1px solid rgba(255,204,0,0.2);">⚔️ Hero Roster</a>
-                <a href="events.html" id="nav-events" style="color: #c9d1d9; text-decoration: none; padding: 10px; border-radius: 6px; font-size: 14px; display: block;">📅 Events</a>
-                <a href="rules.html" id="nav-alliance-laws" style="color: #c9d1d9; text-decoration: none; padding: 10px; border-radius: 6px; font-size: 14px; display: block;">📜 Alliance Laws</a>
-                <a href="intel.html" id="nav-intel-links" style="color: #c9d1d9; text-decoration: none; padding: 10px; border-radius: 6px; font-size: 14px; display: block;">🌐 Intel & Links</a>
-            </nav>
-        </div>
-
-        <div>
-            <!-- Language Selector -->
-            <div style="margin-bottom: 15px;">
-                <select id="languageSelect" onchange="changeLanguage(this.value)" style="width: 100%; background: #0d1117; color: #c9d1d9; border: 1px solid rgba(255,204,0,0.3); padding: 8px; border-radius: 6px; font-size: 13px;">
-                    <option value="en">English</option>
-                    <option value="de">Magyar</option>
-                    <option value="pl">Polski</option>
-                    <option value="tr">Türkçe</option>
-                    <option value="es">Español</option>
-                    <option value="fr">Français</option>
-                    <option value="it">Italiano</option>
-                    <option value="ko">한국어</option>
-                    <option value="la">Latina</option>
-                </select>
-            </div>
-
-            <!-- Footer Clock Box -->
-            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,204,0,0.2); border-radius: 6px; padding: 10px; text-align: center;">
-                <div style="font-size: 11px; color: #8b949e;">Server Time</div>
-                <div id="utcClock" style="font-size: 14px; color: #ffcc00; font-family: monospace; margin-top: 2px;">UTC: --:--:--</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Content Wrapper -->
-    <div class="main-content-wrapper">
-        <header style="margin-bottom: 30px;">
-            <h1 style="color: #ffcc00; letter-spacing: 1px; font-size: 28px;">Hero Command Roster</h1>
-            <p style="color: #8b949e; font-size: 14px; margin-top: 5px;">Server 199 • Land of Jail Verified Hero Database (Shooters, Grenadiers, Shields & Scavengers)</p>
-        </header>
-
-        <main>
-            <!-- Operational Filter Categories -->
-            <section class="card" style="background-color: #161b22; border: 1px solid rgba(255,204,0,0.2); border-radius: 8px; padding: 20px; margin-bottom: 25px;">
-                <h2 style="color: #ffcc00; font-size: 18px; border-bottom: 1px solid rgba(255,204,0,0.2); padding-bottom: 10px; margin-bottom: 15px;">Operational Categories</h2>
-                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                    <span style="background: rgba(255,204,0,0.1); color: #ffcc00; padding: 6px 12px; border-radius: 4px; font-size: 13px; border: 1px solid rgba(255,204,0,0.3);">Shooters (DPS)</span>
-                    <span style="background: rgba(255,204,0,0.1); color: #ffcc00; padding: 6px 12px; border-radius: 4px; font-size: 13px; border: 1px solid rgba(255,204,0,0.3);">Grenadiers / Bombers</span>
-                    <span style="background: rgba(255,204,0,0.1); color: #ffcc00; padding: 6px 12px; border-radius: 4px; font-size: 13px; border: 1px solid rgba(255,204,0,0.3);">Shields (Tank/Frontline)</span>
-                    <span style="background: rgba(255,204,0,0.1); color: #ffcc00; padding: 6px 12px; border-radius: 4px; font-size: 13px; border: 1px solid rgba(255,204,0,0.3);">Scavenging & Gathering</span>
-                </div>
-            </section>
-
-            <!-- Verified Heroes Database -->
-            <section class="card" style="background-color: #161b22; border: 1px solid rgba(255,204,0,0.2); border-radius: 8px; padding: 20px;">
-                <h2 style="color: #ffcc00; font-size: 18px; border-bottom: 1px solid rgba(255,204,0,0.2); padding-bottom: 15px; margin-bottom: 20px;">📜 Verified Hero Database</h2>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
-                    
-                    <!-- Otto, Tiger King -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHIELD / SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Combat Tier</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Otto, Tiger King</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High base power scaling, strong frontline impact and durability.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Requires heavy fragment investment to recruit and star up.</p>
-                    </div>
-
-                    <!-- Wukong, Monkey King -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">AoE Burst</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Wukong, Monkey King</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Excellent area control and high burst crowd damage.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Long skill recovery windows leave openings.</p>
-                    </div>
-
-                    <!-- Edwin, the Judge -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Ranged DPS</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Edwin, the Judge</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Reliable ranged output and execution modifiers against targets.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Low baseline mobility makes him vulnerable to close-range rushes.</p>
-                    </div>
-
-                    <!-- Mai Shiranui -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER / GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">KOF Collab</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Mai Shiranui</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Exceptional multi-target fire damage and rapid skill cycling.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Limited defensive scaling in extended brawls.</p>
-                    </div>
-
-                    <!-- Ada, Duo Face -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Tactical DPS</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Ada, Duo Face</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Flexible tactical switching and solid sustained DPS numbers.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Complex positioning requirements to maximize output.</p>
-                    </div>
-
-                    <!-- Drake, Hell Warrior -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Sustain DPS</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Drake, Hell Warrior</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High sustain and pressure potential in active skirmishes.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Vulnerable to heavy crowd control stuns.</p>
-                    </div>
-
-                    <!-- Terry Bogard -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHIELD / BRAWLER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">KOF Collab</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Terry Bogard</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Powerful frontline brawler skills and reliable stagger effects.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Event-exclusive shards make upgrading difficult outside events.</p>
-                    </div>
-
-                    <!-- Ryuichi Ito, Ghost Ninja -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHIELD</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Ninja Tank</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Ryuichi Ito, Ghost Ninja</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High evasion stats and sudden counterattack capability.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Lower overall health pool compared to traditional heavy tanks.</p>
-                    </div>
-
-                    <!-- Omega Rugal -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | GRENADIER / BRAWLER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">KOF Collab</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Omega Rugal</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Massive area dominance and devastating ultimate skill execution.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> High skill cooldown requirements.</p>
-                    </div>
-
-                    <!-- Devilian, Afterglow Gunner -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Gunner DPS</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Devilian, Afterglow Gunner</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Consistent ranged damage output over time.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Requires heavy frontline protection from diving enemies.</p>
-                    </div>
-
-                    <!-- Lee, King of Gamblers -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Crit Modifier</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Lee, King of Gamblers</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High random critical-rate damage spikes.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Inconsistent damage reliability due to RNG dependence.</p>
-                    </div>
-
-                    <!-- Tormund, Hellfire -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | TANK / SHIELD</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Heavy Tank</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Tormund, Hellfire</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Exceptional defense against fire and burn-based environment hazards.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Low movement and rotation speed.</p>
-                    </div>
-
-                    <!-- Marcus, Stitched Monster -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHIELD</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Regen Tank</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Marcus, Stitched Monster</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High health regeneration and exceptional damage soaking capacity.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Low offensive threat output.</p>
-                    </div>
-
-                    <!-- Zoltan, the Redeemer -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHIELD</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Frontline Buff</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Zoltan, the Redeemer</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Excellent defensive armor buffs for nearby allied squads.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Requires strict team grouping to maximize utility.</p>
-                    </div>
-
-                    <!-- Xuanming, Grove Drunkard -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | TANK / MELEE</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Evasion Tank</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Xuanming, Grove Drunkard</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Unpredictable dodge mechanics and strong melee counter-strikes.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Erratic combat mitigation performance.</p>
-                    </div>
-
-                    <!-- Mia, Scarlet Pyros -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Burn Specialist</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Mia, Scarlet Pyros</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High stacking burn damage over time against targets.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Fragile baseline defensive armor.</p>
-                    </div>
-
-                    <!-- Sawyer, the Collector -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Scavenger Meta</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Sawyer, the Collector</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Top-tier salvage bonuses and resource gathering utility speeds.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Mid-tier combat performance in high-end PvP battles.</p>
-                    </div>
-
-                    <!-- Mireya, Shadowpiercer -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Armor Piercer</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Mireya, Shadowpiercer</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High armor-piercing shots ideal for boss targets.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Poor crowd control capacity against minion swarms.</p>
-                    </div>
-
-                    <!-- Veronica, Inferna Dancer -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Speed Buff</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Veronica, Inferna Dancer</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Rapid attack speed buffs for output scaling.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Requires steady, uninterrupted positioning.</p>
-                    </div>
-
-                    <!-- Vesaryon, Annihilator -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #4169E1; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SR | TANK</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Early Tank</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Vesaryon, Annihilator</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Easy to star up, solid early-game frontline tank option.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Falls off significantly in later competitive zones.</p>
-                    </div>
-
-                    <!-- Lunarl, Night Specter -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #4169E1; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Mid-Game DPS</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Lunarl, Night Specter</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Accessible shards, reliable mid-game damage output.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Limited utility past standard development zones.</p>
-                    </div>
-
-                    <!-- Flora, Wildfire Explorer -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #4169E1; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SR | GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Gatherer</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Flora, Wildfire Explorer</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Good gathering speed bonuses for resource exploration tasks.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Low combat engagement scaling.</p>
-                    </div>
-
-                    <!-- Lofili, the Ranger -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #4169E1; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Scavenger</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Lofili, the Ranger</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Decent resource scavenging march capacity.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Soft defenses when intercepted on tiles.</p>
-                    </div>
-
-                    <!-- Koschevoi, Magic Gunner -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Area Destruction</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Koschevoi, Magic Gunner</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Heavy area destruction and massive skill damage.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Slow attack cadence.</p>
-                    </div>
-
-                    <!-- Caesar, Apex Ape -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | TANK</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Apex Tank</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Caesar, Apex Ape</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Staggering base health and frontline intimidation factor.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Large model size makes him vulnerable to coordinated focus fire.</p>
-                    </div>
-
-                    <!-- Whisper, White Reaper -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Assassin</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Whisper, White Reaper</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Incredible single-target assassination potential.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Extremely low group defense scaling.</p>
-                    </div>
-
-                    <!-- Lanchester, Machinist -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Siege Specialist</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Lanchester, Machinist</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High mechanical structure and terminal siege damage bonuses.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Slower movement speed on world map marches.</p>
-                    </div>
-
-                    <!-- Platos, Night Watch -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #4169E1; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Scout Unit</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Platos, Night Watch</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Reliable scouting and baseline defense utility.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Lower tier power ceilings.</p>
-                    </div>
-
-                    <!-- Flameborne, Minyeon & Taehun -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #4169E1; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SR | GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Dual Unit</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Flameborne, Minyeon & Taehun</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Dual-character synergy scaling and area fire damage.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Balanced stats mean they lack specialized focus.</p>
-                    </div>
-
-                    <!-- Ekko, Soaring Falcon -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #4169E1; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Mobile DPS</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Ekko, Soaring Falcon</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High mobility and swift tactical repositioning speed.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Fragile health bar.</p>
-                    </div>
-
-                    <!-- Alph, Surgecaster -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Shock Damage</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Alph, Surgecaster</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Lightning-based area shock damage and crowd disruption.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> High energy consumption cycles.</p>
-                    </div>
-
-                    <!-- Tyronn, Scarlet Butcher -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | TANK</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Drain Tank</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Tyronn, Scarlet Butcher</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Brutal frontline defense and active health drain abilities.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Slow base attack speed.</p>
-                    </div>
-
-                    <!-- Vivian, Harmonic Dreamer -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SUPPORT</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Healer / Buffer</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Vivian, Harmonic Dreamer</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Fantastic squad buffing and healing support utility.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Zero direct offensive threat on her own.</p>
-                    </div>
-
-                    <!-- Inata, the Prodigy -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHIELD</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Ballistic Shield</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Inata, the Prodigy</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Great ballistic shield protection and defense scaling.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Lower mobility when deployed.</p>
-                    </div>
-
-                    <!-- Durga, Seasoned Guard -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #20B2AA; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">R | TANK</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Starter Guard</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Durga, Seasoned Guard</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Extremely easy to upgrade early game.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Low troop capacity and outdated stat caps.</p>
-                    </div>
-
-                    <!-- Harton, the Cleaver -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #20B2AA; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">R | GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Starter Melee</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Harton, the Cleaver</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Cheap resource investment cost for beginners.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Weak utility in serious combat zones.</p>
-                    </div>
-
-                    <!-- Pasino, Venom -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #20B2AA; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">R | GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Toxic Unit</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Pasino, Venom</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Basic chemical damage application.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Very fragile base stats.</p>
-                    </div>
-
-                    <!-- Aiksen, the Reaper -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #20B2AA; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">R | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Starter Filler</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Aiksen, the Reaper</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High availability for early game fillers.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Completely outclassed by SR and SSR heroes.</p>
-                    </div>
-
-                    <!-- Sumo Tyrant, Iwado -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #4169E1; color: #ffffff; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SR | TANK</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Sumo Tank</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Sumo Tyrant, Iwado</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High minion count and heavy displacement skills.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Limited scaling against late-zone burst damage.</p>
-                    </div>
-
-                    <!-- Phoenix, Flash of Lightning -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Rocket Specialist</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Phoenix, Flash of Lightning</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Devastating rocket launcher splash damage.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Long reload cycles leave vulnerability windows.</p>
-                    </div>
-
-                    <!-- Worrell, Paradox Engine -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | GRENADIER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Mechanical Unit</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Worrell, Paradox Engine</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> Unique mechanical utility and crowd disruption.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Hard to obtain and build shards early on.</p>
-                    </div>
-
-                    <!-- Kate, Dream Chaser -->
-                    <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                            <span style="background: #ffcc00; color: #0d1117; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px;">SSR | SHOOTER</span>
-                            <span style="color: #ffcc00; font-size: 12px; font-weight: bold;">Chaser DPS</span>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 16px; margin: 8px 0 5px 0;">Kate, Dream Chaser</h3>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Pros:</strong> High speed chasing mechanics and burst hits.</p>
-                        <p style="color: #c9d1d9; font-size: 13px; margin: 4px 0;"><strong>Cons:</strong> Low baseline defense weights.</p>
-                    </div>
-
-                </div>
-            </section>
-        </main>
-
-        <footer style="text-align: center; margin-top: 40px; padding: 20px; color: #8b949e; font-size: 12px; border-top: 1px solid rgba(255,204,0,0.1);">
-            <p>&copy; 2026 GGE Alliance • Server 199. All rights reserved on the battlefield.</p>
-        </footer>
-    </div>
-
-    <script src="translations.js"></script>
+    <script>
+        function updateServerTime() {
+            const now = new Date();
+            const utcTime = now.toUTCString().slice(17, 25) + " UTC";
+            const clockElement = document.getElementById('clock');
+            const bottomClockElement = document.getElementById('bottomClock');
+            if (clockElement) clockElement.innerText = utcTime;
+            if (bottomClockElement) bottomClockElement.innerText = utcTime;
+        }
+        setInterval(updateServerTime, 1000);
+        updateServerTime();
+    </script>
 </body>
 </html>
