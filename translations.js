@@ -1,5 +1,6 @@
 const translations = {
     en: {
+        ggeFlag: "GGE",
         home: "Home",
         warroom: "War Room",
         allianceroster: "Roster",
@@ -15,6 +16,7 @@ const translations = {
         r1Name: "R1 • Recruits"
     },
     es: {
+        ggeFlag: "GGE",
         home: "Inicio",
         warroom: "Sala de Guerra",
         allianceroster: "Lista",
@@ -30,6 +32,7 @@ const translations = {
         r1Name: "R1 • Reclutas"
     },
     pt: {
+        ggeFlag: "GGE",
         home: "Início",
         warroom: "Sala de Guerra",
         allianceroster: "Lista",
@@ -45,6 +48,7 @@ const translations = {
         r1Name: "R1 • Recrutas"
     },
     la: {
+        ggeFlag: "GGE",
         home: "Domus",
         warroom: "Consilium Belli",
         allianceroster: "Index",
@@ -60,6 +64,7 @@ const translations = {
         r1Name: "R1 • Tirones"
     },
     ko: {
+        ggeFlag: "GGE",
         home: "홈",
         warroom: "상황실",
         allianceroster: "명부",
@@ -75,6 +80,7 @@ const translations = {
         r1Name: "R1 • 신참"
     },
     ar: {
+        ggeFlag: "GGE",
         home: "الرئيسية",
         warroom: "غرفة الحرب",
         allianceroster: "القائمة",
@@ -90,6 +96,7 @@ const translations = {
         r1Name: "R1 • المجندون"
     },
     tr: {
+        ggeFlag: "GGE",
         home: "Ana Sayfa",
         warroom: "Savaş Odası",
         allianceroster: "Üye Listesi",
@@ -105,6 +112,7 @@ const translations = {
         r1Name: "R1 • Acemiler"
     },
     pl: {
+        ggeFlag: "GGE",
         home: "Strona główna",
         warroom: "Sala Gier",
         allianceroster: "Skład",
@@ -120,6 +128,7 @@ const translations = {
         r1Name: "R1 • Rekruti"
     },
     nl: {
+        ggeFlag: "GGE",
         home: "Thuis",
         warroom: "Oorlogskamer",
         allianceroster: "Selectie",
@@ -135,6 +144,7 @@ const translations = {
         r1Name: "R1 • Rekruten"
     },
     fr: {
+        ggeFlag: "GGE",
         home: "Accueil",
         warroom: "Salle de Guerre",
         allianceroster: "Liste",
@@ -150,6 +160,7 @@ const translations = {
         r1Name: "R1 • Recrues"
     },
     ru: {
+        ggeFlag: "GGE",
         home: "Главная",
         warroom: "Военный совет",
         allianceroster: "Состав",
@@ -165,6 +176,7 @@ const translations = {
         r1Name: "R1 • Новобранцы"
     },
     it: {
+        ggeFlag: "GGE",
         home: "Home",
         warroom: "Stanza di Guerra",
         allianceroster: "Rosa",
