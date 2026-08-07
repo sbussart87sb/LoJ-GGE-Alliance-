@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GGE Server 199 - Intel & Links</title>
-    <link rel="stylesheet" href="style.css">
+    <title>GGE Server 199 - Intelligence Links</title>
     <style>
         body {
             background: linear-gradient(135deg, #0f141d 0%, #070a0f 100%);
@@ -120,7 +119,16 @@
             margin: 0 auto;
             width: 100%;
         }
-        /* Grid Layout for Link Categories */
+        .section-title {
+            color: #ffcc00;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 30px 0 15px 0;
+            border-bottom: 2px solid #33445c;
+            padding-bottom: 8px;
+        }
+        /* Grid Layout for Links */
         .links-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -132,51 +140,45 @@
             border: 1px solid #223042;
             border-top: 3px solid #3b4d66;
             border-radius: 6px;
-            padding: 20px;
+            padding: 22px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 120px;
+            box-sizing: border-box;
         }
-        .link-card.full-width {
-            grid-column: span 2;
-        }
-        .link-card h2 {
+        .link-card h3 {
             color: #ffcc00;
             font-size: 16px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 0;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #223042;
-            padding-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            margin: 0 0 10px 0;
         }
-        .link-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+        .link-card p {
+            color: #9ca3af;
+            font-size: 13px;
+            margin: 0 0 15px 0;
+            line-height: 1.4;
         }
-        .link-list li a {
+        .link-btn {
+            display: inline-block;
+            background: #1b2635;
             color: #93c5fd;
+            border: 1px solid #33445c;
+            padding: 8px 14px;
+            border-radius: 4px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: color 0.2s ease;
+            font-size: 13px;
+            text-align: center;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        .link-list li a:hover {
+        .link-btn:hover {
+            background: #25344a;
             color: #ffcc00;
-            text-decoration: underline;
-        }
-        .link-desc {
-            color: #9ca3af;
-            font-size: 12.5px;
-            margin: 3px 0 0 22px;
+            border-color: #ffcc00;
         }
         footer {
             text-align: center;
@@ -235,64 +237,112 @@
     <!-- Main Command Interface -->
     <div class="main-content">
         <main class="links-container">
-            <h1 id="linksMainTitle" style="text-align: center; color: #f9fafb; text-transform: uppercase; letter-spacing: 2px; font-size: 24px; margin-bottom: 5px;">Intel & Alliance Links</h1>
-            <p id="linksSubtitle" style="text-align: center; color: #9ca3af; margin-bottom: 30px; font-size: 13px; letter-spacing: 0.5px;">Server 199 • Official Community Channels, Social Hubs & Tactical Downloads</p>
+            <h1 id="linksMainTitle" style="text-align: center; color: #f9fafb; text-transform: uppercase; letter-spacing: 2px; font-size: 24px; margin-bottom: 5px;">Alliance Intelligence Links</h1>
+            <p id="linksSubtitle" style="text-align: center; color: #9ca3af; margin-bottom: 30px; font-size: 13px; letter-spacing: 0.5px;">Server 199 • Official Resources & Tactical Utilities</p>
 
+            <!-- Auto Clicker Downloads Section -->
+            <h2 class="section-title">⚙️ Essential Automation Tools (Auto Clicker Downloads)</h2>
             <div class="links-grid">
-                <!-- Community & Social Channels Card -->
                 <div class="link-card">
-                    <h2 id="commCardTitle">💬 Community & Socials</h2>
-                    <ul class="link-list">
-                        <li>
-                            <a href="https://discord.com" target="_blank" id="discordLinkText">🔗 Alliance Discord Hub</a>
-                            <div class="link-desc" id="discordDesc">Official communications, voice comms, and rally alerts.</div>
-                        </li>
-                        <li>
-                            <a href="https://facebook.com" target="_blank" id="fbLinkText">📘 Official Facebook Community</a>
-                            <div class="link-desc" id="fbDesc">Game updates, community news, and event notices.</div>
-                        </li>
-                    </ul>
+                    <div>
+                        <h3>PC Auto Clicker (Windows)</h3>
+                        <p>Automate repetitive mouse clicking and complex desktop game loops on Windows systems.</p>
+                    </div>
+                    <a href="https://www.opautoclicker.com/" target="_blank" class="link-btn">Download for PC</a>
                 </div>
-
-                <!-- Content Creators & Video Intel Card -->
                 <div class="link-card">
-                    <h2 id="creatorCardTitle">📺 Content Creators & Intel</h2>
-                    <ul class="link-list">
-                        <li>
-                            <a href="https://www.youtube.com/@Allbuzha" target="_blank" id="allbuzhaLinkText">▶️ Allbuzha YouTube Channel</a>
-                            <div class="link-desc" id="allbuzhaDesc">Tactical breakdowns, gameplay guides, and strategy updates.</div>
-                        </li>
-                    </ul>
+                    <div>
+                        <h3>Android Auto Clicker</h3>
+                        <p>Fast tap and multi-touch automation tool for mobile device task management.</p>
+                    </div>
+                    <a href="https://play.google.com/store/apps/details?id=com.gt.autoclicker" target="_blank" class="link-btn">Download for Android</a>
                 </div>
-
-                <!-- Database & Wiki Guides Card -->
                 <div class="link-card">
-                    <h2 id="wikiCardTitle">📚 Strategy & Wikis</h2>
-                    <ul class="link-list">
-                        <li>
-                            <a href="https://reddit.com" target="_blank" id="redditLinkText">🌐 Reddit Strategy & Guides</a>
-                            <div class="link-desc" id="redditDesc">Community-driven tier lists, troop optimization, and code sharing.</div>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank" id="wikiLinkText">📖 Unofficial Game Wiki</a>
-                            <div class="link-desc" id="wikiDesc">Comprehensive database for heroes, gear stats, and upgrade paths.</div>
-                        </li>
-                    </ul>
+                    <div>
+                        <h3>iPhone Auto Clicker (iOS)</h3>
+                        <p>Streamline touch workflows and repeatable tap sequences on iOS devices.</p>
+                    </div>
+                    <a href="https://apps.apple.com/us/app/auto-clicker-tap-assist/id6756167845" target="_blank" class="link-btn">Download for iPhone</a>
                 </div>
+            </div>
 
-                <!-- Tools & Downloads Card -->
+            <!-- Community & Content Creators -->
+            <h2 class="section-title">📺 Content Creators & Community Hubs</h2>
+            <div class="links-grid">
                 <div class="link-card">
-                    <h2 id="toolsCardTitle">🛠️ Tactical Tools & Downloads</h2>
-                    <ul class="link-list">
-                        <li>
-                            <a href="#" target="_blank" id="tool1Text">⚡ Recommended Auto Clicker Utility</a>
-                            <div class="link-desc" id="tool1Desc">Automates repetitive resource claiming and event upgrades to save time.</div>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank" id="tool2Text">📊 Server 199 Helper Scripts & Data Sheets</a>
-                            <div class="link-desc" id="tool2Desc">Custom calculation sheets for tracking defense thresholds and event schedules.</div>
-                        </li>
-                    </ul>
+                    <div>
+                        <h3>Big Green YouTube</h3>
+                        <p>Tactical game guides, updates, and strategy breakdowns.</p>
+                    </div>
+                    <a href="https://www.youtube.com/@gameswithBG" target="_blank" class="link-btn">Visit Channel</a>
+                </div>
+                <div class="link-card">
+                    <div>
+                        <h3>Allbuzha Gaming YouTube</h3>
+                        <p>Advanced gameplay footage and alliance insights.</p>
+                    </div>
+                    <a href="https://www.youtube.com/@allbuzhagaming" target="_blank" class="link-btn">Visit Channel</a>
+                </div>
+                <div class="link-card">
+                    <div>
+                        <h3>PablinhuRJ YouTube</h3>
+                        <p>Game updates, creator builds, and tactical gameplay reviews.</p>
+                    </div>
+                    <a href="https://www.youtube.com/@PbHJGaming" target="_blank" class="link-btn">Visit Channel</a>
+                </div>
+                <div class="link-card">
+                    <div>
+                        <h3>GGE Discord</h3>
+                        <p>Server 199 GGE alliance communication and command chat.</p>
+                    </div>
+                    <a href="https://discord.gg/lands-of-jail" target="_blank" class="link-btn">Join Discord</a>
+                </div>
+            </div>
+
+            <!-- Land of Jail Official & Wiki Resources -->
+            <h2 class="section-title">🌐 Land of Jail Official & Database Networks</h2>
+            <div class="links-grid">
+                <div class="link-card">
+                    <div>
+                        <h3>Land of Jail Official Facebook</h3>
+                        <p>Official announcements, community events, and social updates.</p>
+                    </div>
+                    <a href="https://www.facebook.com/share/g/1LbFQczn83/" target="_blank" class="link-btn">Open Facebook</a>
+                </div>
+                <div class="link-card">
+                    <div>
+                        <h3>Land of Jail Official Website</h3>
+                        <p>Primary portal and developer platform hub.</p>
+                    </div>
+                    <a href="https://lojofficial.eworldgame.com/" target="_blank" class="link-btn">Visit Portal</a>
+                </div>
+                <div class="link-card">
+                    <div>
+                        <h3>Land of Jail Instagram</h3>
+                        <p>Official media updates, artwork, and event teasers.</p>
+                    </div>
+                    <a href="https://www.instagram.com/landsofjail/?hl=en" target="_blank" class="link-btn">Open Instagram</a>
+                </div>
+                <div class="link-card">
+                    <div>
+                        <h3>Lands of Jail Reddit Community</h3>
+                        <p>Player discussions, strategy boards, and community topics.</p>
+                    </div>
+                    <a href="https://www.reddit.com/r/dopegamingsub/comments/1pqqoux/lands_of_jail_best_cheats_for_unlimited_free/" target="_blank" class="link-btn">Open Reddit</a>
+                </div>
+                <div class="link-card">
+                    <div>
+                        <h3>Miraheze Unofficial Wiki</h3>
+                        <p>Community encyclopedia for game stats and history.</p>
+                    </div>
+                    <a href="https://landsofjail.miraheze.org" target="_blank" class="link-btn">Open Wiki</a>
+                </div>
+                <div class="link-card">
+                    <div>
+                        <h3>Lands of Jail Wiki (Events Hub)</h3>
+                        <p>In-depth event guides including Supreme Honor coverage.</p>
+                    </div>
+                    <a href="https://landsofjail.wiki/events/supreme-honor-event/" target="_blank" class="link-btn">Open Event Guide</a>
                 </div>
             </div>
         </main>
@@ -302,8 +352,7 @@
         </footer>
     </div>
 
-    <!-- Scripts -->
-    <script src="translations.js"></script>
+    <!-- Scripts for Clock and Language Selector -->
     <script>
         function updateServerTime() {
             const now = new Date();
@@ -315,6 +364,37 @@
         }
         setInterval(updateServerTime, 1000);
         updateServerTime();
+
+        // 13-Language Dynamic Text Translation Support
+        const translations = {
+            en: { home: "Home", warroom: "War Room", allianceroster: "Roster", heroroster: "Hero", events: "Events", rules: "Rules", intelliLinks: "Links", mainTitle: "Alliance Intelligence Links", subtitle: "Server 199 • Official Resources & Tactical Utilities" },
+            es: { home: "Inicio", warroom: "Sala de Guerra", allianceroster: "Lista", heroroster: "Héroe", events: "Eventos", rules: "Reglas", intelliLinks: "Enlaces", mainTitle: "Enlaces de Inteligencia", subtitle: "Servidor 199 • Recursos Oficiales y Utilidades" },
+            de: { home: "Startseite", warroom: "Kriegsraum", allianceroster: "Kader", heroroster: "Held", events: "Ereignisse", rules: "Regeln", intelliLinks: "Links", mainTitle: "Allianz-Intelligenzlinks", subtitle: "Server 199 • Offizielle Ressourcen & Tools" },
+            pl: { home: "Start", warroom: "Pokój Bojowy", allianceroster: "Skład", heroroster: "Bohater", events: "Wydarzenia", rules: "Zasady", intelliLinks: "Linki", mainTitle: "Linki Wywiadowcze Sojuszu", subtitle: "Serwer 199 • Oficjalne Zasoby i Narzędzia" },
+            fr: { home: "Accueil", warroom: "Salle de Guerre", allianceroster: "Effectif", heroroster: "Héros", events: "Événements", rules: "Règles", intelliLinks: "Liens", mainTitle: "Liens d'Alliance", subtitle: "Serveur 199 • Ressources Officielles et Outils" },
+            nl: { home: "Thuis", warroom: "Oorlogskamer", allianceroster: "Rooster", heroroster: "Held", events: "Evenementen", rules: "Regels", intelliLinks: "Links", mainTitle: "Alliantie Informatie Links", subtitle: "Server 199 • Officiële Bronnen & Hulpmiddelen" },
+            pt: { home: "Início", warroom: "Sala de Guerra", allianceroster: "Elenco", heroroster: "Herói", events: "Eventos", rules: "Regras", intelliLinks: "Links", mainTitle: "Links de Inteligência", subtitle: "Servidor 199 • Recursos Oficiais e Utilitários" },
+            la: { home: "Domus", warroom: "Cubiculum Belli", allianceroster: "Index", heroroster: "Heros", events: "Eventa", rules: "Regulae", intelliLinks: "Nexus", mainTitle: "Nexus Intelligentiae", subtitle: "Servulus 199 • Officia et Instrumenta" },
+            ko: { home: "홈", warroom: "상상실", allianceroster: "명단", heroroster: "영웅", events: "이벤트", rules: "규칙", intelliLinks: "링크", mainTitle: "동맹 정보 링크", subtitle: "서버 199 • 공식 리소스 및 전술 유틸리티" },
+            tr: { home: "Ana Sayfa", warroom: "Savaş Odası", allianceroster: "Kadro", heroroster: "Kahraman", events: "Etkinlikler", rules: "Kurallar", intelliLinks: "Bağlantılar", mainTitle: "İttifak İstihbarat Bağlantıları", subtitle: "Sunucu 199 • Resmi Kaynaklar ve Araçlar" },
+            ru: { home: "Главная", warroom: "Военный зал", allianceroster: "Состав", heroroster: "Герой", events: "События", rules: "Правила", intelliLinks: "Ссылки", mainTitle: "Разведывательные ссылки", subtitle: "Сервер 199 • Официальные ресурсы и утилиты" },
+            it: { home: "Home", warroom: "Stanza di Guerra", allianceroster: "Roster", heroroster: "Eroe", events: "Eventi", rules: "Regole", intelliLinks: "Link", mainTitle: "Link di Intelligence", subtitle: "Server 199 • Risorse Ufficiali e Utility" },
+            ar: { home: "الرئيسية", warroom: "غرفة الحرب", allianceroster: "القائمة", heroroster: "البطل", events: "الفعاليات", rules: "القواعد", intelliLinks: "الروابط", mainTitle: "روابط استخبارات التحالف", subtitle: "الخادم 199 • الموارد الرسمية والأدوات" }
+        };
+
+        function changeLanguage(lang) {
+            const t = translations[lang];
+            if (!t) return;
+            document.getElementById('home').innerText = t.home;
+            document.getElementById('warroom').innerText = t.warroom;
+            document.getElementById('allianceroster').innerText = t.allianceroster;
+            document.getElementById('heroroster').innerText = t.heroroster;
+            document.getElementById('events').innerText = t.events;
+            document.getElementById('rules').innerText = t.rules;
+            document.getElementById('intelliLinks').innerText = t.intelliLinks;
+            document.getElementById('linksMainTitle').innerText = t.mainTitle;
+            document.getElementById('linksSubtitle').innerText = t.subtitle;
+        }
     </script>
 </body>
 </html>
